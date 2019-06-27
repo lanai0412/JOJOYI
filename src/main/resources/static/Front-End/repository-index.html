@@ -11,6 +11,7 @@
     <link rel="shortcut icon" href="http://oqlse9rck.bkt.clouddn.com/favicon.ico">
     <link href="css/TothingWay.css" rel="stylesheet" />
     <link href="css/repository.css" rel="stylesheet" />
+    <link rel="stylesheet" href="css/forum.css">
 </head>
 
 <body>
@@ -20,8 +21,7 @@
             <!--导航左半部分-->
             <div class="navbar-header">
                 <!--手机模式导航按钮-->
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false"
-                    aria-controls="navbar">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
                     <span class="sr-only">
                         IT.Share
                     </span>
@@ -112,93 +112,97 @@
             <!-- /.nav-collapse -->
         </div>
     </nav>
-    
+
     <!--banner-->
     <div class="cover">
+
         <h2>知识库，你身边的百科全书</h2>
+        <div class="search-input" style="margin: auto;margin-top: 40px;width: 30%">
+            <input style="background-color: #ebebeb;color: black" type="text" placeholder="search..." id="search" />
+            <a href="javascript:;" onclick="searchs(this)">
+                <i class="glyphicon glyphicon-search">
+                    </i>
+            </a>
+        </div>
+
     </div>
 
     <!--知识库-->
     <div class="container repository-container">
-        <div class="row">
-            <div class="col-xs-12 col-sm-4">
+        <div class="row" id="app">
+            <div class="col-xs-12 col-sm-4" v-for='item in text'>
                 <!--知识库分类-->
                 <figure class="effect-ruby">
                     <img src="http://oqlse9rck.bkt.clouddn.com/repository-list.jpg">
                     <figcaption>
-                        <h2>HTML5</h2>
-                        <p>HTML5是HTML最新修订版本，2014年10月由万维网联盟（W3C）完成标准制定。其设计目的是为了在移动设备上支持多媒体。它简单易学，且增加了很多有趣新特性。</p>
-                        <a href="repository-detal.html">View more</a>
-                    </figcaption>
-                </figure>
-            </div>
-            <div class="col-xs-12 col-sm-4">
-                <!--知识库分类-->
-                <figure class="effect-ruby">
-                    <img src="http://oqlse9rck.bkt.clouddn.com/repository-list.jpg">
-                    <figcaption>
-                        <h2>HTML5</h2>
-                        <p>HTML5是HTML最新修订版本，2014年10月由万维网联盟（W3C）完成标准制定。其设计目的是为了在移动设备上支持多媒体。它简单易学，且增加了很多有趣新特性。</p>
-                        <a href="repository-detal.html">View more</a>
-                    </figcaption>
-                </figure>
-            </div>
-            <div class="col-xs-12 col-sm-4">
-                <!--知识库分类-->
-                <figure class="effect-ruby">
-                    <img src="http://oqlse9rck.bkt.clouddn.com/repository-list.jpg">
-                    <figcaption>
-                        <h2>HTML5</h2>
-                        <p>HTML5是HTML最新修订版本，2014年10月由万维网联盟（W3C）完成标准制定。其设计目的是为了在移动设备上支持多媒体。它简单易学，且增加了很多有趣新特性。</p>
-                        <a href="repository-detal.html">View more</a>
-                    </figcaption>
-                </figure>
-            </div>
-            <div class="col-xs-12 col-sm-4">
-                <!--知识库分类-->
-                <figure class="effect-ruby">
-                    <img src="http://oqlse9rck.bkt.clouddn.com/repository-list.jpg">
-                    <figcaption>
-                        <h2>HTML5</h2>
-                        <p>HTML5是HTML最新修订版本，2014年10月由万维网联盟（W3C）完成标准制定。其设计目的是为了在移动设备上支持多媒体。它简单易学，且增加了很多有趣新特性。</p>
-                        <a href="repository-detal.html">View more</a>
-                    </figcaption>
-                </figure>
-            </div>
-            <div class="col-xs-12 col-sm-4">
-                <!--知识库分类-->
-                <figure class="effect-ruby">
-                    <img src="http://oqlse9rck.bkt.clouddn.com/repository-list.jpg">
-                    <figcaption>
-                        <h2>HTML5</h2>
-                        <p>HTML5是HTML最新修订版本，2014年10月由万维网联盟（W3C）完成标准制定。其设计目的是为了在移动设备上支持多媒体。它简单易学，且增加了很多有趣新特性。</p>
-                        <a href="repository-detal.html">View more</a>
-                    </figcaption>
-                </figure>
-            </div>
-            <div class="col-xs-12 col-sm-4">
-                <!--知识库分类-->
-                <figure class="effect-ruby">
-                    <img src="http://oqlse9rck.bkt.clouddn.com/repository-list.jpg">
-                    <figcaption>
-                        <h2>HTML5</h2>
-                        <p>HTML5是HTML最新修订版本，2014年10月由万维网联盟（W3C）完成标准制定。其设计目的是为了在移动设备上支持多媒体。它简单易学，且增加了很多有趣新特性。</p>
-                        <a href="repository-detal.html">View more</a>
+                        <h2 v-text="item.title"></h2>
+                        <p v-text="item.introduction"></p>
+                        <a href="javascript:;" onclick='hf(this)'></a>
+                        <span v-text='item.tid' hidden="hidden"></span>
                     </figcaption>
                 </figure>
             </div>
         </div>
     </div>
 
-    <div class="footer">
+    <!-- <div class="footer">
         Copyright © 2015.东旭工作室 Dxstudio All rights reserved.
-    </div>
-    
+    </div> -->
+
     <script src="js/TothingWay.js">
     </script>
     <script src="js/stickUp.js">
     </script>
     <script src="js/forum.js">
+    </script>
+    <script src="js/jquery-3.4.1.min.js"></script>
+    <script src="js/vue.js"></script>
+    <script>
+        var vm = new Vue({
+            el: "#app",
+            data: {
+                text: [],
+            }
+
+        })
+        $(function() {
+            $.ajax({
+                type: 'get',
+                url: 'http://localhost:8080/allarts',
+                dataType: 'json',
+                success: function(data) {
+                    console.log(data);
+                    vm.text = data;
+                    console.log(vm.text);
+                    console.log(vm.text[1].title);
+
+                }
+            })
+        })
+
+
+        function searchs(obj) {
+            var search = $("#search").val();
+            $.ajax({
+                type: 'get',
+                url: 'http://localhost:8080/atitle/' + search,
+                dataType: 'json',
+                success: function(data) {
+                    console.log(data);
+                    // vm.text = [];
+                    vm.text = data;
+                    console.log(vm.text);
+                    console.log(vm.text[1].title);
+
+                }
+            })
+        }
+
+
+        function hf(obj) {
+            var obj = obj.nextElementSibling;
+            window.location.href = ("repository-detal.html?id=" + obj.innerText);
+        }
     </script>
 </body>
 
