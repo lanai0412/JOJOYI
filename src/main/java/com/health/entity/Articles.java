@@ -16,7 +16,10 @@ import java.util.Date;
 public class Articles implements Serializable {
     @TableId(value = "tid",type = IdType.AUTO)
     private Integer tid;
+    private String title;
     private String txtsrc;
     private String psrc;
     private Date time;
+    private String type;
+    private String introduction;
 }
