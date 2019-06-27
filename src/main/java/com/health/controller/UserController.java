@@ -74,11 +74,15 @@ public class UserController {
     //校验登录
     @RequestMapping("check_login")
     @ResponseBody
-    public User session(HttpSession session, HttpServletRequest request) {
+    public Object session(HttpSession session, HttpServletRequest request) {
         session = request.getSession();
         User user = (User) session.getAttribute("user");
-
+        if(user!=null){
             return user;
+        }else{
+            return 400;
+        }
+
 
 
     }

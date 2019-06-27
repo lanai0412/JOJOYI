@@ -67,8 +67,7 @@ $.ajax({
     dataType: "json",
     success: function (data) {
         var phone = data.phone;
-        console.log(data)
-        if (data != null || data != undefined || data != "") {
+        if (data != 400) {
             $("#login_success_name").text(data.uname);
             $("#login_success_name").css("display", "block");
             $("#success_login").css("display", "none");
