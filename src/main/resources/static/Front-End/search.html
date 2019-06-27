@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>
+        资源共享平台
+    </title>
+    <link rel="shortcut icon" href="http://oqlse9rck.bkt.clouddn.com/favicon.ico">
+    <link href="css/TothingWay.css" rel="stylesheet" />
+    <link href="css/resource-search.css" rel="stylesheet" />
+</head>
+
+<body>
+    <!--导航-->
+    <nav class="navbar navbar-default nav-scroll navbar-fixed-top">
+        <div class="container">
+            <!--导航左半部分-->
+            <div class="navbar-header">
+                <!--手机模式导航按钮-->
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false"
+                    aria-controls="navbar">
+                    <span class="sr-only">
+                        IT.Share
+                    </span>
+                    <span class="icon-bar">
+                    </span>
+                    <span class="icon-bar">
+                    </span>
+                    <span class="icon-bar">
+                    </span>
+                </button>
+                <!--logo-->
+                <a class="navbar-brand" href="index.html"></a>
+            </div>
+            <!--导航右半部分-->
+            <div id="navbar" class="navbar-collapse collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="active">
+                        <a href="index.html">
+                            首页
+                        </a>
+                    </li>
+                    <li>
+                        <a href="resource-index.html">
+                            资料中心
+                        </a>
+                    </li>
+                    <li>
+                        <a href="forum-index.html">
+                            交流分享
+                        </a>
+                    </li>
+                    <li>
+                        <a href="repository-index.html">
+                            知识百科
+                        </a>
+                    </li>
+                    <li>
+                        <a href="quiz-index.html">
+                            在线问答
+                        </a>
+                    </li>
+                    <li>
+                        <a href="about.html" target="_blank">
+                            关于我们
+                        </a>
+                    </li>
+                    <!--登录成功后显示的个人信息下拉菜单-->
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                            张三
+                            <span class="caret">
+                            </span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li class="dropdown-header">
+                                未读消息
+                                <span class="badge">
+                                    61
+                                </span>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    未读消息1
+                                    <span class="badge">
+                                        2
+                                    </span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    未读消息2
+                                    <span class="badge">
+                                        42
+                                    </span>
+                                </a>
+                            </li>
+                            <li role="separator" class="divider">
+                            </li>
+                            <li>
+                                <a href="#">
+                                    注销
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.nav-collapse -->
+        </div>
+    </nav>
+
+    <!--banner + search-->
+    <div class="cover">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12">
+                    <h1>
+                        IT.Share
+                    </h1>
+                    <p>
+                        高效，安全，详细的资源共享平台
+                        <br/>
+                        <span>
+                            共收录了
+                            <strong>
+                                13154
+                            </strong>
+                            个资源
+                        </span>
+                    </p>
+                    <form role="search">
+                        <div class="form-group">
+                            <input type="text" class="form-control search" placeholder="资源搜索" />
+                            <a href="#" class="btn-search">
+                                <span class="glyphicon glyphicon-search">
+                                </span>
+                            </a>
+                                <!--以下是搜索提示框-->
+                            <!-- <div class="list-group search-tips">
+                                    <a href="#" class="list-group-item">
+                                        我假装被搜索到
+                                    </a>
+                                    <a href="#" class="list-group-item">
+                                        我假装被搜索到
+                                    </a>
+                                    <a href="#" class="list-group-item">
+                                        我假装被搜索到
+                                    </a>
+                                    <a href="#" class="list-group-item">
+                                        我假装被搜索到
+                                    </a>
+                                </div>
+                                搜索框下拉展示 -->
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <!--/.row-->
+        </div>
+        <!--/.container-->
+    </div>
+
+    <!--热门搜索-->
+    <div class="hot-search well text-center hidden-sm">
+        <ul class="list-inline">
+            <li>
+                <a href="#" title="jQuery">
+                    <img src="http://oqlse9rck.bkt.clouddn.com/jquery.svg"/>
+                </a>
+            </li>
+            <li>
+                <a href="#" title="angular">
+                    <img src="http://oqlse9rck.bkt.clouddn.com/angular-icon.svg"/>
+                </a>
+            </li>
+            <li>
+                <a href="#" title="backbone">
+                    <img src="http://oqlse9rck.bkt.clouddn.com/backbone-icon.svg"/>
+                </a>
+            </li>
+            <li>
+                <a href="#" title="ember">
+                    <img src="http://oqlse9rck.bkt.clouddn.com/ember.svg"/>
+                </a>
+            </li>
+            <li>
+                <a href="#" title="lodash">
+                    <img src="http://oqlse9rck.bkt.clouddn.com/lodash.svg"/>
+                </a>
+            </li>
+            <li>
+                <a href="#" title="momentjs">
+                    <img src="http://oqlse9rck.bkt.clouddn.com/momentjs.svg"/>
+                </a>
+            </li>
+            <li>
+                <a href="#" title="mootools">
+                    <img src="http://oqlse9rck.bkt.clouddn.com/mootools.svg"/>
+                </a>
+            </li>
+        </ul>
+    </div>
+
+    <!--搜索提示与筛选标签-->
+    <div class="container search-classify">
+        <div class="row">
+            <div class="col-xs-12 hidden-xs">
+                <!--右方筛选标签-->
+                <div class="form-inline pull-right">
+                    <ul>
+                        <li>
+                            资源分类:
+                        </li>
+                        <li>
+                            <a href="#" class="active">
+                                全部
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                视屏
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                文档
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <!--搜索提示-->
+            <div class="col-xs-12">
+                <span class="glyphicon glyphicon-tasks"></span> 以下为 Javascript搜索结果。
+                <span class="still-txt">
+                    仍然搜索
+                </span>
+                <a href="#" class="still">
+                    JavaScripl
+                </a>
+            </div>
+        </div>
+        <!--/.row-->
+    </div>
+
+    <!--搜索结果-->
+    <div class="search-content container">
+        <!--资源列表-->
+        <div class="list-group">
+            <!--资源简介-->
+            <a href="#" class="list-group-item">
+                <div class="row">
+                    <div class="col-md-3">
+                        <h4 class="package-name">
+                            javascript
+                        </h4>
+                    </div>
+                    <div class="col-md-9 hidden-xs">
+                        <p class="package-description">
+                            这里是资源的介绍，这里是资源的介绍，这里是资源的介绍，这里是资源的介绍，这里是资源的介绍，这里是资源的介绍，这里是资源的介绍，这里是资源的介绍，这里是资源的介绍，这里是资源的介绍，这里是资源的介绍，这里是资源的介绍，这里是资源的介绍，这里是资源的介绍
+                        </p>
+                    </div>
+                    <div class="package-info col-md-9 col-md-offset-3 col-xs-12">
+                        <span class="glyphicon glyphicon-thumbs-up"></span> 9999
+                    </div>
+                </div>
+            </a>
+            <!--资源简介-->
+            <a href="#" class="list-group-item">
+                <div class="row">
+                    <div class="col-md-3">
+                        <h4 class="package-name">
+                            javascript
+                        </h4>
+                    </div>
+                    <div class="col-md-9 hidden-xs">
+                        <p class="package-description">
+                            这里是资源的介绍，这里是资源的介绍，这里是资源的介绍，这里是资源的介绍，这里是资源的介绍，这里是资源的介绍，这里是资源的介绍，这里是资源的介绍，这里是资源的介绍，这里是资源的介绍，这里是资源的介绍，这里是资源的介绍，这里是资源的介绍，这里是资源的介绍
+                        </p>
+                    </div>
+                    <div class="package-info col-md-9 col-md-offset-3 col-xs-12">
+                        <span class="glyphicon glyphicon-thumbs-up"></span> 9999
+                    </div>
+                </div>
+            </a>
+            <!--资源简介-->
+            <a href="#" class="list-group-item">
+                <div class="row">
+                    <div class="col-md-3">
+                        <h4 class="package-name">
+                            javascript
+                        </h4>
+                    </div>
+                    <div class="col-md-9 hidden-xs">
+                        <p class="package-description">
+                            这里是资源的介绍，这里是资源的介绍，这里是资源的介绍，这里是资源的介绍，这里是资源的介绍，这里是资源的介绍，这里是资源的介绍，这里是资源的介绍，这里是资源的介绍，这里是资源的介绍，这里是资源的介绍，这里是资源的介绍，这里是资源的介绍，这里是资源的介绍
+                        </p>
+                    </div>
+                    <div class="package-info col-md-9 col-md-offset-3 col-xs-12">
+                        <span class="glyphicon glyphicon-thumbs-up"></span> 9999
+                    </div>
+                </div>
+            </a>
+            <!--资源简介-->
+            <a href="#" class="list-group-item">
+                <div class="row">
+                    <div class="col-md-3">
+                        <h4 class="package-name">
+                            javascript
+                        </h4>
+                    </div>
+                    <div class="col-md-9 hidden-xs">
+                        <p class="package-description">
+                            这里是资源的介绍，这里是资源的介绍，这里是资源的介绍，这里是资源的介绍，这里是资源的介绍，这里是资源的介绍，这里是资源的介绍，这里是资源的介绍，这里是资源的介绍，这里是资源的介绍，这里是资源的介绍，这里是资源的介绍，这里是资源的介绍，这里是资源的介绍
+                        </p>
+                    </div>
+                    <div class="package-info col-md-9 col-md-offset-3 col-xs-12">
+                        <span class="glyphicon glyphicon-thumbs-up"></span> 9999
+                    </div>
+                </div>
+            </a>
+            <!--资源简介-->
+            <a href="#" class="list-group-item">
+                <div class="row">
+                    <div class="col-md-3">
+                        <h4 class="package-name">
+                            javascript
+                        </h4>
+                    </div>
+                    <div class="col-md-9 hidden-xs">
+                        <p class="package-description">
+                            这里是资源的介绍，这里是资源的介绍，这里是资源的介绍，这里是资源的介绍，这里是资源的介绍，这里是资源的介绍，这里是资源的介绍，这里是资源的介绍，这里是资源的介绍，这里是资源的介绍，这里是资源的介绍，这里是资源的介绍，这里是资源的介绍，这里是资源的介绍
+                        </p>
+                    </div>
+                    <div class="package-info col-md-9 col-md-offset-3 col-xs-12">
+                        <span class="glyphicon glyphicon-thumbs-up"></span> 9999
+                    </div>
+                </div>
+            </a>
+            <!--资源简介-->
+            <a href="#" class="list-group-item">
+                <div class="row">
+                    <div class="col-md-3">
+                        <h4 class="package-name">
+                            javascript
+                        </h4>
+                    </div>
+                    <div class="col-md-9 hidden-xs">
+                        <p class="package-description">
+                            这里是资源的介绍，这里是资源的介绍，这里是资源的介绍，这里是资源的介绍，这里是资源的介绍，这里是资源的介绍，这里是资源的介绍，这里是资源的介绍，这里是资源的介绍，这里是资源的介绍，这里是资源的介绍，这里是资源的介绍，这里是资源的介绍，这里是资源的介绍
+                        </p>
+                    </div>
+                    <div class="package-info col-md-9 col-md-offset-3 col-xs-12">
+                        <span class="glyphicon glyphicon-thumbs-up"></span> 9999
+                    </div>
+                </div>
+            </a>
+            <!--资源简介-->
+            <a href="#" class="list-group-item">
+                <div class="row">
+                    <div class="col-md-3">
+                        <h4 class="package-name">
+                            javascript
+                        </h4>
+                    </div>
+                    <div class="col-md-9 hidden-xs">
+                        <p class="package-description">
+                            这里是资源的介绍，这里是资源的介绍，这里是资源的介绍，这里是资源的介绍，这里是资源的介绍，这里是资源的介绍，这里是资源的介绍，这里是资源的介绍，这里是资源的介绍，这里是资源的介绍，这里是资源的介绍，这里是资源的介绍，这里是资源的介绍，这里是资源的介绍
+                        </p>
+                    </div>
+                    <div class="package-info col-md-9 col-md-offset-3 col-xs-12">
+                        <span class="glyphicon glyphicon-thumbs-up"></span> 9999
+                    </div>
+                </div>
+            </a>
+            <!--资源简介-->
+            <a href="#" class="list-group-item">
+                <div class="row">
+                    <div class="col-md-3">
+                        <h4 class="package-name">
+                            javascript
+                        </h4>
+                    </div>
+                    <div class="col-md-9 hidden-xs">
+                        <p class="package-description">
+                            这里是资源的介绍，这里是资源的介绍，这里是资源的介绍，这里是资源的介绍，这里是资源的介绍，这里是资源的介绍，这里是资源的介绍，这里是资源的介绍，这里是资源的介绍，这里是资源的介绍，这里是资源的介绍，这里是资源的介绍，这里是资源的介绍，这里是资源的介绍
+                        </p>
+                    </div>
+                    <div class="package-info col-md-9 col-md-offset-3 col-xs-12">
+                        <span class="glyphicon glyphicon-thumbs-up"></span> 9999
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+
+    <div class="footer">
+        Copyright © 2015.东旭工作室 Dxstudio All rights reserved.
+    </div>
+
+    <script src="js/TothingWay.js">
+    </script>
+    <script src="js/function.js">
+    </script>
+</body>
+
+</html>
