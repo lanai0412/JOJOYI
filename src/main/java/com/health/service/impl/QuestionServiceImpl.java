@@ -39,4 +39,9 @@ public class QuestionServiceImpl implements QuestionService {
         int i = questionDAO.deleteById(qid);
         return i == 1 ? true : false;
     }
+
+    @Override
+    public Question findByQid(Integer qid) {
+        return questionDAO.selectById(qid);
+    }
 }
