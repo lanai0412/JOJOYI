@@ -2,16 +2,12 @@ package com.health.controller;
 
 import com.health.entity.User;
 import com.health.service.UserService;
-import com.health.verification.Verification;
 import org.springframework.beans.factory.annotation.Autowired;
-
 import org.springframework.stereotype.Controller;
-
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
-
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.List;
@@ -27,14 +23,17 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-    @RequestMapping("alluser")
+    @RequestMapping("all_user")
     @ResponseBody
     public List<User> findAll() {
-        return userService.findAll();
+        List<User> list = userService.findAll();
+        list.forEach(System.out::println);
+
+        return list;
     }
 
     //注册
-    @RequestMapping("userreg")
+    @RequestMapping("user_reg")
     @ResponseBody
     public int save(User user) {
         boolean isok = userService.save(user);
@@ -50,10 +49,10 @@ public class UserController {
     }
 
     //登录
-    @RequestMapping("userlogin")
+    @RequestMapping("user_login")
     @ResponseBody
     public int findByUname(String uname, String password, HttpSession session) {
-        User user = userService.findByUname(uname);
+       User user = userService.findByUname(uname);
         int msg = 0;
         if (user != null) {
             if (user.getPassword().equals(password)) {
@@ -68,23 +67,24 @@ public class UserController {
         }
 
         return msg;
+
+
     }
 
     //校验登录
-    @RequestMapping("login_exita")
+    @RequestMapping("check_login")
     @ResponseBody
     public User session(HttpSession session, HttpServletRequest request) {
         session = request.getSession();
         User user = (User) session.getAttribute("user");
-        if (user != null) {
+
             return user;
-        } else {
-            return null;
-        }
+
+
     }
 
     //校验用户名
-    @RequestMapping("checkuname")
+    @RequestMapping("check_name")
     @ResponseBody
     public int countByUname(String uname) {
         int msg = 0;
@@ -101,7 +101,7 @@ public class UserController {
     }
 
     //校验电话号码
-    @RequestMapping("checkphone")
+    @RequestMapping("check_phone")
     @ResponseBody
     public int countByPhone(String phone) {
         int msg = 0;
