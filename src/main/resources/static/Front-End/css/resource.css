@@ -390,11 +390,11 @@ button:focus {
     background: #fff;
 }
 .swiper-container .slide1 {
-    background: url(http://oqlse9rck.bkt.clouddn.com/bg1.jpg) no-repeat center center;
+    background: url(http://static1.yst.com.cn/2015/5/8/10/43/8/230/fWeUU7TbqDZC.jpg) no-repeat center center;
     background-size: cover;
 }
 .swiper-container .slide2 {
-    background: url(http://oqlse9rck.bkt.clouddn.com/bg2.jpg) no-repeat center center;
+    background: url(http://static1.yst.com.cn/2015/5/8/10/42/32/574/ImOV3sWdLtXI.jpg) no-repeat center center;
     background-size: cover;
 }
 .swiper-container .swiper-slide h1 {
@@ -657,18 +657,14 @@ button:focus {
 figure {
     position: relative;
     z-index: 1;
-
     display: inline-block;
     overflow: hidden;
-
     width: 100%;
     height: 210px;
     margin: -.135em;
-
     cursor: pointer;
     text-align: center;
-
-    background: #3085a3;
+    background: rgba(0,0,0,0.8)
 }
 
 figure.effect-bubba img {
@@ -686,19 +682,14 @@ figure.effect-bubba img {
 }
 figure figcaption {
     font-size: 1.25em;
-
     position: absolute;
     top: 0;
     left: 0;
-
     width: 100%;
     height: 100%;
     padding: 2em;
-
     text-transform: uppercase;
-
     color: #fff;
-
     -webkit-backface-visibility: hidden;
             backface-visibility: hidden;
 }
@@ -771,18 +762,18 @@ figure a {
 
     opacity: 0;
 }
-figure.effect-bubba:hover img {
+figure.effect-bubba img {
     opacity: .4;
 }
-figure.effect-bubba:hover h2,
-figure.effect-bubba:hover p {
+figure.effect-bubba h2,
+figure.effect-bubba p {
     -webkit-transform: translate3d(0,0,0);
             transform: translate3d(0,0,0);
 
     opacity: 1;
 }
-figure.effect-bubba:hover figcaption::before,
-figure.effect-bubba:hover figcaption::after {
+figure.effect-bubba figcaption::before,
+figure.effect-bubba figcaption::after {
     -webkit-transform: scale(1);
             transform: scale(1);
 
