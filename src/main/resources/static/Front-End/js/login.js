@@ -27,7 +27,7 @@ $("#login-btn").click(function () {
                         $("#success_login").css("display", "none");
                         $("#success_register").css("display", "none");
                         $("#login_success_show").css("display", "block");
-
+                        location.reload();
                         alert("登录成功")
                     }else if (data == 500) {
                         alert("没有该账号,请前往注册!")
@@ -47,7 +47,7 @@ $("#login-btn").click(function () {
 //退出
 function exit() {
     $.ajax({
-        url: "../user_exit",
+        url: "../login_exit",
         type: "POST",
         async: true,
         cache: false,
@@ -69,7 +69,6 @@ $.ajax({
         var phone = data.phone;
         console.log(data)
         if (data != null || data != undefined || data != "") {
-
             $("#login_success_name").text(data.uname);
             $("#login_success_name").css("display", "block");
             $("#success_login").css("display", "none");
