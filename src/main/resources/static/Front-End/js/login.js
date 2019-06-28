@@ -1,4 +1,4 @@
-$("#login-btn").click(function () {
+$("#login-btn").click(function() {
     var uname = $("#login_name").val();
     var password = $("#login_password").val();
     if (!/^[a-zA-Z0-9\u4e00-\u9fa5]{2,6}$/.test(uname)) {
@@ -21,7 +21,7 @@ $("#login-btn").click(function () {
                 url: "../user_login",
                 type: "POST",
                 dataType: 'json',
-                success: function (data) {
+                success: function(data) {
                     if (data == 200) {
                         $("#login").modal("hide")
                         $("#success_login").css("display", "none");
@@ -29,10 +29,10 @@ $("#login-btn").click(function () {
                         $("#login_success_show").css("display", "block");
                         location.reload();
                         alert("登录成功")
-                    }else if (data == 500) {
+                    } else if (data == 500) {
                         alert("没有该账号,请前往注册!")
                         $("#login").modal("hide");
-                    }else {
+                    } else {
                         alert("用户名或密码错误")
                         $("#success_login").css("display", "block");
                         $("#success_register").css("display", "block");
@@ -52,7 +52,8 @@ function exit() {
         async: true,
         cache: false,
         dataType: "json",
-        success: function (get) {
+        success: function(get) {
+            location.reload();
             $("#success_login").css("display", "block");
             $("#success_register").css("display", "block");
             $("#login_success_show").css("display", "none");
@@ -61,12 +62,49 @@ function exit() {
     })
 }
 
+function exita() {
+    $.ajax({
+        url: "../login_exit",
+        type: "POST",
+        async: true,
+        cache: false,
+        dataType: "json",
+        success: function(get) {
+            window.location.href = "index.html";
+
+        }
+    })
+}
+
+var vm = new Vue({
+    el: '#content',
+    data: {
+        username: '',
+        email: '',
+        phone: '',
+        aboutme: 'This is me',
+        signature: 'This is My Signature',
+        length: 0,
+        length2:0,
+    }
+})
+
 $.ajax({
     url: "../check_login",
     type: "GET",
     dataType: "json",
-    success: function (data) {
+    success: function(data) {
         var phone = data.phone;
+        vm.username = data.uname;
+        vm.phone = data.phone;
+        vm.email = data.email;
+        if (data.aboutme!=null){
+            vm.aboutme = data.aboutme;
+        }
+        if (data.signature != null){
+            vm.signature = data.signature;
+        }
+        console.log(data)
         if (data != 400) {
             $("#login_success_name").text(data.uname);
 
@@ -86,3 +124,34 @@ $.ajax({
         }
     }
 })
+
+function oninput_area(obj) {
+    vm.length = $(obj).val().length;
+    vm.aboutme = $(obj).val();
+}
+function oninput_area2(obj) {
+    vm.length2 = $(obj).val().length;
+    vm.signature = $(obj).val();
+}
+
+function updateself(obj) {
+    $.ajax({
+        type:'get',
+        url:'../userupdate',
+        dataType:'json',
+        data:{
+            uname:vm.username,
+            phone:vm.phone,
+            email:vm.email,
+            aboutme:vm.aboutme,
+            signature:vm.signature,
+        },
+        success:function(data){
+            if (data==200){
+                alert("更新成功")
+            }else{
+                alert("更新失败")
+            }
+        }
+    })
+}
