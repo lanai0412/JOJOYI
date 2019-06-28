@@ -148,7 +148,7 @@
                 我要提问
             </button>
 
-            <button class="btn btn-primary new-quiz" id="notLoginBtn">
+            <button class="btn btn-primary new-quiz" id="notLoginBtn" data-toggle="modal" data-target="#login">
                 未登录，无法提问
             </button>
 
@@ -317,7 +317,6 @@
 
     <!--弹框——我要提问-->
     <div class="modal" id="new-quiz" tabindex="-1" role="dialog">
-        <form action="qadd.do" method="POST" onsubmit="return authquestion()">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-body new-quiz-body">
@@ -355,13 +354,12 @@
                         <button type="button" class="btn btn-default" id="quiz-close">
                             取消
                         </button>
-                        <button type="submit" class="btn btn-primary">
+                        <button type="button" class="btn btn-primary" id="quiz-add">
                             提问
                         </button>
                     </div>
                 </div>
             </div>
-                </form>
 
 
             </div>
