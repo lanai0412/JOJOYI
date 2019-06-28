@@ -309,7 +309,6 @@ button:focus {
 .search-cover {
 	padding-top: 30px;
 	text-align: center;
-	background: url
 }
 
 .search-cover .form-group {
@@ -322,7 +321,6 @@ button:focus {
 	height: auto;
 	padding: 13px 30px;
 	text-align: center;
-	border: none;
 	border: 1px solid #666;
 	border-radius: 0;
 	box-shadow: none;
@@ -523,8 +521,9 @@ button:focus {
 .thumbnail .caption .title {
 	display: -moz-box;
 	display: -webkit-box;
-	display: box;
+	display: block;
 	overflow: hidden;
+	max-height: 40px;
 	margin-bottom: 5px;
 	text-overflow: ellipsis;
 	color: #000;
@@ -547,7 +546,7 @@ button:focus {
 .thumbnail .caption-content {
 	display: -moz-box;
 	display: -webkit-box;
-	display: box;
+	display: block;
 	overflow: hidden;
 	max-height: 80px;
 	margin-bottom: 20px;
@@ -967,7 +966,7 @@ figure.effect-bubba:hover figcaption::after {
 	font-size: 14px;
 	display: -moz-box;
 	display: -webkit-box;
-	display: box;
+	display: block;
 	overflow: hidden;
 	max-height: 72px;
 	margin-bottom: 5px;
@@ -1144,18 +1143,18 @@ figure.effect-bubba:hover figcaption::after {
 }
 
 .banner h3 {
-	font-size: 25px;
+	font-size: 28px;
 	margin-top: 5px;
+	font-weight: bold;
 }
 
 .banner .title {
-	font-size: 16px;
+	font-size: 18px;
 	color: #6a6a6a;
 }
 
-.banner .media {
-	margin-top: 15px;
-	color: #6a6a6a;
+/*.banner .media {
+	color: #000000;
 }
 
 .banner .media .media-heading {
@@ -1164,12 +1163,128 @@ figure.effect-bubba:hover figcaption::after {
 	margin-bottom: 3px;
 }
 
-.banner .media .media-body {
-	font-size: 11px;
+.banner .media .media-body-jiage {
+	font-size: 18px;
+	font-weight: bold;
 }
 
+.banner .media .media-body-qian {
+	font-size: 30px;
+	color: red;
+	font-weight: bold;
+}*/
+
 .banner .count {
-	margin-top: 75px;
+	margin-top: 50px;
+}
+
+.banner .count .summary {
+	width: 100%;
+	background: #f5f5f5;
+	padding: 20px 0 10px 0;
+	margin-bottom: 26px;
+}
+
+.banner .count .summary p {
+	line-height: 30px;
+	padding-left: 34px;
+	color: #888888;
+	font-size: 16px;
+}
+
+.banner .count .summary p span {
+	padding-right: 40px;
+}
+
+.banner .count .summary .activity .price {
+	font-size: 30px;
+	color: #ee0000;
+}
+
+.banner .count .choose-attrs {
+	color: #888888;
+	line-height: 40px;
+	padding-left: 34px;
+}
+
+
+
+.banner .count .choose-attrs .title {
+	margin-right: 34px;
+	float: left;
+	margin-bottom: 0;
+}
+
+
+.banner .count .choose-attrs .number {
+	line-height: 35px;
+}
+
+.banner .count .choose-attrs .number .title {
+	float: left;
+}
+
+
+
+.banner .count .choose-attrs .number .number-cont {
+	display: inline-block;
+	float: left;
+	line-height: 35px;
+}
+
+.banner .count .choose-attrs .number .number-cont .btn {
+	display: inline-block;
+	padding: 0 6px;
+	border: 1px solid #dddddd;
+	background: #f8f8f8;
+	width: 40px;
+	height: 35px;
+	text-align: center;
+	font-size: 26px;
+	cursor: pointer;
+	float: left;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+}
+
+
+.banner .count .choose-attrs .number .number-cont input {
+	width: 40px;
+	height: 35px;
+	text-align: center;
+	margin: 0 5px;
+	float: left;
+}
+
+.banner .count .choose-btns {
+	padding-left: 34px;
+	margin-top: 22px;
+}
+
+.banner .count .choose-btns .purchase-btn {
+	border: 1px solid #ff5500;
+	width: 116px;
+	color: #FF5500;
+	background-color: white;
+	height: 40px;
+	line-height: 40px;
+	margin: 20px 30px 0 0;
+}
+
+.banner .count .choose-btns .purchase-btn-car {
+	border: 1px solid #ff5500;
+	width: 116px;
+	color: white;
+	background-color: #FF5500;
+	height: 40px;
+	line-height: 40px;
+	
+}
+
+.banner .count .choose-btns .car-btn {
+	width: 136px;
+	height: 40px;
+	line-height: 40px;
 }
 
 .banner .count .download-num {
@@ -1387,7 +1502,8 @@ figure.effect-bubba:hover figcaption::after {
 }
 
 .main .list-nav li {
-	font-size: 16px;
+	font-size: 20px;
+	font-weight: bold;
 	display: inline-block;
 	padding-top: 5px;
 	padding-bottom: 5px;
@@ -1398,17 +1514,17 @@ figure.effect-bubba:hover figcaption::after {
 	margin-bottom: 40px;
 }
 
-.main .list-content .text-center {
-	padding-top: 5px;
-}
-
 .main .list-content p {
 	color: #a8a8a8;
+	font-size: 18px;
+	font-weight: bold;
 }
 
 .main .list-content p.text-indent {
 	text-indent: 30px;
+	font-size: 16px;
 	color: #333;
+	line-height: 25px;
 }
 
 .main .list-content .media {
