@@ -52,7 +52,8 @@ function exit() {
         async: true,
         cache: false,
         dataType: "json",
-        success: function(get) {
+        success: function (get) {
+            location.reload();
             $("#success_login").css("display", "block");
             $("#success_register").css("display", "block");
             $("#login_success_show").css("display", "none");
@@ -60,7 +61,19 @@ function exit() {
         }
     })
 }
+function exita(){
+    $.ajax({
+        url: "../login_exit",
+        type: "POST",
+        async: true,
+        cache: false,
+        dataType: "json",
+        success: function (get) {
+          window.location.href="index.html";
 
+        }
+    })
+}
 
 var vm = new Vue({
     el: '#content',
