@@ -21,21 +21,27 @@ public class AdminController {
 
     @RequestMapping("admin_login")
     @ResponseBody
-    public int findByaname(@PathVariable("aname") String aname, @PathVariable("password") String password, HttpSession session) {
+    public int findByaname(String aname,String password, HttpSession session) {
+        System.out.println(aname);
         Admin admin = adminService.findByaname(aname);
-        if (admin.getPassword().equals(password)) {
-            session.setAttribute("admin", admin);
-            return 200;
-        } else {
-            return 400;
+        if(admin!=null){
+            if (admin.getPassword().equals(password)) {
+                session.setAttribute("admin", admin);
+                return 200;
+            } else {
+                return 400;
+            }
+        }else{
+            return 500;
         }
     }
 
-    @RequestMapping("admin_exita")
+    @RequestMapping("check_admin")
     @ResponseBody
     public Admin session(HttpSession session, HttpServletRequest request) {
         session = request.getSession();
         Admin admin = (Admin) session.getAttribute("admin");
+        System.out.println(admin);
         return admin;
     }
 
