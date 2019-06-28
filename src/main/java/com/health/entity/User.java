@@ -19,4 +19,7 @@ public class User implements Serializable {
     private String password;
     private String phone;
     private String email;
+    private String aboutme;
+    private String signature;
+    private Integer istop;
 }

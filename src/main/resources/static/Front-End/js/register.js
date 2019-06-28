@@ -124,7 +124,7 @@ $("#get_phone_num").click(function () {
         $("#captcha_Top").css("display", "block");
     } else {
         Captcha();
-        //sendemail();
+        sendemail();
     }
 });
 var cap = "";
@@ -139,7 +139,6 @@ function Captcha() {
         success: function (data) {
             //alert("发送成功！")
             cap = data;
-    console.log(cap)
         }
     })
     return cap;
@@ -165,12 +164,12 @@ function settime(obj) { //发送验证码倒计时
     if (countdown == 0) {
         obj.attr('disabled', false);
         //obj.removeattr("disabled");
-        obj.val("免费获取验证码");
+        obj.text("获取验证码");
         countdown = 60;
         return;
     } else {
         obj.attr('disabled', true);
-        obj.val("重新发送(" + countdown + ")");
+        obj.text("重新发送(" + countdown + ")");
         countdown--;
     }
     setTimeout(function () {

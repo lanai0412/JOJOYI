@@ -2,6 +2,7 @@ package com.health.controller;
 
 import com.health.entity.User;
 import com.health.service.UserService;
+import com.health.verification.Verification;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -126,7 +127,7 @@ public class UserController {
             int t = random.nextInt(10);
             cap += String.valueOf(t);
         }
-        // Verification.sendOne("注册", cap, phone);
+        Verification.sendOne("注册", cap, phone);
         int capt = Integer.parseInt(cap);
         return capt;
     }
