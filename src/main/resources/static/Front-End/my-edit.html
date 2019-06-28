@@ -20,8 +20,7 @@
             <!--导航左半部分-->
             <div class="navbar-header">
                 <!--手机模式导航按钮-->
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false"
-                    aria-controls="navbar">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
                     <span class="sr-only">
                        JOJOYI
                     </span>
@@ -68,7 +67,7 @@
                             关于我们
                         </a>
                     </li>
-                    <li class="dropdown"  id="success_login">
+                    <li class="dropdown" id="success_login">
                         <a href="#" data-toggle="modal" data-target="#login">
                             登录
                         </a>
@@ -80,13 +79,13 @@
                     </li>
 
                     <!--登录成功后显示的个人信息下拉菜单-->
-                    <li class="dropdown" id="login_success_show" >
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" >
-                        <span  id="login_success_name">
+                    <li class="dropdown" id="login_success_show">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                            <span id="login_success_name">
 
                         </span>
 
-                        <span class="caret">
+                            <span class="caret">
                             </span>
                         </a>
                         <ul class="dropdown-menu">
@@ -107,6 +106,11 @@
                                 </a>
                             </li>
                             <li role="separator" class="divider">
+                            </li>
+                            <li>
+                                <a href="my-data.html">
+                                    个人中心
+                                </a>
                             </li>
                             <li>
                                 <a href="javascript:exit();">
@@ -212,7 +216,7 @@
                 </div>
             </div>
             <!--编辑资料-->
-            <div class="col-md-9 col-sm-8">
+            <div class="col-md-9 col-sm-8" id="content">
                 <form class="form-horizontal">
                     <div class="control-group">
                         <!--User name-->
@@ -220,7 +224,7 @@
                             用户名
                         </label>
                         <div class="controls">
-                            <input class="form-control" type="text" id="inputFullname" placeholder="用户名" value="王炜" />
+                            <input class="form-control" type="text" id="inputFullname" placeholder="用户名" v-model='username' />
                         </div>
                     </div>
                     <div class="control-group">
@@ -238,26 +242,16 @@
                             邮箱
                         </label>
                         <div class="controls">
-                            <input class="form-control" type="text" id="inputEmail" placeholder="邮箱" />
+                            <input class="form-control" type="text" id="inputEmail" placeholder="邮箱" v-model="email" />
                         </div>
                     </div>
                     <div class="control-group">
                         <!--Birthday-->
-                        <label class="control-label" for="inputBirthday">
-                            生日
+                        <label class="control-label" for="inputPhone">
+                            联系方式
                         </label>
                         <div class="controls">
-                            <div class="input-append input-group date form_datetime" data-date="2013-02-21T15:25:00Z">
-                                <input class="form-control" size="16" type="text" readonly="" placeholder="mm/dd/yyyy" />
-                                <span class="add-on input-group-addon">
-                                    <i class="icon-remove">
-                                    </i>
-                                </span>
-                                <span class="add-on input-group-addon">
-                                    <i class="icon-calendar">
-                                    </i>
-                                </span>
-                            </div>
+                            <input class="form-control" type="text" placeholder="电话" v-model="phone" />
                         </div>
                     </div>
                     <div class="control-group">
@@ -481,7 +475,7 @@
 
                     <!--User name-->
                     <div class="input-wrapper">
-                        <input type="text" placeholder="用户名" id="reg_name"/>
+                        <input type="text" placeholder="用户名" id="reg_name" />
                         <!--Error message-->
                         <span class="animated fadeInRight register-username-wrong" id="reg_name_Top">
 
@@ -489,7 +483,7 @@
                     </div>
                     <!--Password-->
                     <div class="input-wrapper">
-                        <input type="password" class="register-password" id="reg_password" placeholder="密码"/>
+                        <input type="password" class="register-password" id="reg_password" placeholder="密码" />
                         <!--显示与隐藏密码-->
                         <a href="javascript:;" class="btn-eye-register">
                             <i class="icon-eye-open" id="icon-eye-register">
@@ -503,7 +497,7 @@
 
                     <!--Phone-->
                     <div class="input-wrapper">
-                        <input type="text" placeholder="电话号码" id="phone"/>
+                        <input type="text" placeholder="电话号码" id="phone" />
                         <!--Error message-->
                         <span class="animated fadeInRight register-email-wrong" id="phone_Top">
 
@@ -511,7 +505,7 @@
                     </div>
                     <!--Email-->
                     <div class="input-wrapper">
-                        <input type="text" placeholder="邮箱" id="email"/>
+                        <input type="text" placeholder="邮箱" id="email" />
                         <!--Error message-->
                         <span class="animated fadeInRight register-email-wrong" id="email_Top">
 
@@ -519,7 +513,7 @@
                     </div>
                     <!--验证码-->
                     <div class="input-wrapper">
-                        <input type="text" placeholder="验证码" id="captcha"/>
+                        <input type="text" placeholder="验证码" id="captcha" />
                         <!--验证码图片-->
                         <button id="get_phone_num" class="btn">获取验证码</button>
                         <!--Error message-->
@@ -604,7 +598,7 @@
                 <div class="modal-body">
                     <!--User name-->
                     <div class="input-wrapper">
-                        <input type="text" placeholder="用户名" id="login_name"/>
+                        <input type="text" placeholder="用户名" id="login_name" />
                         <!--Error message-->
                         <span class="animated fadeInRight login-username-wrong" id="login_name_Top">
 
@@ -612,7 +606,7 @@
                     </div>
                     <div class="input-wrapper">
                         <!--Password-->
-                        <input type="password" placeholder="密码" id="login_password"/>
+                        <input type="password" placeholder="密码" id="login_password" />
                         <!--Error message-->
                         <span class="animated fadeInRight login-password-wrong" id="login_password_Top">
 
@@ -652,7 +646,7 @@
                 <div class="modal-body">
                     <div class="input-wrapper">
                         <!--Email-->
-                        <input type="text" placeholder="电话号码"/>
+                        <input type="text" placeholder="电话号码" />
                         <!--Error message-->
                         <span class="animated fadeInRight find-password-email-wrong" id="phone_Top_z">
 
@@ -660,10 +654,10 @@
                     </div>
                     <div class="input-wrapper">
                         <!--验证码-->
-                        <input type="text" placeholder="验证码" id="captch"/>
+                        <input type="text" placeholder="验证码" id="captch" />
 
                         <!--Error message-->
-                        <span class="animated fadeInRight code-error find-password-code-wrong" id="login_captch" >
+                        <span class="animated fadeInRight code-error find-password-code-wrong" id="login_captch">
 
                         </span>
                     </div>
@@ -692,7 +686,7 @@
                 <div class="modal-body">
                     <div class="input-wrapper">
                         <!--Email-->
-                        <input type="text" placeholder="邮箱"/>
+                        <input type="text" placeholder="邮箱" />
                         <!--Error message-->
                         <span class="animated fadeInRight">
                             请输入正确验证码
@@ -700,7 +694,7 @@
                     </div>
                     <div class="input-wrapper">
                         <!--Password-->
-                        <input type="password" id="set-type-login" placeholder="密码"/>
+                        <input type="password" id="set-type-login" placeholder="密码" />
                         <!--显示与隐藏密码-->
                         <a href="javascript:;" class="btn-eye-login">
                             <i class="icon-eye-open" id="icon-eye-login">
@@ -712,7 +706,7 @@
                         </span>
                     </div>
                     <div class="input-wrapper">
-                        <input type="text" placeholder="请输入6位验证码"/>
+                        <input type="text" placeholder="请输入6位验证码" />
                         <!--发现验证码按钮-->
                         <button class="btn" id="code-btn" type="button">
                             重发验证码
@@ -735,6 +729,7 @@
     </script>
     <script src="js/function.js">
     </script>
+    <script src="js/vue.js"></script>
     <script src="js/register.js"></script>
     <script src="js/login.js"></script>
 </body>
