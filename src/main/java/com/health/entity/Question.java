@@ -16,7 +16,11 @@ import java.util.Date;
 public class Question  implements Serializable {
     @TableId(value = "qid",type = IdType.AUTO)
     private  Integer qid;
-    private String content;
-    private String uname;
+    private String qtitle;
+    private String qcontent;
+    private String type;
     private Date time;
+    private String uname;
+    private String istop;
+    private  Integer adopt;
 }

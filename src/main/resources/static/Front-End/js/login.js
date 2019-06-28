@@ -73,10 +73,16 @@ $.ajax({
             $("#success_login").css("display", "none");
             $("#success_register").css("display", "none");
             $("#login_success_show").css("display", "block");
+
+            $("#isLoginBtn").css("display", "block");
+            $("#notLoginBtn").css("display", "none");
         } else {
             $("#login_success_show").css("display", "none");
             $("#success_login").css("display", "block");
             $("#success_register").css("display", "block");
+
+            $("#isLoginBtn").css("display", "none");
+            $("#notLoginBtn").css("display", "block");
         }
     }
 })
