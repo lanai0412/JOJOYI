@@ -70,13 +70,13 @@
 
 
                     <!--登录成功后显示的个人信息下拉菜单-->
-                    <li class="dropdown" id="login_success_show" >
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" >
-                        <span  id="login_success_name">
+                    <li class="dropdown" id="login_success_show">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                            <span id="login_success_name">
 
                         </span>
 
-                        <span class="caret">
+                            <span class="caret">
                             </span>
                         </a>
                         <ul class="dropdown-menu">
@@ -131,27 +131,16 @@
             <!--下拉菜单-->
             <ul class="dropdown-menu dropdown-menu-right">
                 <li>
-                    <a href="#">
+                    <a href="my-data.html">
                         资料
                     </a>
                 </li>
                 <li>
-                    <a href="#">
+                    <a href="my-edit.html">
                         编辑
                     </a>
                 </li>
-                <li class="divider">
-                </li>
-                <li>
-                    <a href="#">
-                        关注
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        粉丝
-                    </a>
-                </li>
+
                 <li class="divider">
                 </li>
                 <li>
@@ -176,7 +165,7 @@
     <!--面包屑导航-->
     <ol class="breadcrumb">
         <li>
-            <a href="#">
+            <a href="index.html">
                 主页
             </a>
         </li>
@@ -219,15 +208,6 @@
                         </div>
                     </div>
                     <div class="control-group">
-                        <!--reall name-->
-                        <label class="control-label" for="inputTruename">
-                            真实姓名
-                        </label>
-                        <div class="controls">
-                            <input class="form-control" type="text" id="inputTruename" placeholder="真实姓名" value="王炜" />
-                        </div>
-                    </div>
-                    <div class="control-group">
                         <!--Email-->
                         <label class="control-label" for="inputEmail">
                             邮箱
@@ -253,11 +233,11 @@
                         <small>
                             <!--已输入字数-->
                             <label id="aboutMeCharCountLeft">
-                                (0/1000)
+                                ({{length}}/1000)
                             </label>
                         </small>
                         <div class="controls">
-                            <textarea class="form-control" id="inputAboutMe" rows="5"></textarea>
+                            <textarea class="form-control" id="inputAboutMe" rows="5" oninput="oninput_area(this)"></textarea>
                         </div>
                     </div>
                     <div class="control-group">
@@ -268,17 +248,17 @@
                         <small>
                             <!--已输入字数-->
                             <label id="signatureCharCountLeft">
-                                (0/255)
+                                ({{length2}}/255)
                             </label>
                         </small>
                         <div class="controls">
-                            <textarea class="form-control" id="inputSignature" rows="5"></textarea>
+                            <textarea class="form-control" id="inputSignature" rows="5" oninput="oninput_area2(this)"></textarea>
                         </div>
                     </div>
                     <br/>
                     <!--保存修改-->
                     <div class="form-actions">
-                        <a id="submitBtn" href="#" class="btn btn-primary">
+                        <a id="submitBtn" href="javascript:;" class="btn btn-primary" onclick="updateself(this)">
                             保存更改
                         </a>
                     </div>

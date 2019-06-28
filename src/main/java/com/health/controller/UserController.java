@@ -144,4 +144,14 @@ public class UserController {
         int msg = 400;
         return msg;
     }
+
+    @RequestMapping("userupdate")
+    @ResponseBody
+    public int Update(User user,HttpSession session){
+        user.setUid(((User)session.getAttribute("user")).getUid());
+        System.out.println(user);
+        session.setAttribute("user",user);
+        boolean b = userService.update(user);
+       return b?200:400;
+    }
 }

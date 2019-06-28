@@ -52,7 +52,7 @@ function exit() {
         async: true,
         cache: false,
         dataType: "json",
-        success: function (get) {
+        success: function(get) {
             location.reload();
             $("#success_login").css("display", "block");
             $("#success_register").css("display", "block");
@@ -61,15 +61,16 @@ function exit() {
         }
     })
 }
-function exita(){
+
+function exita() {
     $.ajax({
         url: "../login_exit",
         type: "POST",
         async: true,
         cache: false,
         dataType: "json",
-        success: function (get) {
-          window.location.href="index.html";
+        success: function(get) {
+            window.location.href = "index.html";
 
         }
     })
@@ -81,6 +82,10 @@ var vm = new Vue({
         username: '',
         email: '',
         phone: '',
+        aboutme: 'This is me',
+        signature: 'This is My Signature',
+        length: 0,
+        length2:0,
     }
 })
 
@@ -93,6 +98,12 @@ $.ajax({
         vm.username = data.uname;
         vm.phone = data.phone;
         vm.email = data.email;
+        if (data.aboutme!=null){
+            vm.aboutme = data.aboutme;
+        }
+        if (data.signature != null){
+            vm.signature = data.signature;
+        }
         console.log(data)
         if (data != 400) {
             $("#login_success_name").text(data.uname);
@@ -113,3 +124,34 @@ $.ajax({
         }
     }
 })
+
+function oninput_area(obj) {
+    vm.length = $(obj).val().length;
+    vm.aboutme = $(obj).val();
+}
+function oninput_area2(obj) {
+    vm.length2 = $(obj).val().length;
+    vm.signature = $(obj).val();
+}
+
+function updateself(obj) {
+    $.ajax({
+        type:'get',
+        url:'../userupdate',
+        dataType:'json',
+        data:{
+            uname:vm.username,
+            phone:vm.phone,
+            email:vm.email,
+            aboutme:vm.aboutme,
+            signature:vm.signature,
+        },
+        success:function(data){
+            if (data==200){
+                alert("更新成功")
+            }else{
+                alert("更新失败")
+            }
+        }
+    })
+}
