@@ -69,7 +69,7 @@ $.ajax({
         var phone = data.phone;
         if (data != 400) {
             $("#login_success_name").text(data.uname);
-            $("#login_success_name").css("display", "block");
+
             $("#success_login").css("display", "none");
             $("#success_register").css("display", "none");
             $("#login_success_show").css("display", "block");

@@ -27,8 +27,6 @@ public class UserController {
     @ResponseBody
     public List<User> findAll() {
         List<User> list = userService.findAll();
-        list.forEach(System.out::println);
-
         return list;
     }
 
