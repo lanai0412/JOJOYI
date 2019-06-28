@@ -141,9 +141,14 @@
     <div class="container quiz-container">
         <div class="clearfix">
             <!--提问按钮-->
-            <button class="btn btn-primary new-quiz btn-quiz">
+            <button class="btn btn-primary new-quiz btn-quiz" id="isLoginBtn">
                 我要提问
             </button>
+
+            <a class="btn btn-primary new-quiz btn-quiz" id="notLoginBtn">
+                未登录，无法提问
+            </a>
+
             <div class="btn-group pull-right">
                 <button class="btn btn-default dropdown-toggle quiz-sort" data-toggle="dropdown" type="button"
                     aria-expanded="false">
@@ -242,9 +247,9 @@
                 <!--问题标题信息-->
                 <div class="col-md-7 col-sm-9 col-xs-12">
                     <div class="avatar pull-left">
-                        <a href="my-center-resource.html" class="pull-left" data-toggle="tooltip" title="王炜">
-                            <img src="http://oqlse9rck.bkt.clouddn.com/avatar.jpg" class="user-img" />
-                        </a>
+                        <span>
+                            你好
+                        </span>
                     </div>
                     <h2>
                         <a href="quiz-detal.html">
