@@ -127,7 +127,31 @@ $.ajax({
 
 function oninput_area(obj) {
     vm.length = $(obj).val().length;
+    vm.aboutme = $(obj).val();
 }
 function oninput_area2(obj) {
     vm.length2 = $(obj).val().length;
+    vm.signature = $(obj).val();
+}
+
+function updateself(obj) {
+    $.ajax({
+        type:'get',
+        url:'../userupdate',
+        dataType:'json',
+        data:{
+            uname:vm.username,
+            phone:vm.phone,
+            email:vm.email,
+            aboutme:vm.aboutme,
+            signature:vm.signature,
+        },
+        success:function(data){
+            if (data==200){
+                alert("更新成功")
+            }else{
+                alert("更新失败")
+            }
+        }
+    })
 }
