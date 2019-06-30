@@ -39,4 +39,9 @@ public class ReplyServiceImpl implements ReplyService {
         int i = replyDAO.deleteById(rid);
         return i == 1 ? true : false;
     }
+
+    @Override
+    public int count() {
+        return replyDAO.selectCount(null);
+    }
 }

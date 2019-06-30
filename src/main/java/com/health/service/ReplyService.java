@@ -16,4 +16,6 @@ public interface ReplyService {
     public boolean update(Reply reply);
 
     public boolean delete(Integer rid);
+
+    int count();
 }

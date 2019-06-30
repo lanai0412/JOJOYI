@@ -35,4 +35,9 @@ public class ArticlesController {
     public List<Articles> ByType(@PathVariable("type")String type){
         return articlesService.findByType(type);
     }
+
+    @GetMapping("count_aid")
+    public int count(){
+      return  articlesService.Count();
+    }
 }

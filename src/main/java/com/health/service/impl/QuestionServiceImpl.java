@@ -44,4 +44,10 @@ public class QuestionServiceImpl implements QuestionService {
     public Question findByQid(Integer qid) {
         return questionDAO.selectById(qid);
     }
+
+    @Override
+    public int count() {
+        questionDAO.selectCount(null);
+        return 0;
+    }
 }

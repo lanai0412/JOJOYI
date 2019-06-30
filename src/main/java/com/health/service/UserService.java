@@ -23,4 +23,6 @@ public interface UserService {
     public boolean CountByPhone(String phone);
 
     public User findById(Integer uid);
+
+    public int CountByUid();
 }

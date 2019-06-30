@@ -59,4 +59,9 @@ public class ArticlesServiceImpl implements ArticlesService {
         queryWrapper.like("type","%"+type+"%");
         return articlesDAO.selectList(queryWrapper);
     }
+
+    @Override
+    public int Count() {
+        return  articlesDAO.selectCount(null);
+    }
 }

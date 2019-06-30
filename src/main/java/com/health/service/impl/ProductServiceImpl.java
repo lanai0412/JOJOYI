@@ -39,4 +39,9 @@ public class ProductServiceImpl implements ProductService {
         int i = productDAO.deleteById(pid);
         return i == 1 ? true : false;
     }
+
+    @Override
+    public int count() {
+        return productDAO.selectCount(null);
+    }
 }

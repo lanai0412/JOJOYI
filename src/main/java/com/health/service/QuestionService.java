@@ -17,4 +17,7 @@ public interface QuestionService {
     boolean delete(Integer qid);
 
     Question findByQid(Integer qid);
+
+    int count();
+
 }

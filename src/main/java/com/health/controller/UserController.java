@@ -149,9 +149,14 @@ public class UserController {
     @ResponseBody
     public int Update(User user,HttpSession session){
         user.setUid(((User)session.getAttribute("user")).getUid());
-        System.out.println(user);
         session.setAttribute("user",user);
         boolean b = userService.update(user);
        return b?200:400;
+    }
+
+    @RequestMapping("count_uid")
+    @ResponseBody
+    public int countByuid(){
+        return  userService.CountByUid();
     }
 }

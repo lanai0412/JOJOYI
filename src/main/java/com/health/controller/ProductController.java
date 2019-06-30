@@ -22,4 +22,11 @@ public class ProductController {
     public List<Product> findAll(){
         return productService.findAll();
     }
+
+    @RequestMapping("count_product")
+    @ResponseBody
+    private int count(){
+        return productService.count();
+    }
+
 }

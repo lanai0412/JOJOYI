@@ -16,4 +16,6 @@ public interface ProductService {
     public boolean update(Product product);
 
     public boolean delete(Integer pid);
+
+    int count();
 }
