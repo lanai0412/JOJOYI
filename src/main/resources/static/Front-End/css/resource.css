@@ -38,8 +38,6 @@ button:focus {
 .navbar-default .navbar-brand {
     width: 90px;
     height: 50px;
-
-    background: url(http://oqlse9rck.bkt.clouddn.com/logo2.png) no-repeat center center;
     background-size: cover;
 }
 
@@ -349,7 +347,6 @@ button:focus {
 
     text-align: center;
 
-    border: none;
     border: 1px solid #666;
     border-radius: 0;
     box-shadow: none;
@@ -557,7 +554,6 @@ button:focus {
 .thumbnail .caption .title {
     display:    -moz-box;
     display: -webkit-box;
-    display:         box;
     overflow: hidden;
 
     max-height: 40px;

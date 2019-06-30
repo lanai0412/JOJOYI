@@ -6,7 +6,7 @@ window.onload = function(){
         success: function (data) {
             for(var i=0;i<data.length;i++){
                 $("#qlist").empty();
-                $("#qlist").append("<li class='row'><div class='col-md-7 col-sm-9 col-xs-12'><div class='avatar pull-left'><span>"+data[i].uname+"</span></div><h2><a href='detail_question?qid='"+ data[i].qid +">"+data[i].qtitle+"</a><br /><small class='hidden-xs'><span>"+data[i].time+"</span></small><small class='visible-xs-inline'><span>"+data[i].time+"</span></small></h2></div><div class='col-md-1 hidden-sm hidden-xs stats'><span class='human-readable-number'>"+data[i].type+"</span><br /><small>分类</small></div><div class='col-md-3 col-sm-3 teaser hidden-xs'><div class='card'><span class='glyphicon glyphicon-question-sign'></span> 待解决<br /><a href='#'><i class='icon-hand-up'></i>置顶</a></div></div></li>");
+                $("#qlist").append("<li class='row'><div class='col-md-7 col-sm-9 col-xs-12'><div class='avatar pull-left'><span>"+data[i].uname+"</span></div><h2><a href='detail_question?qid='"+ data[i].qid +">"+data[i].qtitle+"</a><br /><small class='hidden-xs'><span>"+data[i].time+"</span></small><small class='visible-xs-inline'><span>"+data[i].time+"</span></small></h2></div><div class='col-md-2 hidden-sm hidden-xs stats'><span class='human-readable-number'>"+data[i].type+"</span><br /><small>分类</small></div><div class='col-md-3 col-sm-3 teaser hidden-xs'><div class='card'><span class='glyphicon glyphicon-question-sign'></span> 待解决<br /><a href='#'><i class='icon-hand-up'></i>置顶</a></div></div></li>");
             }
         }
     })    
