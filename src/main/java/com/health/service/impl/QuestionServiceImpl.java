@@ -18,13 +18,14 @@ public class QuestionServiceImpl implements QuestionService {
     private QuestionDAO questionDAO;
 
     @Override
-    public List<Question> findAll() {
-        return questionDAO.selectList(null);
+    public boolean save(Question question) {
+        int i = questionDAO.insert(question);
+        return i == 1 ? true : false;
     }
 
     @Override
-    public boolean save(Question question) {
-        int i = questionDAO.insert(question);
+    public boolean delete(Integer qid) {
+        int i = questionDAO.deleteById(qid);
         return i == 1 ? true : false;
     }
 
@@ -35,9 +36,8 @@ public class QuestionServiceImpl implements QuestionService {
     }
 
     @Override
-    public boolean delete(Integer qid) {
-        int i = questionDAO.deleteById(qid);
-        return i == 1 ? true : false;
+    public List<Question> findAll() {
+        return questionDAO.selectList(null);
     }
 
     @Override

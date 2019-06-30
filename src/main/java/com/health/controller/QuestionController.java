@@ -9,13 +9,38 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpSession;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @Controller
 public class QuestionController {
 
     @Autowired
     private QuestionService questionService;
+
+    @RequestMapping("find_questions")
+    @ResponseBody
+    public List<Question> findAll(HttpSession session) {
+        if (session.getAttribute("user") != null) {
+            User user = (User) session.getAttribute("user");
+            if (user.getIstop() == null || "".equals(user.getIstop())) {
+                return questionService.findAll();
+            } else {
+                List<Question> list = questionService.findAll();
+                List<Question> ilist = new ArrayList<Question>();
+                ilist.add(questionService.findByQid(user.getIstop()));
+                for (Question question : list) {
+                    if (question.getQid() != user.getIstop()) {
+                        continue;
+                    }
+                    ilist.add(question);
+                }
+            }
+        }
+
+        return questionService.findAll();
+    }
 
     @RequestMapping("add_question")
     @ResponseBody
@@ -32,5 +57,13 @@ public class QuestionController {
             return 200;
         }
         return 400;
+    }
+
+    @RequestMapping("detail_question")
+    @ResponseBody
+    public Question findQuestionByQid(Integer qid) {
+
+        return questionService.findByQid(qid);
+
     }
 }
