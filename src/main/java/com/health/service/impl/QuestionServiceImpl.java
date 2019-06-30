@@ -1,5 +1,6 @@
 package com.health.service.impl;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.health.dao.QuestionDAO;
 import com.health.entity.Question;
 import com.health.service.QuestionService;
@@ -43,5 +44,32 @@ public class QuestionServiceImpl implements QuestionService {
     @Override
     public Question findByQid(Integer qid) {
         return questionDAO.selectById(qid);
+    }
+
+    @Override
+    public List<Question> findByAdopt(Integer solve) {
+        QueryWrapper<Question> queryWrapper = new QueryWrapper<>();
+        if (solve == 1) {
+            queryWrapper.ne("adopt", "0");
+            return questionDAO.selectList(queryWrapper);
+        }
+        queryWrapper.eq("adopt", "0");
+        return questionDAO.selectList(queryWrapper);
+    }
+
+    @Override
+    public List<Question> findByType(String type) {
+        QueryWrapper<Question> queryWrapper = new QueryWrapper<>();
+        queryWrapper.eq("type", type);
+        return questionDAO.selectList(queryWrapper);
+    }
+
+    @Override
+    public List<Question> findByQtitle(String qtitle) {
+        QueryWrapper<Question> queryWrapper = new QueryWrapper<>();
+        for (int i = 0; i < qtitle.length(); i++) {
+            queryWrapper.like("qtitle", qtitle.charAt(i));
+        }
+        return questionDAO.selectList(queryWrapper);
     }
 }

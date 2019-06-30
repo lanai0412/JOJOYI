@@ -128,15 +128,15 @@
 
     <!--banner-->
     <div class="cover">
-        <p class="quiz-title">
+        <p class="quiz-title" style="color: black">
             创造始于问题，有了问题才会思考，有了思考，才有解决问题的方法，才有找到独立思路的可能。 —— 陶行知
         </p>
         <div class="container">
             <form role="search">
                 <div class="form-group">
-                    <input type="text" class="form-control search" placeholder="问题搜索" />
+                    <input type="text" class="form-control search" name="sqtitle" id="sqtitle" placeholder="问题搜索" />
                     <!--搜索按钮-->
-                    <a href="#" class="btn-search">
+                    <a href="javascript:void(0)" onclick="findtitle()" class="btn-search">
                         <span class="glyphicon glyphicon-search">
                         </span>
                     </a>
@@ -157,39 +157,6 @@
                 未登录，无法提问
             </button>
 
-            <div class="btn-group pull-right">
-                <button class="btn btn-default dropdown-toggle quiz-sort" data-toggle="dropdown" type="button"
-                    aria-expanded="false">
-                    <span class="visible-sm-inline visible-md-inline visible-lg-inline">
-                        排序
-                    </span>
-                    <!--在手机模式下显示图标-->
-                    <span class="visible-xs-inline">
-                        <span class="glyphicon glyphicon-sort">
-                        </span>
-                    </span>
-                    <span class="caret">
-                    </span>
-                </button>
-                <!--排序下拉列表-->
-                <ul class="dropdown-menu pull-right">
-                    <li>
-                        <a href="#">
-                            从新到旧
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                            从旧到新
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                            最多回复
-                        </a>
-                    </li>
-                </ul>
-            </div>
             <!--问题筛选按钮-->
             <button class="btn btn-warning pull-right quiz-screen" type="button" data-toggle="collapse"
                 data-target="#collapseScreen">
@@ -198,19 +165,21 @@
             <!--筛选内容框-->
             <div class="collapse" id="collapseScreen">
                 <div class="well clearfix">
+                    <br />
+                    <br />
                     <div class="col-sm-1 col-xs-12 all">
                         是否解决:
                     </div>
                     <div class="col-sm-11 col-xs-12">
                         <ul>
                             <li>
-                                <a href="#">
-                                    是
+                                <a href="javascript:void(0)" onclick="findsolve()">
+                                    已解决
                                 </a>
                             </li>
                             <li>
-                                <a href="#">
-                                    否
+                                <a href="javascript:void(0)" onclick="findnosolve()">
+                                    待解决
                                 </a>
                             </li>
                         </ul>
@@ -220,18 +189,18 @@
                     </div>
                     <div class="col-sm-11 col-xs-12">
                         <ul>
-                            <li class="active">
-                                <a href="#">
+                            <li>
+                                <a href="javascript:void(0)" onclick="findbody()">
                                     身体问题
                                 </a>
                             </li>
                             <li>
-                                <a href="#">
+                                <a href="javascript:void(0)" onclick="findpsychic()">
                                     心理问题
                                 </a>
                             </li>
                             <li>
-                                <a href="#">
+                                <a href="javascript:void(0)" onclick="findspirit()">
                                     精神问题
                                 </a>
                             </li>
@@ -245,7 +214,7 @@
         <!--分割线-->
         <hr />
         <!--标题-->
-        <p>
+        <p id="qtag">
             全部
         </p>
         <!--在线问答列表-->
@@ -301,7 +270,7 @@
             </li>
         </ul>
         <!--加载更多按钮-->
-        <button class="btn btn-default btn-block btn-load-more" type="submit">
+        <button class="btn btn-default btn-block btn-load-more" id="havemore">
             加载更多
         </button>
     </div>

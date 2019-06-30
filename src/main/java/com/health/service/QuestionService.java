@@ -18,4 +18,10 @@ public interface QuestionService {
     List<Question> findAll();
 
     Question findByQid(Integer qid);
+
+    List<Question> findByAdopt(Integer solve);
+
+    List<Question> findByType(String type);
+
+    List<Question> findByQtitle(String title);
 }

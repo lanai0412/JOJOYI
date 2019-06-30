@@ -28,14 +28,7 @@ public class QuestionController {
                 return questionService.findAll();
             } else {
                 List<Question> list = questionService.findAll();
-                List<Question> ilist = new ArrayList<Question>();
-                ilist.add(questionService.findByQid(user.getIstop()));
-                for (Question question : list) {
-                    if (question.getQid() != user.getIstop()) {
-                        continue;
-                    }
-                    ilist.add(question);
-                }
+                return check_istop(list, user);
             }
         }
 
@@ -65,5 +58,82 @@ public class QuestionController {
 
         return questionService.findByQid(qid);
 
+    }
+
+    @RequestMapping("solved_questions")
+    @ResponseBody
+    public List<Question> findByAdopt(String flag, HttpSession session) {
+
+        if (session.getAttribute("user") != null) {
+            User user = (User) session.getAttribute("user");
+            if (user.getIstop() == null || "".equals(user.getIstop())) {
+                if (flag.equals("200")) {
+                    return questionService.findByAdopt(1);
+                } else {
+                    return questionService.findByAdopt(0);
+                }
+            } else {
+                List<Question> list = new ArrayList<>();
+                if (flag.equals("200")) {
+                    list = questionService.findByAdopt(1);
+                } else {
+                    list = questionService.findByAdopt(0);
+                }
+                return check_istop(list, user);
+            }
+        }
+
+        if (flag.equals("200")) {
+            return questionService.findByAdopt(1);
+        }
+
+        return questionService.findByAdopt(0);
+    }
+
+    @RequestMapping("type_questions")
+    @ResponseBody
+    public List<Question> findByType(String type, HttpSession session) {
+
+        if (session.getAttribute("user") != null) {
+            User user = (User) session.getAttribute("user");
+            if (user.getIstop() == null || "".equals(user.getIstop())) {
+                return questionService.findByType(type);
+            } else {
+                List<Question> list = questionService.findByType(type);
+                return check_istop(list, user);
+            }
+        }
+
+        return questionService.findByType(type);
+    }
+
+    @RequestMapping("find_title")
+    @ResponseBody
+    public List<Question> findByTitle(String qtitle, HttpSession session) {
+
+        if (session.getAttribute("user") != null) {
+            User user = (User) session.getAttribute("user");
+            if (user.getIstop() == null || "".equals(user.getIstop())) {
+                return questionService.findByQtitle(qtitle);
+            } else {
+                List<Question> list = questionService.findByQtitle(qtitle);
+                return check_istop(list, user);
+            }
+        }
+
+        return questionService.findByQtitle(qtitle);
+    }
+
+
+    private List<Question> check_istop(List<Question> list, User user) {
+        List<Question> ilist = new ArrayList<>();
+        ilist.add(questionService.findByQid(user.getIstop()));
+        for (Question question : list) {
+            if (question.getQid() != user.getIstop()) {
+                continue;
+            }
+            ilist.add(question);
+        }
+        return ilist;
     }
 }
