@@ -226,8 +226,22 @@ function updateself(obj) {
     })
 }
 
+var update_p = new Vue({
+    el:'#edit-avatar',
+    data:{
+        otherp:[],
+        progress:0,
+        flag:false,
+    }
+})
+
+
 function uploadhead(obj) {
     var file = document.getElementById('userPhotoInput').files[0];
+    if (file.size>20*1024*1024) {
+        alert("图片大小不能超过20MB");
+        return;
+    }
     var form = new FormData();
     form.append('file',file);
     $.ajax({
@@ -240,11 +254,16 @@ function uploadhead(obj) {
         xhr:function(){//获取上传进度
             myXhr = $.ajaxSettings.xhr();
             if(myXhr.upload){
+                console.log("这在获取进度");
+                update_p.flag=true;
+                console.log(update_p.flag);
                 myXhr.upload.addEventListener('progress',function(e){//监听progress事件
                     var loaded = e.loaded;//已上传
                     var total = e.total;//总大小
                     var percent = Math.floor(100*loaded/total);//百分比
                     // processNum.text(percent+"%");//数显进度
+                    update_p.progress = percent;
+                    $("#processBar").css("width",percent+"%");
                     // processBar.css("width",percent+"px");//图显进度}, false);
                 })
                 return myXhr;
@@ -254,9 +273,12 @@ function uploadhead(obj) {
             console.log("文档当前位置是："+data);//获取文件链接
             if (data == "400"){
                 alert("文件上传失败")
-            } {
+            }else{
                 vm.psrc = data;
                 headp.psrc = data;
+                update_p.progress = 0;
+                $("#processBar").css("width",0+"px");
+                update_p.flag = false;
             }
         }
     })

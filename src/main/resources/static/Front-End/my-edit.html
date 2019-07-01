@@ -6,13 +6,21 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>
-        资源共享平台
+        嘉加益保健
     </title>
     <link rel="shortcut icon" href="http://oqlse9rck.bkt.clouddn.com/favicon.ico">
     <link href="css/TothingWay.css" rel="stylesheet" />
     <link href="css/personal.css" rel="stylesheet" />
 </head>
+<style>
+    .bar{
+        background-color: #2ecc71;
+        width: 0px;
+        height: 100%;
+        transition: width ;
+    }
 
+</style>
 <body>
     <!--导航-->
     <nav class="navbar navbar-default nav-scroll navbar-fixed-top">
@@ -270,7 +278,7 @@
     </div>
 
     <div class="footer">
-        Copyright © 2015.东旭工作室 Dxstudio All rights reserved.
+        Copyright © 2019.JOJOYI All rights reserved.
     </div>
 
     <!-- edit-avatar-->
@@ -364,6 +372,10 @@
                                 (maximum-file-size, 256)
                             </span>
                         </p>
+                        <p style="width: 450px;height: 30px" id="" v-if="flag">已完成{{progress}}/100%</p>
+                        <div style="width: 450px;height: 30px;border: green 1px solid;" v-if="flag">
+                            <div class="bar" v-if="flag" id="processBar"></div>
+                        </div>
                     </div>
                 </div>
                 <div class="modal-footer">

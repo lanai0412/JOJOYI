@@ -10,6 +10,8 @@ import com.qiniu.storage.Configuration;
 import com.qiniu.storage.UploadManager;
 import com.qiniu.storage.model.DefaultPutRet;
 import com.qiniu.util.Auth;
+import com.health.verification.Verification;
+import com.sun.swing.internal.plaf.synth.resources.synth_sv;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -137,7 +139,7 @@ public class UserController {
             int t = random.nextInt(10);
             cap += String.valueOf(t);
         }
-        // Verification.sendOne("注册", cap, phone);
+        Verification.sendOne("注册", cap, phone);
         int capt = Integer.parseInt(cap);
         return capt;
     }
@@ -194,7 +196,7 @@ public class UserController {
     @RequestMapping("uploadhead")
     @ResponseBody
     public String UpLoad(MultipartFile file,HttpSession session)throws Exception{
-
+        String name = file.getOriginalFilename();
         //构造一个带指定Zone对象的配置类
         Configuration cfg = new Configuration(Zone.zone0());
         //...其他参数参考类注释
@@ -204,7 +206,9 @@ public class UserController {
         String secretKey = "KsvTcozru56XBS1Eyg3_QDe3lZrQHKLClXlLB2k4";
         String bucket = "health";
         //默认不指定key的情况下，以文件内容的hash值作为文件名
-        String key = "head/shk";
+        long l = System.currentTimeMillis();
+        name = name + l;
+        String key = "head/"+name;
         String psrc = "http://ptolozduu.bkt.clouddn.com/"+key;
         try {
             Auth auth = Auth.create(accessKey, secretKey);

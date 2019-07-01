@@ -1,5 +1,6 @@
 package com.health.service.impl;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.health.dao.ProductDAO;
 import com.health.entity.Product;
 import com.health.service.ProductService;
@@ -38,5 +39,17 @@ public class ProductServiceImpl implements ProductService {
     public boolean delete(Integer pid) {
         int i = productDAO.deleteById(pid);
         return i == 1 ? true : false;
+    }
+
+    @Override
+    public Product findById(Integer pid) {
+        return productDAO.selectById(pid);
+    }
+
+    @Override
+    public List<Product> findByPname(String name) {
+        QueryWrapper queryWrapper = new QueryWrapper();
+        queryWrapper.like("pname", "%" + name + "%");
+        return productDAO.selectList(queryWrapper);
     }
 }

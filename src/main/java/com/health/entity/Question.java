@@ -21,6 +21,5 @@ public class Question  implements Serializable {
     private String type;
     private Date time;
     private String uname;
-    private String istop;
     private  Integer adopt;
 }

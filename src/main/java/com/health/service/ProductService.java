@@ -16,4 +16,8 @@ public interface ProductService {
     public boolean update(Product product);
 
     public boolean delete(Integer pid);
+
+    public Product findById(Integer pid);
+
+    public List<Product> findByPname(String name);
 }
