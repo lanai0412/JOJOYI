@@ -44,7 +44,7 @@ public class QuestionController {
         //0表示未采纳，1表示采纳
         question.setAdopt(0);
 
-/*        question.setPsrc(user.getPsrc());*/
+        question.setPsrc(user.getPsrc());
 
         boolean b = questionService.save(question);
         if (b) {
