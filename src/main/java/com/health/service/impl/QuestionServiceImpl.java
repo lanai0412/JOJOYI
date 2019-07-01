@@ -75,7 +75,7 @@ public class QuestionServiceImpl implements QuestionService {
 
     @Override
     public int count() {
-        questionDAO.selectCount(null);
-        return 0;
+
+        return questionDAO.selectCount(null);
     }
 }

@@ -1,9 +1,10 @@
 package com.health;
 
-import com.health.entity.User;
-import com.health.service.UserService;
 import com.health.entity.Product;
+import com.health.entity.User;
 import com.health.service.ProductService;
+import com.health.service.QuestionService;
+import com.health.service.UserService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +16,8 @@ import java.util.List;
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class JojoyiApplicationTests {
-
+    @Autowired
+    private QuestionService questionService;
     @Autowired
     private ProductService productService;
 
@@ -34,5 +36,12 @@ private UserService userService;
             System.out.println(product);
         }
     }
+
+    @Test
+    public void count(){
+        int i = questionService.count();
+        System.out.println(i);
+    }
+
 
 }
