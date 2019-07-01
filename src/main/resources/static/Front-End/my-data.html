@@ -119,8 +119,8 @@
     <!--Cover-wrap-->
     <div class="cover" data-stellar-background-ratio="0.5">
         <!--头像-->
-        <div class="avatar">
-            <img src="http://oqlse9rck.bkt.clouddn.com/avatar.jpg" />
+        <div class="avatar" id="headp">
+            <img :src="psrc" />
         </div>
         <div class="btn-group account-fab">
             <!--更多选项按钮-->
@@ -174,20 +174,20 @@
         </li>
     </ol>
 
-    <div class="container data">
+    <div class="container data" id="content">
         <div class="row">
             <!--头像-->
             <div class="col-md-2 col-sm-4">
                 <div class="account-change">
                     <div class="row">
                         <div class="col-xs-12 hidden-xs">
-                            <img src="http://oqlse9rck.bkt.clouddn.com/avatar.jpg" class="avatar" />
+                            <img :src="psrc" class="avatar" />
                         </div>
                     </div>
                 </div>
             </div>
             <!--个人信息部分-->
-            <div class="col-md-9 col-sm-8" id="content">
+            <div class="col-md-9 col-sm-8" >
                 <form class="form-horizontal">
                     <div class="control-group">
                         <!--User name-->
