@@ -17,5 +17,9 @@ public interface ProductService {
 
     public boolean delete(Integer pid);
 
+    public Product findById(Integer pid);
+
+    public List<Product> findByPname(String name);
+
     int count();
 }

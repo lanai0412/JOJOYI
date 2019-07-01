@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>
+			资源共享平台
+		</title>
+		<link rel="shortcut icon" href="http://oqlse9rck.bkt.clouddn.com/favicon.ico">
+		<link href="css/TothingWay.css" rel="stylesheet" />
+		<link href="css/resource.css" rel="stylesheet" />
+		<link href="css/tch.css" rel="stylesheet" />
+		
+	</head>
+
+	<body>
+		<!--导航-->
+		<nav class="navbar navbar-default nav-scroll navbar-fixed-top">
+			<div class="container">
+				<!--导航左半部分-->
+				<div class="navbar-header">
+					<!--logo-->
+					<a class="navbar-brand" href="index.html"></a>
+				</div>
+				<!--导航右半部分-->
+				<div id="navbar" class="navbar-collapse collapse">
+					<ul class="nav navbar-nav navbar-right">
+						<li>
+							<a href="index.html">
+								首页
+							</a>
+						</li>
+						<li class="active">
+							<a href="resource-index.html">
+								资料中心
+							</a>
+						</li>
+						<li>
+							<a href="forum-index.html">
+								交流分享
+							</a>
+						</li>
+						<li>
+							<a href="repository-index.html">
+								知识百科
+							</a>
+						</li>
+						<li>
+							<a href="quiz-index.html">
+								在线问答
+							</a>
+						</li>
+						<li>
+							<a href="about.html" target="_blank">
+								关于我们
+							</a>
+						</li>
+						<!--登录成功后显示的个人信息下拉菜单-->
+						<li class="dropdown">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+								张三
+								<span class="caret">
+                            </span>
+							</a>
+							<ul class="dropdown-menu">
+								<li class="dropdown-header">
+									未读消息
+									<span class="badge">
+                                    61
+                                </span>
+								</li>
+								<li>
+									<a href="#">
+										未读消息1
+										<span class="badge">
+                                        2
+                                    </span>
+									</a>
+								</li>
+								<li>
+									<a href="#">
+										未读消息2
+										<span class="badge">
+                                        42
+                                    </span>
+									</a>
+								</li>
+								<li role="separator" class="divider">
+								</li>
+								<li>
+									<a href="#">
+										注销
+									</a>
+								</li>
+							</ul>
+						</li>
+					</ul>
+				</div>
+				<!-- /.nav-collapse -->
+			</div>
+		</nav>
+
+        <!--购物车-->
+		<div class="content content-nav-base shopcart-content">
+			<div class="banner-bg w1200">
+			</div>
+			<div class="cart w1200">
+				<div class="cart-table-th">
+					<div class="th th-chk">
+						<div class="select-all">
+							<div class="cart-checkbox">
+								<input class="check-all check" id="allCheckked" type="checkbox" value="true">
+							</div>
+							<label>&nbsp;&nbsp;全选</label>
+						</div>
+					</div>
+					<div class="th th-item">
+						<div class="th-inner">商品</div>
+					</div>
+					<div class="th th-price">
+						<div class="th-inner">单价</div>
+					</div>
+					<div class="th th-amount">
+						<div class="th-inner">数量</div>
+					</div>
+					<div class="th th-sum">
+						<div class="th-inner">小计</div>
+					</div>
+					<div class="th th-op">
+						<div class="th-inner">操作</div>
+					</div>
+				</div>
+				<div class="OrderList">
+					<div class="order-content" id="list-cont">
+						
+						<ul class="item-content layui-clear" >
+							<li class="th th-chk">
+								<div class="select-all">
+									<div class="cart-checkbox">
+										<input class="CheckBoxShop check" id="" type="checkbox" num="all" name="select-all" value="true">
+									</div>
+								</div>
+							</li>
+							<li class="th th-item">
+								<div class="item-cont">
+									<a href="javascript:;"><img src="../images/产品2.jpg" alt=""></a>
+									<div class="text">
+										<div class="title">商品名字</div>
+									</div>
+								</div>
+							</li>
+							<li class="th th-price">
+								<span class="th-su" id="danjia">5.00</span>
+							</li>
+							<li class="th th-amount">
+								<div class="box-btn layui-clear">
+									<div class="layui-btn" id="subBtn">-</div>
+									<input class="Quantity-input" type="" name="" value="1" disabled="disabled" id="num_show">
+									<div class="layui-btn" id="addBtn">+</div>
+								</div>
+							</li>
+							<li class="th th-sum">
+								<span class="sum" id="zongjia">5.00</span>
+							</li>
+							<li class="th th-op">
+								<span class="dele-btn">删除</span>
+							</li>
+						</ul>
+						
+						<ul class="item-content layui-clear">
+							<li class="th th-chk">
+								<div class="select-all">
+									<div class="cart-checkbox">
+										<input class="CheckBoxShop check" id="" type="checkbox" num="all" name="select-all" value="true">
+									</div>
+								</div>
+							</li>
+							<li class="th th-item">
+								<div class="item-cont">
+									<a href="javascript:;"><img src="../images/产品2.jpg" alt=""></a>
+									<div class="text">
+										<div class="title">商品名字</div>
+									</div>
+								</div>
+							</li>
+							<li class="th th-price">
+								<span class="th-su">189.00</span>
+							</li>
+							<li class="th th-amount">
+								<div class="box-btn layui-clear">
+									<div class="less layui-btn">-</div>
+									<input class="Quantity-input" type="" name="" value="1" disabled="disabled">
+									<div class="add layui-btn">+</div>
+								</div>
+							</li>
+							<li class="th th-sum">
+								<span class="sum">189.00</span>
+							</li>
+							<li class="th th-op">
+								<span class="dele-btn">删除</span>
+							</li>
+						</ul>
+					</div>
+				</div>
+
+				<div class="FloatBarHolder layui-clear">
+					<div class="th th-chk">
+						<div class="select-all">
+							<div class="cart-checkbox">
+								<input class="check-all check" id="" name="select-all" type="checkbox" value="true">
+							</div>
+							<label>&nbsp;&nbsp;已选<span class="Selected-pieces">0</span>件</label>
+						</div>
+					</div>
+					<div class="th batch-deletion">
+						<span class="batch-dele-btn">批量删除</span>
+					</div>
+					<div class="th Settlement">
+						<button class="layui-btn">结算</button>
+					</div>
+					<div class="th total">
+						<p>应付：<span class="pieces-total">0</span></p>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<script src="js/TothingWay.js">
+		</script>
+		<script src="js/resource.js">
+		</script>
+		<script src="js/tch.js"></script>
+
+	</body>
+
+</html>
