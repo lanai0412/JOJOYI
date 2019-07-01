@@ -169,4 +169,27 @@ $("#btn_uname").click(function () {
 
 })
 
+$("#").click(function () {
+ var password = $("#pw").val();
+ var password_new =$("#pw-new").val();
+ var password_confirm=$("#pw-confirm").val();
+ if(password_new!=password_confirm){
+     alert("两次密码不一致！");
+ }else{
+     $.ajax({
+       data: {
+           password: password,
+           password_new:password_new
+       },
+         url:"../update",
+         type:"POST",
+         dataType:"json",
+         success:function (data) {
+             
+         }
+
+     })
+ }
+});
+
 

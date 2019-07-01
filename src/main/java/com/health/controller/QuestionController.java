@@ -106,7 +106,6 @@ public class QuestionController {
 
     @RequestMapping("to_reply")
     public ModelAndView toReply(Integer qid) {
-
         Question question = questionService.findByQid(qid);
         ModelAndView mav = new ModelAndView();
         mav.setViewName("../quiz-detal.html");

@@ -33,16 +33,16 @@ public class AdminController {
 
     @RequestMapping("admin_login")
     @ResponseBody
-    public int findByaname(String aname,String password, HttpSession session) {
+    public int findByaname(String aname, String password, HttpSession session) {
         Admin admin = adminService.findByaname(aname);
-        if(admin!=null){
+        if (admin != null) {
             if (admin.getPassword().equals(password)) {
                 session.setAttribute("admin", admin);
                 return 200;
             } else {
                 return 400;
             }
-        }else{
+        } else {
             return 500;
         }
     }
@@ -81,15 +81,15 @@ public class AdminController {
 
     @RequestMapping("question_reply")
     @ResponseBody
-    public int count(){
+    public int count() {
         int a = replyService.count();
         int i = questionService.count();
-        return a+i;
+        return a + i;
     }
 
     @RequestMapping("time")
     @ResponseBody
-    public String  time(){
+    public String time() {
         Date date = new Date();
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         String format = dateFormat.format(date);
@@ -97,4 +97,16 @@ public class AdminController {
     }
 
 
+    @RequestMapping("update")
+    @ResponseBody
+    public int update(String password, String password_new) {
+        Admin admin = adminService.findByPassword(password);
+        admin.setPassword(password_new);
+        System.out.println(admin);
+       // adminService.update(admin);
+
+
+
+        return 0;
+    }
 }

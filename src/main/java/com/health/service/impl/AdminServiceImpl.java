@@ -48,4 +48,11 @@ public class AdminServiceImpl implements AdminService {
         queryWrapper.eq("aname", aname);
         return adminDAO.selectOne(queryWrapper);
     }
+
+    @Override
+    public Admin findByPassword(String password) {
+        QueryWrapper<Admin> queryWrapper=new QueryWrapper<>();
+        queryWrapper.eq("password",password);
+        return adminDAO.selectOne(queryWrapper);
+    }
 }
