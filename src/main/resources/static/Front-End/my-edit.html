@@ -119,8 +119,8 @@
     <!--Cover-wrap-->
     <div class="cover" data-stellar-background-ratio="0.5">
         <!--头像-->
-        <div class="avatar">
-            <img src="http://oqlse9rck.bkt.clouddn.com/avatar.jpg" />
+        <div class="avatar" id="headp">
+            <img :src="psrc" />
         </div>
         <div class="btn-group account-fab">
             <!--更多选项按钮-->
@@ -174,14 +174,14 @@
         </li>
     </ol>
 
-    <div class="container data">
+    <div class="container data" id="content">
         <div class="row">
             <div class="col-md-2 col-sm-4">
                 <!--用户头像-->
                 <div class="account-change">
                     <div class="row">
                         <div class="col-xs-12 hidden-xs">
-                            <img src="http://oqlse9rck.bkt.clouddn.com/avatar.jpg" class="avatar" />
+                            <img :src="psrc" class="avatar" />
                         </div>
                     </div>
                     <!--修改按钮-->
@@ -196,7 +196,7 @@
                 </div>
             </div>
             <!--编辑资料-->
-            <div class="col-md-9 col-sm-8" id="content">
+            <div class="col-md-9 col-sm-8">
                 <form class="form-horizontal">
                     <div class="control-group">
                         <!--User name-->
@@ -273,7 +273,7 @@
         Copyright © 2015.东旭工作室 Dxstudio All rights reserved.
     </div>
 
-    <!-- edit-avatar
+    <!-- edit-avatar-->
     <div class="modal fade" id="edit-avatar" role="dialog">
         <div class="modal-dialog" role="document">
             &lt;!&ndash;弹框——更改头像&ndash;&gt;
@@ -284,8 +284,7 @@
                         <span aria-hidden="true">
                             &times;
                         </span>
-                    </button>
-                    &lt;!&ndash;标题&ndash;&gt;
+                    </button> &lt;!&ndash;标题&ndash;&gt;
                     <h5 class="modal-title">
                         更改头像
                     </h5>
@@ -358,7 +357,7 @@
                         <label for="userPhotoInput">
                             上传头像
                         </label>
-                        <input type="file" id="userPhotoInput" name="files[]" />
+                        <input type="file" id="userPhotoInput" name="file" />
                         <p class="help-block">
                             您只可以上传PNG、JPG或 BMP 格式的文件
                             <span>
@@ -371,14 +370,14 @@
                     <a href="#" class="btn" data-dismiss="modal">
                         关闭
                     </a>
-                    <button type="button" class="btn btn-primary">
+                    <button type="button" class="btn btn-primary" onclick="uploadhead(this)">
                         上传头像
                     </button>
                 </div>
             </div>
         </div>
     </div>
--->
+
     <!-- 修改密码 -->
     <div class="modal fade" id="edit-pw" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
         <div class="modal-dialog modal-sm" role="document">
@@ -397,28 +396,26 @@
                 <div class="modal-body">
                     <div class="input-wrapper">
                         <!--当前密码-->
-                        <input type="password" placeholder="当前密码" />
+                        <input type="password" placeholder="当前密码" v-model='old_password' @change='check_old(this)' />
                         <span class="animated fadeInRight">
-                            用户名或密码错误
+                           {{text_old}}
                         </span>
                     </div>
                     <div class="input-wrapper">
                         <!--新密码-->
-                        <input type="password" placeholder="密码" />
-                        <span class="animated fadeInRight">
-                            用户名或密码错误
-                        </span>
+                        <input type="password" placeholder="密码" v-model='new_password' />
+
                     </div>
                     <div class="input-wrapper">
                         <!--新密码确认-->
-                        <input type="password" placeholder="确认密码" />
+                        <input type="password" placeholder="确认密码" v-model='checknew' @change='check_new(this) ' />
                         <span class="animated fadeInRight">
-                            用户名或密码错误
+                            {{text_check_new}}
                         </span>
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-primary btn-block">
+                    <button type="button" class="btn btn-primary btn-block" @click="update_password">
                         更改密码
                     </button>
                 </div>
