@@ -134,7 +134,6 @@ $.ajax({
     type: "GET",
     dataType: "json",
     success: function (data) {
-        console.log(data);
         if (data.length > 0) {
             for (var i = 0; i < data.length; i++) {
                 $("#user").append(" <tr> <td>" + data[i].uname + " </td> <td>" + data[i].password + " </td>" +
@@ -169,7 +168,7 @@ $("#btn_uname").click(function () {
 
 })
 
-$("#").click(function () {
+$("#submit_password").click(function () {
  var password = $("#pw").val();
  var password_new =$("#pw-new").val();
  var password_confirm=$("#pw-confirm").val();
@@ -185,11 +184,35 @@ $("#").click(function () {
          type:"POST",
          dataType:"json",
          success:function (data) {
-             
+           console.log(data)
+        if(data==200){
+            alert("密码修改成功")
+        }else if(data==500){
+            alert("原密码不正确")
+        }else{
+           alert("密码修改失败")
+        }
          }
 
      })
  }
 });
+
+$.ajax({
+    url:"../pall",
+    type:"GET",
+    dataType:"json",
+    success:function (data) {
+        console.log(data);
+        $("#product_all").empty();
+        if(data.length>0){
+            for(var i=0;i<data.length;i++){
+                $("#product_all").append("<tr> <td>" +data[i].pname+" </td> <td>" +data[i].introduction+" </td> <td>"
+                    +data[i].rtime+"</td> <td>" +data[i].price+"</td> <td>" +data[i].sort+"</td> <td>" +data[i].volume+" </td> </tr>" );
+            }
+        }
+
+    }
+})
 
 

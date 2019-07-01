@@ -99,14 +99,19 @@ public class AdminController {
 
     @RequestMapping("update")
     @ResponseBody
-    public int update(String password, String password_new) {
-        Admin admin = adminService.findByPassword(password);
-        admin.setPassword(password_new);
-        System.out.println(admin);
-       // adminService.update(admin);
-
-
-
-        return 0;
+    public int update(String password, String password_new,HttpSession session) {
+        Admin admin = (Admin) session.getAttribute("admin");
+        if(admin.getPassword().equals(password)){
+            admin.setPassword(password_new);
+            System.out.println(admin);
+            boolean isok = adminService.update(admin);
+            if(isok){
+                return  200;
+            }else{
+                return 400;
+            }
+        }else{
+            return 500;
+        }
     }
 }
