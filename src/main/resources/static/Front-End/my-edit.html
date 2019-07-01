@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>
-        资源共享平台
+        嘉加益保健
     </title>
     <link rel="shortcut icon" href="http://oqlse9rck.bkt.clouddn.com/favicon.ico">
     <link href="css/TothingWay.css" rel="stylesheet" />
@@ -20,10 +20,9 @@
             <!--导航左半部分-->
             <div class="navbar-header">
                 <!--手机模式导航按钮-->
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false"
-                    aria-controls="navbar">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
                     <span class="sr-only">
-                        IT.Share
+                       JOJOYI
                     </span>
                     <span class="icon-bar">
                     </span>
@@ -68,20 +67,19 @@
                             关于我们
                         </a>
                     </li>
+
+
                     <!--登录成功后显示的个人信息下拉菜单-->
-                    <li class="dropdown active">
+                    <li class="dropdown" id="login_success_show">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                            张三
+                            <span id="login_success_name">
+
+                        </span>
+
                             <span class="caret">
                             </span>
                         </a>
                         <ul class="dropdown-menu">
-                            <li class="dropdown-header">
-                                未读消息
-                                <span class="badge">
-                                    61
-                                </span>
-                            </li>
                             <li>
                                 <a href="#">
                                     未读消息1
@@ -101,7 +99,12 @@
                             <li role="separator" class="divider">
                             </li>
                             <li>
-                                <a href="#">
+                                <a href="my-data.html">
+                                    个人中心
+                                </a>
+                            </li>
+                            <li>
+                                <a href="javascript:exita();">
                                     注销
                                 </a>
                             </li>
@@ -128,27 +131,16 @@
             <!--下拉菜单-->
             <ul class="dropdown-menu dropdown-menu-right">
                 <li>
-                    <a href="#">
+                    <a href="my-data.html">
                         资料
                     </a>
                 </li>
                 <li>
-                    <a href="#">
+                    <a href="my-edit.html">
                         编辑
                     </a>
                 </li>
-                <li class="divider">
-                </li>
-                <li>
-                    <a href="#">
-                        关注
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        粉丝
-                    </a>
-                </li>
+
                 <li class="divider">
                 </li>
                 <li>
@@ -173,7 +165,7 @@
     <!--面包屑导航-->
     <ol class="breadcrumb">
         <li>
-            <a href="#">
+            <a href="index.html">
                 主页
             </a>
         </li>
@@ -204,7 +196,7 @@
                 </div>
             </div>
             <!--编辑资料-->
-            <div class="col-md-9 col-sm-8">
+            <div class="col-md-9 col-sm-8" id="content">
                 <form class="form-horizontal">
                     <div class="control-group">
                         <!--User name-->
@@ -212,16 +204,7 @@
                             用户名
                         </label>
                         <div class="controls">
-                            <input class="form-control" type="text" id="inputFullname" placeholder="用户名" value="王炜" />
-                        </div>
-                    </div>
-                    <div class="control-group">
-                        <!--reall name-->
-                        <label class="control-label" for="inputTruename">
-                            真实姓名
-                        </label>
-                        <div class="controls">
-                            <input class="form-control" type="text" id="inputTruename" placeholder="真实姓名" value="王炜" />
+                            <input class="form-control" type="text" id="inputFullname" placeholder="用户名" v-model='username' />
                         </div>
                     </div>
                     <div class="control-group">
@@ -230,26 +213,16 @@
                             邮箱
                         </label>
                         <div class="controls">
-                            <input class="form-control" type="text" id="inputEmail" placeholder="邮箱" />
+                            <input class="form-control" type="text" id="inputEmail" placeholder="邮箱" v-model="email" />
                         </div>
                     </div>
                     <div class="control-group">
                         <!--Birthday-->
-                        <label class="control-label" for="inputBirthday">
-                            生日
+                        <label class="control-label" for="inputPhone">
+                            联系方式
                         </label>
                         <div class="controls">
-                            <div class="input-append input-group date form_datetime" data-date="2013-02-21T15:25:00Z">
-                                <input class="form-control" size="16" type="text" readonly="" placeholder="mm/dd/yyyy" />
-                                <span class="add-on input-group-addon">
-                                    <i class="icon-remove">
-                                    </i>
-                                </span>
-                                <span class="add-on input-group-addon">
-                                    <i class="icon-calendar">
-                                    </i>
-                                </span>
-                            </div>
+                            <input class="form-control" type="text" placeholder="电话" v-model="phone" />
                         </div>
                     </div>
                     <div class="control-group">
@@ -260,11 +233,11 @@
                         <small>
                             <!--已输入字数-->
                             <label id="aboutMeCharCountLeft">
-                                (0/1000)
+                                ({{length}}/1000)
                             </label>
                         </small>
                         <div class="controls">
-                            <textarea class="form-control" id="inputAboutMe" rows="5"></textarea>
+                            <textarea class="form-control" id="inputAboutMe" rows="5" oninput="oninput_area(this)"></textarea>
                         </div>
                     </div>
                     <div class="control-group">
@@ -275,17 +248,17 @@
                         <small>
                             <!--已输入字数-->
                             <label id="signatureCharCountLeft">
-                                (0/255)
+                                ({{length2}}/255)
                             </label>
                         </small>
                         <div class="controls">
-                            <textarea class="form-control" id="inputSignature" rows="5"></textarea>
+                            <textarea class="form-control" id="inputSignature" rows="5" oninput="oninput_area2(this)"></textarea>
                         </div>
                     </div>
                     <br/>
                     <!--保存修改-->
                     <div class="form-actions">
-                        <a id="submitBtn" href="#" class="btn btn-primary">
+                        <a id="submitBtn" href="javascript:;" class="btn btn-primary" onclick="updateself(this)">
                             保存更改
                         </a>
                     </div>
@@ -297,22 +270,22 @@
     </div>
 
     <div class="footer">
-        Copyright © 2015.东旭工作室 Dxstudio All rights reserved.
+        Copyright © 2019.JOJOYI All rights reserved.
     </div>
 
-    <!-- edit-avatar -->
+    <!-- edit-avatar
     <div class="modal fade" id="edit-avatar" role="dialog">
         <div class="modal-dialog" role="document">
-            <!--弹框——更改头像-->
+            &lt;!&ndash;弹框——更改头像&ndash;&gt;
             <div class="modal-content" id="upload-main" style="display:block; ">
                 <div class="modal-header">
-                    <!--关闭按钮-->
+                    &lt;!&ndash;关闭按钮&ndash;&gt;
                     <button type="button" class="close" data-dismiss="modal">
                         <span aria-hidden="true">
                             &times;
                         </span>
                     </button>
-                    <!--标题-->
+                    &lt;!&ndash;标题&ndash;&gt;
                     <h5 class="modal-title">
                         更改头像
                     </h5>
@@ -362,7 +335,7 @@
                     </button>
                 </div>
             </div>
-            <!--弹框——上传新头像-->
+            &lt;!&ndash;弹框——上传新头像&ndash;&gt;
             <div class="modal-content" id="upload-success" style="display: none;">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal">
@@ -405,7 +378,7 @@
             </div>
         </div>
     </div>
-
+-->
     <!-- 修改密码 -->
     <div class="modal fade" id="edit-pw" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
         <div class="modal-dialog modal-sm" role="document">
@@ -452,11 +425,13 @@
             </div>
         </div>
     </div>
-    
+
     <script src="js/TothingWay.js">
     </script>
     <script src="js/function.js">
     </script>
+    <script src="js/vue.js"></script>
+    <script src="js/login.js"></script>
 </body>
 
 </html>

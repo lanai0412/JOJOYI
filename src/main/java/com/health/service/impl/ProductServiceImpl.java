@@ -52,4 +52,9 @@ public class ProductServiceImpl implements ProductService {
         queryWrapper.like("pname", "%" + name + "%");
         return productDAO.selectList(queryWrapper);
     }
+
+    @Override
+    public int count() {
+        return productDAO.selectCount(null);
+    }
 }

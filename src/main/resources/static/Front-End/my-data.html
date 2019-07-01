@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>
-        资源共享平台
+        嘉加益保健
     </title>
     <link rel="shortcut icon" href="http://oqlse9rck.bkt.clouddn.com/favicon.ico">
     <link href="css/TothingWay.css" rel="stylesheet" />
@@ -20,8 +20,7 @@
             <!--导航左半部分-->
             <div class="navbar-header">
                 <!--手机模式导航按钮-->
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false"
-                    aria-controls="navbar">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
                     <span class="sr-only">
                         IT.Share
                     </span>
@@ -68,20 +67,18 @@
                             关于我们
                         </a>
                     </li>
+
                     <!--登录成功后显示的个人信息下拉菜单-->
-                    <li class="dropdown active">
+                    <li class="dropdown" id="login_success_show">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                            张三
+                            <span id="login_success_name">
+
+                        </span>
+
                             <span class="caret">
                             </span>
                         </a>
                         <ul class="dropdown-menu">
-                            <li class="dropdown-header">
-                                未读消息
-                                <span class="badge">
-                                    61
-                                </span>
-                            </li>
                             <li>
                                 <a href="#">
                                     未读消息1
@@ -101,7 +98,12 @@
                             <li role="separator" class="divider">
                             </li>
                             <li>
-                                <a href="#">
+                                <a href="my-data.html">
+                                    个人中心
+                                </a>
+                            </li>
+                            <li>
+                                <a href="javascript:exita();">
                                     注销
                                 </a>
                             </li>
@@ -109,6 +111,7 @@
                     </li>
                 </ul>
             </div>
+
             <!-- /.nav-collapse -->
         </div>
     </nav>
@@ -128,27 +131,16 @@
             <!--下拉菜单-->
             <ul class="dropdown-menu dropdown-menu-right">
                 <li>
-                    <a href="#">
+                    <a href="my-data.html">
                         资料
                     </a>
                 </li>
                 <li>
-                    <a href="#">
+                    <a href="my-edit.html">
                         编辑
                     </a>
                 </li>
-                <li class="divider">
-                </li>
-                <li>
-                    <a href="#">
-                        关注
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        粉丝
-                    </a>
-                </li>
+
                 <li class="divider">
                 </li>
                 <li>
@@ -173,7 +165,7 @@
     <!--面包屑导航-->
     <ol class="breadcrumb">
         <li>
-            <a href="#">
+            <a href="index.html">
                 主页
             </a>
         </li>
@@ -195,23 +187,14 @@
                 </div>
             </div>
             <!--个人信息部分-->
-            <div class="col-md-9 col-sm-8">
+            <div class="col-md-9 col-sm-8" id="content">
                 <form class="form-horizontal">
                     <div class="control-group">
                         <!--User name-->
                         <label class="control-label">
                             用户名
                         </label>
-                        <div class="controls control-txt">
-                            王炜
-                        </div>
-                    </div>
-                    <div class="control-group">
-                        <!--Reall name-->
-                        <label class="control-label">
-                            真实姓名
-                        </label>
-                        <div class="controls control-txt">
+                        <div class="controls control-txt" v-text="username">
                             王炜
                         </div>
                     </div>
@@ -220,17 +203,17 @@
                         <label class="control-label">
                             邮箱
                         </label>
-                        <div class="controls control-txt">
+                        <div class="controls control-txt" v-text="email">
                             123456@qq.com
                         </div>
                     </div>
                     <div class="control-group">
                         <!--birthday-->
                         <label class="control-label">
-                            生日
+                            电话号码
                         </label>
-                        <div class="controls control-txt">
-                            7.22.2016
+                        <div class="controls control-txt" v-text="phone">
+                            11111111111
                         </div>
                     </div>
                     <div class="control-group">
@@ -238,8 +221,8 @@
                         <label class="control-label">
                             About me
                         </label>
-                        <div class="controls control-txt">
-                            123
+                        <div class="controls control-txt" v-text="aboutme">
+                            This is me
                         </div>
                     </div>
                     <div class="control-group">
@@ -247,8 +230,8 @@
                         <label class="control-label">
                             签名档
                         </label>
-                        <div class="controls control-txt">
-                            6666666666666
+                        <div class="controls control-txt" v-text="signature">
+                            This is My signature
                         </div>
                     </div>
                 </form>
@@ -258,14 +241,20 @@
         <!--/.row-->
     </div>
 
+
     <div class="footer">
-        Copyright © 2015.东旭工作室 Dxstudio All rights reserved.
+        Copyright © 2019.JOJOYI All rights reserved.
     </div>
 
     <script src="js/TothingWay.js">
     </script>
     <script src="js/function.js">
     </script>
+    <script src="js/vue.js"></script>
+
+    <script src="js/login.js"></script>
 </body>
+
+
 
 </html>

@@ -10,11 +10,19 @@ import java.util.List;
  */
 public interface ArticlesService {
 
-    public List<Articles> findAll();
+    List<Articles> findAll();
 
-    public boolean save(Articles articles);
+    boolean save(Articles articles);
 
-    public boolean update(Articles articles);
+    boolean update(Articles articles);
 
-    public boolean delete(Integer tid);
+    boolean delete(Integer tid);
+
+    Articles findByTid(Integer tid);
+
+    List<Articles> findByTitle(String title);
+
+    List<Articles> findByType(String type);
+
+    int Count();
 }

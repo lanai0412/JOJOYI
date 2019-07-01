@@ -18,12 +18,18 @@ public class ProductController {
 
     @Autowired
     private ProductService productService;
-
     @RequestMapping("pall")
     @ResponseBody
     public List<Product> findAll(){
         return productService.findAll();
     }
+
+    @RequestMapping("count_product")
+    @ResponseBody
+    private int count(){
+        return productService.count();
+    }
+
 
     @RequestMapping("findProductById")
     @ResponseBody

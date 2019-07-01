@@ -23,4 +23,22 @@ public class ShoppingCarController {
     public List<ShoppingCar> findByUser(@RequestParam("userId") Integer userId){
         return shoppingCarService.findByUser(userId);
     }
+
+    @RequestMapping("saveShoppingCar")
+    @ResponseBody
+    public int saveShoppingCar(@RequestParam("productId") Integer productId,@RequestParam("userId") Integer userId,
+                               @RequestParam("productNum") Integer productNum){
+//        System.out.println("productId"+productId+"userId"+userId+"productNum"+productNum);
+        ShoppingCar shoppingCar = new ShoppingCar();
+        shoppingCar.setProductId(productId);
+        shoppingCar.setUserId(userId);
+        shoppingCar.setProductNum(productNum);
+        shoppingCar.setProductState(0);
+        boolean b = shoppingCarService.save(shoppingCar);
+        if(b){
+            return 200;
+        }else {
+            return 400;
+        }
+    }
 }

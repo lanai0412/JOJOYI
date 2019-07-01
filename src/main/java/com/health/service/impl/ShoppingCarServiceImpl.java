@@ -34,4 +34,10 @@ public class ShoppingCarServiceImpl implements ShoppingCarService {
         List<ShoppingCar> list = shoppingCarDAO.selectList(queryWrapper);
         return list;
     }
+
+    @Override
+    public boolean save(ShoppingCar shoppingCar) {
+        int i = shoppingCarDAO.insert(shoppingCar);
+        return i == 1 ? true : false;
+    }
 }

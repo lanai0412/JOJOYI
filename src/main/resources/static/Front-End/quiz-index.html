@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>
-        资源共享平台
+        嘉加益保健
     </title>
     <link rel="shortcut icon" href="http://oqlse9rck.bkt.clouddn.com/favicon.ico">
     <link href="css/TothingWay.css" rel="stylesheet" />
@@ -20,8 +20,8 @@
             <!--导航左半部分-->
             <div class="navbar-header">
                 <!--手机模式导航按钮-->
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false"
-                    aria-controls="navbar">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+                    aria-expanded="false" aria-controls="navbar">
                     <span class="sr-only">
                         IT.Share
                     </span>
@@ -68,20 +68,28 @@
                             关于我们
                         </a>
                     </li>
+                    <li class="dropdown"  id="success_login">
+                        <a href="#" data-toggle="modal" data-target="#login">
+                            登录
+                        </a>
+                    </li>
+                    <li class="register" id="success_register">
+                        <a href="#" data-toggle="modal" data-target="#register">
+                            注册
+                        </a>
+                    </li>
+
                     <!--登录成功后显示的个人信息下拉菜单-->
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                            张三
-                            <span class="caret">
+                    <li class="dropdown" id="login_success_show" >
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" >
+                        <span  id="login_success_name">
+
+                        </span>
+
+                        <span class="caret">
                             </span>
                         </a>
                         <ul class="dropdown-menu">
-                            <li class="dropdown-header">
-                                未读消息
-                                <span class="badge">
-                                    61
-                                </span>
-                            </li>
                             <li>
                                 <a href="#">
                                     未读消息1
@@ -101,7 +109,12 @@
                             <li role="separator" class="divider">
                             </li>
                             <li>
-                                <a href="#">
+                                <a href="my-data.html">
+                                    个人中心
+                                </a>
+                            </li>
+                            <li>
+                                <a href="javascript:exit();">
                                     注销
                                 </a>
                             </li>
@@ -136,11 +149,17 @@
     <div class="container quiz-container">
         <div class="clearfix">
             <!--提问按钮-->
-            <button class="btn btn-primary new-quiz btn-quiz">
+            <button class="btn btn-primary new-quiz btn-quiz" id="isLoginBtn">
                 我要提问
             </button>
+
+            <button class="btn btn-primary new-quiz" id="notLoginBtn">
+                未登录，无法提问
+            </button>
+
             <div class="btn-group pull-right">
-                <button class="btn btn-default dropdown-toggle quiz-sort" data-toggle="dropdown" type="button" aria-expanded="false">
+                <button class="btn btn-default dropdown-toggle quiz-sort" data-toggle="dropdown" type="button"
+                    aria-expanded="false">
                     <span class="visible-sm-inline visible-md-inline visible-lg-inline">
                         排序
                     </span>
@@ -172,7 +191,8 @@
                 </ul>
             </div>
             <!--问题筛选按钮-->
-            <button class="btn btn-warning pull-right quiz-screen" type="button" data-toggle="collapse" data-target="#collapseScreen">
+            <button class="btn btn-warning pull-right quiz-screen" type="button" data-toggle="collapse"
+                data-target="#collapseScreen">
                 问题筛选
             </button>
             <!--筛选内容框-->
@@ -196,122 +216,23 @@
                         </ul>
                     </div>
                     <div class="col-sm-1 col-xs-12 all">
-                        提问分类:
-                    </div>
-                    <div class="col-sm-11 col-xs-12">
-                        <ul>
-                            <li>
-                                <a href="#">
-                                    求资源
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    求答案
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="col-sm-1 col-xs-12 all">
-                        总分类:
+                        问题分类:
                     </div>
                     <div class="col-sm-11 col-xs-12">
                         <ul>
                             <li class="active">
                                 <a href="#">
-                                    大板块1
+                                    身体问题
                                 </a>
                             </li>
                             <li>
                                 <a href="#">
-                                    大板块2
+                                    心理问题
                                 </a>
                             </li>
                             <li>
                                 <a href="#">
-                                    大板块3
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    大板块4
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    大板块5
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    大板块6
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="col-sm-1 col-xs-12 all">
-                        子分类:
-                    </div>
-                    <div class="col-sm-11 col-xs-12">
-                        <ul>
-                            <li>
-                                <a href="#">
-                                    子板块1
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    子板块2
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    子板块3
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    子板块4
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    子板块5
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    子板块6
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    子板块6
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    子板块6
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    子板块6
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    子板块6
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    子板块6
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    子板块6
+                                    精神问题
                                 </a>
                             </li>
                         </ul>
@@ -322,7 +243,7 @@
             <!--/.collapse-->
         </div>
         <!--分割线-->
-        <hr/>
+        <hr />
         <!--标题-->
         <p>
             全部
@@ -334,406 +255,52 @@
                 <!--问题标题信息-->
                 <div class="col-md-7 col-sm-9 col-xs-12">
                     <div class="avatar pull-left">
-                        <a href="my-center-resource.html" class="pull-left" data-toggle="tooltip" title="王炜">
-                            <img src="http://oqlse9rck.bkt.clouddn.com/avatar.jpg" class="user-img"/>
-                        </a>
+                        <span>
+                            你好
+                        </span>
                     </div>
                     <h2>
                         <a href="quiz-detal.html">
-                            如何能够解决，css定位布局中，父容器不能自适应定义absolute的子元素的高度。
+                            什么样的保健品比较好啊？
                         </a>
-                        <br/>
+                        <br />
                         <small class="hidden-xs">
                             <span>
-                                4月之前
+                                2月之前
                             </span>
                         </small>
                         <small class="visible-xs-inline">
                             <span>
-                                4月之前
+                                2月之前
                             </span>
                         </small>
                     </h2>
                 </div>
-                <!--悬赏-->
+                <!--分类-->
                 <div class="col-md-1 hidden-sm hidden-xs stats">
                     <span class="human-readable-number">
-                            9
-                        </span>
-                    <br/>
+                        9
+                    </span>
+                    <br />
                     <small>
-                            悬赏
-                        </small>
+                        分类
+                    </small>
                 </div>
                 <!--回答-->
                 <div class="col-md-1 hidden-sm hidden-xs stats">
                     <span class="human-readable-number">
-                            99
-                        </span>
-                    <br/>
+                        99
+                    </span>
+                    <br />
                     <small>
-                            回答
-                        </small>
+                        回答
+                    </small>
                 </div>
                 <!--问题是否被解决-->
                 <div class="col-md-3 col-sm-3 teaser hidden-xs">
                     <div class="card">
                         <span class="glyphicon glyphicon-question-sign"></span> 待解决
-                        <br/>
-                        <a href="#">
-                            <i class="icon-hand-up">
-                            </i>
-                            置顶
-                        </a>
-                    </div>
-                </div>
-            </li>
-            <!--wrap-->
-            <li class="row">
-                <!--问题标题信息-->
-                <div class="col-md-7 col-sm-9 col-xs-12">
-                    <div class="avatar pull-left">
-                        <a href="my-center-resource.html" class="pull-left" data-toggle="tooltip" title="王炜">
-                            <img src="http://oqlse9rck.bkt.clouddn.com/avatar.jpg" class="user-img"/>
-                        </a>
-                    </div>
-                    <h2>
-                        <a href="quiz-detal.html">
-                            如何能够解决，css定位布局中，父容器不能自适应定义absolute的子元素的高度。
-                        </a>
-                        <br/>
-                        <small class="hidden-xs">
-                            <span>
-                                4月之前
-                            </span>
-                        </small>
-                        <small class="visible-xs-inline">
-                            <span>
-                                4月之前
-                            </span>
-                        </small>
-                    </h2>
-                </div>
-                <!--悬赏-->
-                <div class="col-md-1 hidden-sm hidden-xs stats">
-                    <span class="human-readable-number">
-                            9
-                        </span>
-                    <br/>
-                    <small>
-                            悬赏
-                        </small>
-                </div>
-                <!--回答-->
-                <div class="col-md-1 hidden-sm hidden-xs stats">
-                    <span class="human-readable-number">
-                            99
-                        </span>
-                    <br/>
-                    <small>
-                            回答
-                        </small>
-                </div>
-                <!--问题是否被解决-->
-                <div class="col-md-3 col-sm-3 teaser hidden-xs">
-                    <div class="card">
-                        <span class="glyphicon glyphicon-question-sign"></span> 待解决
-                        <br/>
-                        <a href="#">
-                            <i class="icon-hand-up">
-                            </i>
-                            置顶
-                        </a>
-                    </div>
-                </div>
-            </li>
-            <!--wrap-->
-            <li class="row">
-                <!--问题标题信息-->
-                <div class="col-md-7 col-sm-9 col-xs-12">
-                    <div class="avatar pull-left">
-                        <a href="my-center-resource.html" class="pull-left" data-toggle="tooltip" title="王炜">
-                            <img src="http://oqlse9rck.bkt.clouddn.com/avatar.jpg" class="user-img"/>
-                        </a>
-                    </div>
-                    <h2>
-                        <a href="quiz-detal.html">
-                            如何能够解决，css定位布局中，父容器不能自适应定义absolute的子元素的高度。
-                        </a>
-                        <br/>
-                        <small class="hidden-xs">
-                            <span>
-                                4月之前
-                            </span>
-                        </small>
-                        <small class="visible-xs-inline">
-                            <span>
-                                4月之前
-                            </span>
-                        </small>
-                    </h2>
-                </div>
-                <!--悬赏-->
-                <div class="col-md-1 hidden-sm hidden-xs stats">
-                    <span class="human-readable-number">
-                            9
-                        </span>
-                    <br/>
-                    <small>
-                            悬赏
-                        </small>
-                </div>
-                <!--回答-->
-                <div class="col-md-1 hidden-sm hidden-xs stats">
-                    <span class="human-readable-number">
-                            99
-                        </span>
-                    <br/>
-                    <small>
-                            回答
-                        </small>
-                </div>
-                <!--问题是否被解决-->
-                <div class="col-md-3 col-sm-3 teaser hidden-xs">
-                    <div class="card">
-                        <span class="glyphicon glyphicon-question-sign"></span> 待解决
-                        <br/>
-                        <a href="#">
-                            <i class="icon-hand-up">
-                            </i>
-                            置顶
-                        </a>
-                    </div>
-                </div>
-            </li>
-            <!--wrap-->
-            <li class="row">
-                <!--问题标题信息-->
-                <div class="col-md-7 col-sm-9 col-xs-12">
-                    <div class="avatar pull-left">
-                        <a href="my-center-resource.html" class="pull-left" data-toggle="tooltip" title="王炜">
-                            <img src="http://oqlse9rck.bkt.clouddn.com/avatar.jpg" class="user-img"/>
-                        </a>
-                    </div>
-                    <h2>
-                        <a href="quiz-detal.html">
-                            如何能够解决，css定位布局中，父容器不能自适应定义absolute的子元素的高度。
-                        </a>
-                        <br/>
-                        <small class="hidden-xs">
-                            <span>
-                                4月之前
-                            </span>
-                        </small>
-                        <small class="visible-xs-inline">
-                            <span>
-                                4月之前
-                            </span>
-                        </small>
-                    </h2>
-                </div>
-                <!--悬赏-->
-                <div class="col-md-1 hidden-sm hidden-xs stats">
-                    <span class="human-readable-number">
-                            9
-                        </span>
-                    <br/>
-                    <small>
-                            悬赏
-                        </small>
-                </div>
-                <!--回答-->
-                <div class="col-md-1 hidden-sm hidden-xs stats">
-                    <span class="human-readable-number">
-                            99
-                        </span>
-                    <br/>
-                    <small>
-                            回答
-                        </small>
-                </div>
-                <!--问题是否被解决-->
-                <div class="col-md-3 col-sm-3 teaser hidden-xs">
-                    <div class="card">
-                        <span class="glyphicon glyphicon-question-sign"></span> 待解决
-                        <br/>
-                        <a href="#">
-                            <i class="icon-hand-up">
-                            </i>
-                            置顶
-                        </a>
-                    </div>
-                </div>
-            </li>
-            <!--wrap-->
-            <li class="row">
-                <!--问题标题信息-->
-                <div class="col-md-7 col-sm-9 col-xs-12">
-                    <div class="avatar pull-left">
-                        <a href="my-center-resource.html" class="pull-left" data-toggle="tooltip" title="王炜">
-                            <img src="http://oqlse9rck.bkt.clouddn.com/avatar.jpg" class="user-img"/>
-                        </a>
-                    </div>
-                    <h2>
-                        <a href="quiz-detal.html">
-                            如何能够解决，css定位布局中，父容器不能自适应定义absolute的子元素的高度。
-                        </a>
-                        <br/>
-                        <small class="hidden-xs">
-                            <span>
-                                4月之前
-                            </span>
-                        </small>
-                        <small class="visible-xs-inline">
-                            <span>
-                                4月之前
-                            </span>
-                        </small>
-                    </h2>
-                </div>
-                <!--悬赏-->
-                <div class="col-md-1 hidden-sm hidden-xs stats">
-                    <span class="human-readable-number">
-                            9
-                        </span>
-                    <br/>
-                    <small>
-                            悬赏
-                        </small>
-                </div>
-                <!--回答-->
-                <div class="col-md-1 hidden-sm hidden-xs stats">
-                    <span class="human-readable-number">
-                            99
-                        </span>
-                    <br/>
-                    <small>
-                            回答
-                        </small>
-                </div>
-                <!--问题是否被解决-->
-                <div class="col-md-3 col-sm-3 teaser hidden-xs">
-                    <div class="card">
-                        <span class="glyphicon glyphicon-question-sign"></span> 待解决
-                        <br/>
-                        <a href="#">
-                            <i class="icon-hand-up">
-                            </i>
-                            置顶
-                        </a>
-                    </div>
-                </div>
-            </li>
-            <!--wrap-->
-            <li class="row">
-                <!--问题标题信息-->
-                <div class="col-md-7 col-sm-9 col-xs-12">
-                    <div class="avatar pull-left">
-                        <a href="my-center-resource.html" class="pull-left" data-toggle="tooltip" title="王炜">
-                            <img src="http://oqlse9rck.bkt.clouddn.com/avatar.jpg" class="user-img"/>
-                        </a>
-                    </div>
-                    <h2>
-                        <a href="quiz-detal.html">
-                            如何能够解决，css定位布局中，父容器不能自适应定义absolute的子元素的高度。
-                        </a>
-                        <br/>
-                        <small class="hidden-xs">
-                            <span>
-                                4月之前
-                            </span>
-                        </small>
-                        <small class="visible-xs-inline">
-                            <span>
-                                4月之前
-                            </span>
-                        </small>
-                    </h2>
-                </div>
-                <!--悬赏-->
-                <div class="col-md-1 hidden-sm hidden-xs stats">
-                    <span class="human-readable-number">
-                            9
-                        </span>
-                    <br/>
-                    <small>
-                            悬赏
-                        </small>
-                </div>
-                <!--回答-->
-                <div class="col-md-1 hidden-sm hidden-xs stats">
-                    <span class="human-readable-number">
-                            99
-                        </span>
-                    <br/>
-                    <small>
-                            回答
-                        </small>
-                </div>
-                <!--问题是否被解决-->
-                <div class="col-md-3 col-sm-3 teaser hidden-xs">
-                    <div class="card">
-                        <span class="glyphicon glyphicon-question-sign"></span> 待解决
-                        <br/>
-                        <a href="#">
-                            <i class="icon-hand-up">
-                            </i>
-                            置顶
-                        </a>
-                    </div>
-                </div>
-            </li>
-            <!--wrap-->
-            <li class="row">
-                <!--问题标题信息-->
-                <div class="col-md-7 col-sm-9 col-xs-12">
-                    <div class="avatar pull-left">
-                        <a href="my-center-resource.html" class="pull-left" data-toggle="tooltip" title="王炜">
-                            <img src="http://oqlse9rck.bkt.clouddn.com/avatar.jpg" class="user-img"/>
-                        </a>
-                    </div>
-                    <h2>
-                        <a href="quiz-detal.html">
-                            如何能够解决，css定位布局中，父容器不能自适应定义absolute的子元素的高度。
-                        </a>
-                        <br/>
-                        <small class="hidden-xs">
-                            <span>
-                                4月之前
-                            </span>
-                        </small>
-                        <small class="visible-xs-inline">
-                            <span>
-                                4月之前
-                            </span>
-                        </small>
-                    </h2>
-                </div>
-                <!--悬赏-->
-                <div class="col-md-1 hidden-sm hidden-xs stats">
-                    <span class="human-readable-number">
-                            9
-                        </span>
-                    <br/>
-                    <small>
-                            悬赏
-                        </small>
-                </div>
-                <!--回答-->
-                <div class="col-md-1 hidden-sm hidden-xs stats">
-                    <span class="human-readable-number">
-                            99
-                        </span>
-                    <br/>
-                    <small>
-                            回答
-                        </small>
-                </div>
-                <!--问题是否被解决-->
-                <div class="col-md-3 col-sm-3 teaser hidden-xs">
-                    <div class="card">
-                        <span class="glyphicon glyphicon-question-sign"></span> 待解决
-                        <br/>
+                        <br />
                         <a href="#">
                             <i class="icon-hand-up">
                             </i>
@@ -750,144 +317,342 @@
     </div>
 
     <div class="footer">
-        Copyright © 2016 IT.Share All rights reserved.
+        Copyright © 2019.JOJOYI All rights reserved.
     </div>
 
     <!--弹框——我要提问-->
     <div class="modal" id="new-quiz" tabindex="-1" role="dialog">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-body new-quiz-body">
-                    <div class="input-wrapper">
-                        <input type="text" placeholder="在此输入您问题的标题..." />
-                        <!--Error message-->
-                        <span class="animated fadeInRight">
-                            标题不能为空
-                        </span>
+        <form action="qadd.do" method="POST" onsubmit="return authquestion()">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-body new-quiz-body">
+                        <div class="input-wrapper">
+                            <input type="text" placeholder="在此输入您问题的标题..." id="qtitle" name="qtitle"
+                                onblur="authtitle()" />
+                            <!--Error message-->
+                            <span class="animated fadeInRight" style="display: none" id="tip1">
+                                标题不能为空
+                            </span>
+                        </div>
+                        <!--编辑器-->
+                        <div id="text-editor" style="height: 250px;"></div>
+                        <input type="hidden" name="qcontent" id="qcontent" value="" />
+                        <div class="radio-wrapper clearfix">
+                            <!--按钮分类-->
+                            <div class="btn-group dropup">
+                                <span class="btn btn-default btn-sm">问题分类：</span>
+                                <select name="type" id="type" class="btn btn-default btn-sm">
+                                    <option value="身体问题">身体问题</option>
+                                    <option value="心理问题">心理问题</option>
+                                    <option value="精神问题">精神问题</option>
+                                </select>
+                            </div>
+                        </div>
+
                     </div>
-                    <!--编辑器-->
-                    <div id="text-editor" style="height: 250px;"></div>
-                    <div class="radio-wrapper clearfix">
-                        <!--按钮分类-->
-                        <div class="btn-group dropup">
-                            <button type="button" class="btn btn-default btn-sm">
-                                技术分类
-                            </button>
-                            <button type="button" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="caret">
-                                </span>
-                            </button>
-                            <ul class="dropdown-menu">
-                                <li>
-                                    <a href="#">
-                                        1
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        1
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        1
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        1
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                        <!--按钮分类-->
-                        <div class="btn-group dropup">
-                            <button type="button" class="btn btn-default btn-sm">
-                                技术名称
-                            </button>
-                            <button type="button" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="caret">
-                                </span>
-                            </button>
-                            <ul class="dropdown-menu">
-                                <li>
-                                    <a href="#">
-                                        1
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        1
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        1
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        1
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                        <!--按钮分类-->
-                        <div class="btn-group dropup">
-                            <button type="button" class="btn btn-default btn-sm">
-                                悬赏积分
-                            </button>
-                            <button type="button" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="caret">
-                                </span>
-                            </button>
-                            <ul class="dropdown-menu">
-                                <li>
-                                    <a href="#">
-                                        1
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        1
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        1
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        1
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
+                    <div class="modal-footer clearfix">
+                        <!--全屏按钮-->
+                        <a href="#" class="full-screen-btn">
+                            <div class="full-screen pull-left">
+                                <span class="glyphicon glyphicon-chevron-up" id="icon-btn"></span>
+                            </div>
+                        </a>
+                        <button type="button" class="btn btn-default" id="quiz-close">
+                            取消
+                        </button>
+                        <button type="submit" class="btn btn-primary">
+                            提问
+                        </button>
                     </div>
                 </div>
-                <div class="modal-footer clearfix">
-                    <!--全屏按钮-->
-                    <a href="#" class="full-screen-btn">
-                        <div class="full-screen pull-left">
-                            <span class="glyphicon glyphicon-chevron-up" id="icon-btn"></span>
-                        </div>
-                    </a>
-                    <button type="button" class="btn btn-default" id="quiz-close">
-                        Close
+            </div>
+                </form>
+
+
+            </div>
+        </div>
+    </div>
+
+    <!-- register -->
+    <div class="modal fade" id="register" role="dialog">
+        <div class="modal-dialog modal-sm" role="document">
+            <!--弹框——注册表单-->
+            <div class="modal-content" id="register-main" style="display:block;">
+                <!--标题-->
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">
+                        <span aria-hidden="true">
+                            &times;
+                        </span>
                     </button>
-                    <button type="button" class="btn btn-primary">
-                        提问
+                    <h5 class="modal-title">
+                        JOJOYI
+                    </h5>
+                </div>
+                <!--注册表单-->
+                <div class="modal-body">
+
+                    <!--User name-->
+                    <div class="input-wrapper">
+                        <input type="text" placeholder="用户名" id="reg_name"/>
+                        <!--Error message-->
+                        <span class="animated fadeInRight register-username-wrong" id="reg_name_Top">
+
+                        </span>
+                    </div>
+                    <!--Password-->
+                    <div class="input-wrapper">
+                        <input type="password" class="register-password" id="reg_password" placeholder="密码"/>
+                        <!--显示与隐藏密码-->
+                        <a href="javascript:;" class="btn-eye-register">
+                            <i class="icon-eye-open" id="icon-eye-register">
+                            </i>
+                        </a>
+                        <!--Error message-->
+                        <span class="animated fadeInRight pw-error register-password-wrong" id="reg_password_Top">
+
+                        </span>
+                    </div>
+
+                    <!--Phone-->
+                    <div class="input-wrapper">
+                        <input type="text" placeholder="电话号码" id="phone"/>
+                        <!--Error message-->
+                        <span class="animated fadeInRight register-email-wrong" id="phone_Top">
+
+                        </span>
+                    </div>
+                    <!--Email-->
+                    <div class="input-wrapper">
+                        <input type="text" placeholder="邮箱" id="email"/>
+                        <!--Error message-->
+                        <span class="animated fadeInRight register-email-wrong" id="email_Top">
+
+                        </span>
+                    </div>
+                    <!--验证码-->
+                    <div class="input-wrapper">
+                        <input type="text" placeholder="验证码" id="captcha"/>
+                        <!--验证码图片-->
+                        <button id="get_phone_num" class="btn">获取验证码</button>
+                        <!--Error message-->
+                        <span class="animated fadeInRight code-error register-code-wrong" id="captcha_Top">
+
+                        </span>
+                    </div>
+                </div>
+                <!--/.modal-body-->
+
+                <!--注册按钮-->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary btn-block " id="btn-register">
+                        注册
+                    </button>
+                </div>
+            </div>
+
+            <!--弹框——邮箱验证-->
+            <!--<div class="modal-content" id="register-success" style="display: none;">
+                <div class="modal-header">
+                    &lt;!&ndash;关闭按钮&ndash;&gt;
+                    <button type="button" class="close" data-dismiss="modal">
+                            <span aria-hidden="true">
+                                &times;
+                            </span>
+                    </button>
+                    &lt;!&ndash;返回按钮&ndash;&gt;
+                    <button type="button" class="close back">
+                            <span aria-hidden="true">
+                                <i class="icon-angle-left">
+                                </i>
+                            </span>
+                    </button>
+                    &lt;!&ndash;标题&ndash;&gt;
+                    <h5 class="modal-title">
+                        邮箱验证
+                    </h5>
+                </div>-->
+            <!--content-->
+            <!-- <div class="modal-body">
+                 <div class="input-wrapper">
+                     <input type="text" placeholder="请输入6位验证码"/>
+                     &lt;!&ndash;重发验证码按钮&ndash;&gt;
+                     <button class="btn" id="code-btn2" type="button">
+                         重发验证码
+                     </button>
+                     &lt;!&ndash;Error message&ndash;&gt;
+                     <span class="animated fadeInRight email-code-error">
+                             验证码错误
+                         </span>
+                 </div>
+             </div>
+             &lt;!&ndash;注册成功后进入平台&ndash;&gt;
+             <div class="modal-footer">
+                 <button type="button" class="btn btn-primary btn-block">
+                     进入平台
+                 </button>
+             </div>-->
+        </div>
+    </div>
+    <!--/.modal-dialog-->
+    </div>
+
+    <!-- login -->
+    <div class="modal fade" id="login" role="dialog">
+        <div class="modal-dialog modal-sm" role="document">
+            <!--弹框——登录-->
+            <div class="modal-content" id="first">
+                <div class="modal-header">
+                    <!--关闭按钮-->
+                    <button type="button" class="close" data-dismiss="modal">
+                        <span aria-hidden="true">
+                            &times;
+                        </span>
+                    </button>
+                    <!--标题-->
+                    <h5 class="modal-title">
+                        JOJOYI
+                    </h5>
+                </div>
+                <div class="modal-body">
+                    <!--User name-->
+                    <div class="input-wrapper">
+                        <input type="text" placeholder="用户名" id="login_name"/>
+                        <!--Error message-->
+                        <span class="animated fadeInRight login-username-wrong" id="login_name_Top">
+
+                        </span>
+                    </div>
+                    <div class="input-wrapper">
+                        <!--Password-->
+                        <input type="password" placeholder="密码" id="login_password"/>
+                        <!--Error message-->
+                        <span class="animated fadeInRight login-password-wrong" id="login_password_Top">
+
+                        </span>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <div class="clearfix login-help">
+                        <!--无法登录-->
+                        <div class="col-xs-6">
+                            <a href="#" class="unable-login">
+                                无法登录？
+                            </a>
+                        </div>
+                    </div>
+                    <!--登录按钮-->
+                    <button type="button" class="btn btn-primary btn-block" id="login-btn">
+                        登录
+                    </button>
+                </div>
+            </div>
+
+            <!-- 弹框——无法登录 -->
+            <div class="modal-content" id="second" style="display: none;">
+                <div class="modal-header unable-login-header">
+                    <!--关闭按钮-->
+                    <button type="button" class="close" data-dismiss="modal">
+                        <span aria-hidden="true">
+                            &times;
+                        </span>
+                    </button>
+                    <!--标题-->
+                    <h5 class="modal-title">
+                        找回密码
+                    </h5>
+                </div>
+                <div class="modal-body">
+                    <div class="input-wrapper">
+                        <!--Email-->
+                        <input type="text" placeholder="电话号码"/>
+                        <!--Error message-->
+                        <span class="animated fadeInRight find-password-email-wrong" id="phone_Top_z">
+
+                        </span>
+                    </div>
+                    <div class="input-wrapper">
+                        <!--验证码-->
+                        <input type="text" placeholder="验证码" id="captch"/>
+
+                        <!--Error message-->
+                        <span class="animated fadeInRight code-error find-password-code-wrong" id="login_captch" >
+
+                        </span>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary btn-block get-code" id="captch_btn">
+                        获取验证码
+                    </button>
+                </div>
+            </div>
+
+            <!-- 弹框——获取验证码 -->
+            <div class="modal-content" id="last" style="display: none;">
+                <div class="modal-header unable-login-header">
+                    <!--关闭按钮-->
+                    <button type="button" class="close" data-dismiss="modal">
+                        <span aria-hidden="true">
+                            &times;
+                        </span>
+                    </button>
+                    <!--标题-->
+                    <h5 class="modal-title">
+                        重置密码
+                    </h5>
+                </div>
+                <div class="modal-body">
+                    <div class="input-wrapper">
+                        <!--Email-->
+                        <input type="text" placeholder="邮箱"/>
+                        <!--Error message-->
+                        <span class="animated fadeInRight">
+                            请输入正确验证码
+                        </span>
+                    </div>
+                    <div class="input-wrapper">
+                        <!--Password-->
+                        <input type="password" id="set-type-login" placeholder="密码"/>
+                        <!--显示与隐藏密码-->
+                        <a href="javascript:;" class="btn-eye-login">
+                            <i class="icon-eye-open" id="icon-eye-login">
+                            </i>
+                        </a>
+                        <!--Error message-->
+                        <span class="animated fadeInRight pw-error">
+                            用户名或密码错误
+                        </span>
+                    </div>
+                    <div class="input-wrapper">
+                        <input type="text" placeholder="请输入6位验证码"/>
+                        <!--发现验证码按钮-->
+                        <button class="btn" id="code-btn" type="button">
+                            重发验证码
+                        </button>
+                        <!--Error message-->
+                        <span class="animated fadeInRight email-code-error">
+                            验证码错误
+                        </span>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary btn-block get-code">
+                        重置密码
                     </button>
                 </div>
             </div>
         </div>
     </div>
-    
     <script src="js/TothingWay.js">
     </script>
     <script src="js/function.js">
     </script>
+    <script src="js/question.js">
+    </script>
+    <script src="js/vue.js"></script>
+    <script src="js/register.js"></script>
+    <script src="js/login.js"></script>
 </body>
 
 </html>
