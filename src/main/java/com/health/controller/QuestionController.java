@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
@@ -22,17 +23,12 @@ public class QuestionController {
     @RequestMapping("find_questions")
     @ResponseBody
     public List<Question> findAll(HttpSession session) {
-        if (session.getAttribute("user") != null) {
-            User user = (User) session.getAttribute("user");
-            if (user.getIstop() == null || "".equals(user.getIstop())) {
-                return questionService.findAll();
-            } else {
-                List<Question> list = questionService.findAll();
-                return check_istop(list, user);
-            }
-        }
 
-        return questionService.findAll();
+        List<Question> list = questionService.findAll();
+
+        session.setAttribute("qlist", list);
+
+        return list;
     }
 
     @RequestMapping("add_question")
@@ -64,76 +60,58 @@ public class QuestionController {
     @ResponseBody
     public List<Question> findByAdopt(String flag, HttpSession session) {
 
-        if (session.getAttribute("user") != null) {
-            User user = (User) session.getAttribute("user");
-            if (user.getIstop() == null || "".equals(user.getIstop())) {
-                if (flag.equals("200")) {
-                    return questionService.findByAdopt(1);
-                } else {
-                    return questionService.findByAdopt(0);
-                }
-            } else {
-                List<Question> list = new ArrayList<>();
-                if (flag.equals("200")) {
-                    list = questionService.findByAdopt(1);
-                } else {
-                    list = questionService.findByAdopt(0);
-                }
-                return check_istop(list, user);
-            }
-        }
+        List<Question> list = new ArrayList<>();
 
         if (flag.equals("200")) {
-            return questionService.findByAdopt(1);
+            list = questionService.findByAdopt(1);
+        } else {
+            list = questionService.findByAdopt(0);
         }
 
-        return questionService.findByAdopt(0);
+        session.setAttribute("qlist", list);
+
+        return list;
     }
 
     @RequestMapping("type_questions")
     @ResponseBody
     public List<Question> findByType(String type, HttpSession session) {
 
-        if (session.getAttribute("user") != null) {
-            User user = (User) session.getAttribute("user");
-            if (user.getIstop() == null || "".equals(user.getIstop())) {
-                return questionService.findByType(type);
-            } else {
-                List<Question> list = questionService.findByType(type);
-                return check_istop(list, user);
-            }
-        }
+        List<Question> list = questionService.findByType(type);
 
-        return questionService.findByType(type);
+        session.setAttribute("qlist", list);
+
+        return list;
     }
 
     @RequestMapping("find_title")
     @ResponseBody
     public List<Question> findByTitle(String qtitle, HttpSession session) {
 
-        if (session.getAttribute("user") != null) {
-            User user = (User) session.getAttribute("user");
-            if (user.getIstop() == null || "".equals(user.getIstop())) {
-                return questionService.findByQtitle(qtitle);
-            } else {
-                List<Question> list = questionService.findByQtitle(qtitle);
-                return check_istop(list, user);
-            }
-        }
+        List<Question> list = questionService.findByQtitle(qtitle);
 
-        return questionService.findByQtitle(qtitle);
+        session.setAttribute("qlist", list);
+
+        return list;
     }
 
+    @RequestMapping("get_questions")
+    @ResponseBody
+    public List<Question> getQuestion(HttpSession session) {
 
-    private List<Question> check_istop(List<Question> list, User user) {
-        List<Question> ilist = new ArrayList<>();
-        ilist.add(questionService.findByQid(user.getIstop()));
-        for (Question question : list) {
-            if (question.getQid() != user.getIstop()) {
-                continue;
-            }
-            ilist.add(question);
-        }
-        return ilist;
+        List<Question> list = (List<Question>) session.getAttribute("qlist");
+        return list;
+
     }
+
+    @RequestMapping("to_reply")
+    public ModelAndView toReply(Integer qid) {
+
+        Question question = questionService.findByQid(qid);
+        ModelAndView mav = new ModelAndView();
+        mav.setViewName("../quiz-detal.html");
+        mav.addObject("question", question);
+        return mav;
+    }
+
 }
