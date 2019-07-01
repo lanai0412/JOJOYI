@@ -5,6 +5,7 @@ import com.health.entity.User;
 import com.health.service.QuestionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
@@ -102,15 +103,6 @@ public class QuestionController {
         List<Question> list = (List<Question>) session.getAttribute("qlist");
         return list;
 
-    }
-
-    @RequestMapping("to_reply")
-    public ModelAndView toReply(Integer qid) {
-        Question question = questionService.findByQid(qid);
-        ModelAndView mav = new ModelAndView();
-        mav.setViewName("../quiz-detal.html");
-        mav.addObject("question", question);
-        return mav;
     }
 
 }

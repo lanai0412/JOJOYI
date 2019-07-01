@@ -5,26 +5,7 @@ window.onload = function () {
         dataType: "json",
         success: function (data) {
             $("#qlist").empty();
-            if (data.length > 0) {
-                $("#havemore").empty();
-                $("#havemore").append("<nav aria-label='Page navigation' style='text-align: center'><ul class='pagination' id='qpage'></ul></nav>");
-                $("#qpage").append("<li class='disabled'><a href='#' aria-label='Previous'><span aria-hidden='true'>&laquo;</span></a></li>");
-                for (var i = 0; i < (data.length / 10); i++) {
-                    $("#qpage").append("<li id='qpage" + (i + 1) + "'><a href=javascript:void(0)' onclick='changepage(" + (i + 1) + ")'>" + (i + 1) + "</a></li>");
-                }
-                $("#qpage").append("<li class='disabled'><a href='#' aria-label='Next'><span aria-hidden='true'>&raquo;</span></a></li>");
-
-                for (var i = 0; i < data.length && i < 10; i++) {
-                    if (data[i].adopt == 0) {
-                        $("#qlist").append("<li class='row'><div class='col-md-7 col-sm-9 col-xs-12'><div class='avatar pull-left'><span>" + data[i].uname + "</span></div><h2><a href='to_reply?qid=" + data[i].qid + "'>" + data[i].qtitle + "</a><br /><small class='hidden-xs'><span>" + data[i].time + "</span></small><small class='visible-xs-inline'><span>" + data[i].time + "</span></small></h2></div><div class='col-md-2 hidden-sm hidden-xs stats'><span class='human-readable-number'>" + data[i].type + "</span><br /><small>分类</small></div><div class='col-md-3 col-sm-3 teaser hidden-xs'><div class='card' style='padding-top: 15px'><span class='glyphicon glyphicon-question-sign'></span> 待解决<br /></div></div></li>");
-                    } else {
-                        $("#qlist").append("<li class='row'><div class='col-md-7 col-sm-9 col-xs-12'><div class='avatar pull-left'><span>" + data[i].uname + "</span></div><h2><a href='to_reply?qid=" + data[i].qid + "'>" + data[i].qtitle + "</a><br /><small class='hidden-xs'><span>" + data[i].time + "</span></small><small class='visible-xs-inline'><span>" + data[i].time + "</span></small></h2></div><div class='col-md-2 hidden-sm hidden-xs stats'><span class='human-readable-number'>" + data[i].type + "</span><br /><small>分类</small></div><div class='col-md-3 col-sm-3 teaser hidden-xs'><div class='card' style='padding-top: 15px'><span class='glyphicon glyphicon-ok-sign'></span> 已解决<br /></div></div></li>");
-                    }
-                }
-            } else {
-                $("#havemore").empty();
-                $("#qlist").append("<li class='row' style='text-align: center'><h1>暂时还没有此类问题哦!</h1></li>");
-            }
+            getdata(data);
         }
     })
 }
@@ -77,26 +58,7 @@ function findall() {
             $("#qtag").empty();
             $("#qtag").append("全部")
             $("#qlist").empty();
-            if (data.length > 0) {
-                $("#havemore").empty();
-                $("#havemore").append("<nav aria-label='Page navigation' style='text-align: center'><ul class='pagination' id='qpage'></ul></nav>");
-                $("#qpage").append("<li class='disabled'><a href='#' aria-label='Previous'><span aria-hidden='true'>&laquo;</span></a></li>");
-                for (var i = 0; i < (data.length / 10); i++) {
-                    $("#qpage").append("<li id='qpage" + (i + 1) + "'><a href=javascript:void(0)' onclick='changepage(" + (i + 1) + ")'>" + (i + 1) + "</a></li>");
-                }
-                $("#qpage").append("<li class='disabled'><a href='#' aria-label='Next'><span aria-hidden='true'>&raquo;</span></a></li>");
-
-                for (var i = 0; i < data.length && i < 10; i++) {
-                    if (data[i].adopt == 0) {
-                        $("#qlist").append("<li class='row'><div class='col-md-7 col-sm-9 col-xs-12'><div class='avatar pull-left'><span>" + data[i].uname + "</span></div><h2><a href='to_reply?qid=" + data[i].qid + "'>" + data[i].qtitle + "</a><br /><small class='hidden-xs'><span>" + data[i].time + "</span></small><small class='visible-xs-inline'><span>" + data[i].time + "</span></small></h2></div><div class='col-md-2 hidden-sm hidden-xs stats'><span class='human-readable-number'>" + data[i].type + "</span><br /><small>分类</small></div><div class='col-md-3 col-sm-3 teaser hidden-xs'><div class='card' style='padding-top: 15px'><span class='glyphicon glyphicon-question-sign'></span> 待解决<br /></div></div></li>");
-                    } else {
-                        $("#qlist").append("<li class='row'><div class='col-md-7 col-sm-9 col-xs-12'><div class='avatar pull-left'><span>" + data[i].uname + "</span></div><h2><a href='to_reply?qid=" + data[i].qid + "'>" + data[i].qtitle + "</a><br /><small class='hidden-xs'><span>" + data[i].time + "</span></small><small class='visible-xs-inline'><span>" + data[i].time + "</span></small></h2></div><div class='col-md-2 hidden-sm hidden-xs stats'><span class='human-readable-number'>" + data[i].type + "</span><br /><small>分类</small></div><div class='col-md-3 col-sm-3 teaser hidden-xs'><div class='card' style='padding-top: 15px'><span class='glyphicon glyphicon-ok-sign'></span> 已解决<br /></div></div></li>");
-                    }
-                }
-            } else {
-                $("#havemore").empty();
-                $("#qlist").append("<li class='row' style='text-align: center'><h1>暂时还没有此类问题哦!</h1></li>");
-            }
+            getdata(data);
         }
     })
 }
@@ -113,22 +75,7 @@ function findsolve() {
             $("#qtag").empty();
             $("#qtag").append("已解决")
             $("#qlist").empty();
-            if (data.length > 0) {
-                $("#havemore").empty();
-                $("#havemore").append("<nav aria-label='Page navigation' style='text-align: center'><ul class='pagination' id='qpage'></ul></nav>");
-                $("#qpage").append("<li class='disabled'><a href='#' aria-label='Previous'><span aria-hidden='true'>&laquo;</span></a></li>");
-                for (var i = 0; i < (data.length / 10); i++) {
-                    $("#qpage").append("<li id='qpage" + (i + 1) + "'><a href=javascript:void(0)' onclick='changepage(" + (i + 1) + ")'>" + (i + 1) + "</a></li>");
-                }
-                $("#qpage").append("<li class='disabled'><a href='#' aria-label='Next'><span aria-hidden='true'>&raquo;</span></a></li>");
-
-                for (var i = 0; i < data.length && i < 10; i++) {
-                    $("#qlist").append("<li class='row'><div class='col-md-7 col-sm-9 col-xs-12'><div class='avatar pull-left'><span>" + data[i].uname + "</span></div><h2><a href='to_reply?qid=" + data[i].qid + "'>" + data[i].qtitle + "</a><br /><small class='hidden-xs'><span>" + data[i].time + "</span></small><small class='visible-xs-inline'><span>" + data[i].time + "</span></small></h2></div><div class='col-md-2 hidden-sm hidden-xs stats'><span class='human-readable-number'>" + data[i].type + "</span><br /><small>分类</small></div><div class='col-md-3 col-sm-3 teaser hidden-xs'><div class='card' style='padding-top: 15px'><span class='glyphicon glyphicon-ok-sign'></span> 已解决<br /></div></div></li>");
-                }
-            } else {
-                $("#havemore").empty();
-                $("#qlist").append("<li class='row' style='text-align: center'><h1>暂时还没有此类问题哦!</h1></li>");
-            }
+            getdata(data);
         }
     })
 }
@@ -145,24 +92,7 @@ function findnosolve() {
             $("#qtag").empty();
             $("#qtag").append("待解决")
             $("#qlist").empty();
-            if (data.length > 0) {
-                $("#havemore").empty();
-                $("#havemore").append("<nav aria-label='Page navigation' style='text-align: center'><ul class='pagination' id='qpage'></ul></nav>");
-                $("#qpage").append("<li class='disabled'><a href='#' aria-label='Previous'><span aria-hidden='true'>&laquo;</span></a></li>");
-                for (var i = 0; i < (data.length / 10); i++) {
-                    $("#qpage").append("<li id='qpage" + (i + 1) + "'><a href=javascript:void(0)' onclick='changepage(" + (i + 1) + ")'>" + (i + 1) + "</a></li>");
-                }
-                $("#qpage").append("<li class='disabled'><a href='#' aria-label='Next'><span aria-hidden='true'>&raquo;</span></a></li>");
-
-                for (var i = 0; i < data.length && i < 10; i++) {
-                    for (var i = 0; i < data.length; i++) {
-                        $("#qlist").append("<li class='row'><div class='col-md-7 col-sm-9 col-xs-12'><div class='avatar pull-left'><span>" + data[i].uname + "</span></div><h2><a href='to_reply?qid=" + data[i].qid + "'>" + data[i].qtitle + "</a><br /><small class='hidden-xs'><span>" + data[i].time + "</span></small><small class='visible-xs-inline'><span>" + data[i].time + "</span></small></h2></div><div class='col-md-2 hidden-sm hidden-xs stats'><span class='human-readable-number'>" + data[i].type + "</span><br /><small>分类</small></div><div class='col-md-3 col-sm-3 teaser hidden-xs'><div class='card' style='padding-top: 15px'><span class='glyphicon glyphicon-question-sign'></span> 待解决<br /></div></div></li>");
-                    }
-                }
-            } else {
-                $("#havemore").empty();
-                $("#qlist").append("<li class='row' style='text-align: center'><h1>暂时还没有此类问题哦!</h1></li>");
-            }
+            getdata(data);
         }
     })
 }
@@ -179,26 +109,7 @@ function findbody() {
             $("#qtag").empty();
             $("#qtag").append("身体问题")
             $("#qlist").empty();
-            if (data.length > 0) {
-                $("#havemore").empty();
-                $("#havemore").append("<nav aria-label='Page navigation' style='text-align: center'><ul class='pagination' id='qpage'></ul></nav>");
-                $("#qpage").append("<li class='disabled'><a href='#' aria-label='Previous'><span aria-hidden='true'>&laquo;</span></a></li>");
-                for (var i = 0; i < (data.length / 10); i++) {
-                    $("#qpage").append("<li id='qpage" + (i + 1) + "'><a href=javascript:void(0)' onclick='changepage(" + (i + 1) + ")'>" + (i + 1) + "</a></li>");
-                }
-                $("#qpage").append("<li class='disabled'><a href='#' aria-label='Next'><span aria-hidden='true'>&raquo;</span></a></li>");
-
-                for (var i = 0; i < data.length && i < 10; i++) {
-                    if (data[i].adopt == 0) {
-                        $("#qlist").append("<li class='row'><div class='col-md-7 col-sm-9 col-xs-12'><div class='avatar pull-left'><span>" + data[i].uname + "</span></div><h2><a href='to_reply?qid=" + data[i].qid + "'>" + data[i].qtitle + "</a><br /><small class='hidden-xs'><span>" + data[i].time + "</span></small><small class='visible-xs-inline'><span>" + data[i].time + "</span></small></h2></div><div class='col-md-2 hidden-sm hidden-xs stats'><span class='human-readable-number'>" + data[i].type + "</span><br /><small>分类</small></div><div class='col-md-3 col-sm-3 teaser hidden-xs'><div class='card' style='padding-top: 15px'><span class='glyphicon glyphicon-question-sign'></span> 待解决<br /></div></div></li>");
-                    } else {
-                        $("#qlist").append("<li class='row'><div class='col-md-7 col-sm-9 col-xs-12'><div class='avatar pull-left'><span>" + data[i].uname + "</span></div><h2><a href='to_reply?qid=" + data[i].qid + "'>" + data[i].qtitle + "</a><br /><small class='hidden-xs'><span>" + data[i].time + "</span></small><small class='visible-xs-inline'><span>" + data[i].time + "</span></small></h2></div><div class='col-md-2 hidden-sm hidden-xs stats'><span class='human-readable-number'>" + data[i].type + "</span><br /><small>分类</small></div><div class='col-md-3 col-sm-3 teaser hidden-xs'><div class='card' style='padding-top: 15px'><span class='glyphicon glyphicon-ok-sign'></span> 已解决<br /></div></div></li>");
-                    }
-                }
-            } else {
-                $("#havemore").empty();
-                $("#qlist").append("<li class='row' style='text-align: center'><h1>暂时还没有此类问题哦!</h1></li>");
-            }
+            getdata(data);
         }
     })
 }
@@ -215,26 +126,7 @@ function findpsychic() {
             $("#qtag").empty();
             $("#qtag").append("心理问题")
             $("#qlist").empty();
-            if (data.length > 0) {
-                $("#havemore").empty();
-                $("#havemore").append("<nav aria-label='Page navigation' style='text-align: center'><ul class='pagination' id='qpage'></ul></nav>");
-                $("#qpage").append("<li class='disabled'><a href='#' aria-label='Previous'><span aria-hidden='true'>&laquo;</span></a></li>");
-                for (var i = 0; i < (data.length / 10); i++) {
-                    $("#qpage").append("<li id='qpage" + (i + 1) + "'><a href=javascript:void(0)' onclick='changepage(" + (i + 1) + ")'>" + (i + 1) + "</a></li>");
-                }
-                $("#qpage").append("<li class='disabled'><a href='#' aria-label='Next'><span aria-hidden='true'>&raquo;</span></a></li>");
-
-                for (var i = 0; i < data.length && i < 10; i++) {
-                    if (data[i].adopt == 0) {
-                        $("#qlist").append("<li class='row'><div class='col-md-7 col-sm-9 col-xs-12'><div class='avatar pull-left'><span>" + data[i].uname + "</span></div><h2><a href='to_reply?qid=" + data[i].qid + "'>" + data[i].qtitle + "</a><br /><small class='hidden-xs'><span>" + data[i].time + "</span></small><small class='visible-xs-inline'><span>" + data[i].time + "</span></small></h2></div><div class='col-md-2 hidden-sm hidden-xs stats'><span class='human-readable-number'>" + data[i].type + "</span><br /><small>分类</small></div><div class='col-md-3 col-sm-3 teaser hidden-xs'><div class='card' style='padding-top: 15px'><span class='glyphicon glyphicon-question-sign'></span> 待解决<br /></div></div></li>");
-                    } else {
-                        $("#qlist").append("<li class='row'><div class='col-md-7 col-sm-9 col-xs-12'><div class='avatar pull-left'><span>" + data[i].uname + "</span></div><h2><a href='to_reply?qid=" + data[i].qid + "'>" + data[i].qtitle + "</a><br /><small class='hidden-xs'><span>" + data[i].time + "</span></small><small class='visible-xs-inline'><span>" + data[i].time + "</span></small></h2></div><div class='col-md-2 hidden-sm hidden-xs stats'><span class='human-readable-number'>" + data[i].type + "</span><br /><small>分类</small></div><div class='col-md-3 col-sm-3 teaser hidden-xs'><div class='card' style='padding-top: 15px'><span class='glyphicon glyphicon-ok-sign'></span> 已解决<br /></div></div></li>");
-                    }
-                }
-            } else {
-                $("#havemore").empty();
-                $("#qlist").append("<li class='row' style='text-align: center'><h1>暂时还没有此类问题哦!</h1></li>");
-            }
+            getdata(data);
         }
     })
 }
@@ -251,26 +143,7 @@ function findspirit() {
             $("#qtag").empty();
             $("#qtag").append("精神问题")
             $("#qlist").empty();
-            if (data.length > 0) {
-                $("#havemore").empty();
-                $("#havemore").append("<nav aria-label='Page navigation' style='text-align: center'><ul class='pagination' id='qpage'></ul></nav>");
-                $("#qpage").append("<li class='disabled'><a href='#' aria-label='Previous'><span aria-hidden='true'>&laquo;</span></a></li>");
-                for (var i = 0; i < (data.length / 10); i++) {
-                    $("#qpage").append("<li id='qpage" + (i + 1) + "'><a href=javascript:void(0)' onclick='changepage(" + (i + 1) + ")'>" + (i + 1) + "</a></li>");
-                }
-                $("#qpage").append("<li class='disabled'><a href='#' aria-label='Next'><span aria-hidden='true'>&raquo;</span></a></li>");
-
-                for (var i = 0; i < data.length && i < 10; i++) {
-                    if (data[i].adopt == 0) {
-                        $("#qlist").append("<li class='row'><div class='col-md-7 col-sm-9 col-xs-12'><div class='avatar pull-left'><span>" + data[i].uname + "</span></div><h2><a href='to_reply?qid=" + data[i].qid + "'>" + data[i].qtitle + "</a><br /><small class='hidden-xs'><span>" + data[i].time + "</span></small><small class='visible-xs-inline'><span>" + data[i].time + "</span></small></h2></div><div class='col-md-2 hidden-sm hidden-xs stats'><span class='human-readable-number'>" + data[i].type + "</span><br /><small>分类</small></div><div class='col-md-3 col-sm-3 teaser hidden-xs'><div class='card' style='padding-top: 15px'><span class='glyphicon glyphicon-question-sign'></span> 待解决<br /></div></div></li>");
-                    } else {
-                        $("#qlist").append("<li class='row'><div class='col-md-7 col-sm-9 col-xs-12'><div class='avatar pull-left'><span>" + data[i].uname + "</span></div><h2><a href='to_reply?qid=" + data[i].qid + "'>" + data[i].qtitle + "</a><br /><small class='hidden-xs'><span>" + data[i].time + "</span></small><small class='visible-xs-inline'><span>" + data[i].time + "</span></small></h2></div><div class='col-md-2 hidden-sm hidden-xs stats'><span class='human-readable-number'>" + data[i].type + "</span><br /><small>分类</small></div><div class='col-md-3 col-sm-3 teaser hidden-xs'><div class='card' style='padding-top: 15px'><span class='glyphicon glyphicon-ok-sign'></span> 已解决<br /></div></div></li>");
-                    }
-                }
-            } else {
-                $("#havemore").empty();
-                $("#qlist").append("<li class='row' style='text-align: center'><h1>暂时还没有此类问题哦!</h1></li>");
-            }
+            getdata(data);
         }
     })
 }
@@ -288,28 +161,32 @@ function findtitle() {
             $("#qtag").empty();
             $("#qtag").append($("#sqtitle").val() + "的查询结果")
             $("#qlist").empty();
-            if (data.length > 0) {
-                $("#havemore").empty();
-                $("#havemore").append("<nav aria-label='Page navigation' style='text-align: center'><ul class='pagination' id='qpage'></ul></nav>");
-                $("#qpage").append("<li class='disabled'><a href='#' aria-label='Previous'><span aria-hidden='true'>&laquo;</span></a></li>");
-                for (var i = 0; i < (data.length / 10); i++) {
-                    $("#qpage").append("<li id='qpage" + (i + 1) + "'><a href=javascript:void(0)' onclick='changepage(" + (i + 1) + ")'>" + (i + 1) + "</a></li>");
-                }
-                $("#qpage").append("<li class='disabled'><a href='#' aria-label='Next'><span aria-hidden='true'>&raquo;</span></a></li>");
-
-                for (var i = 0; i < data.length && i < 10; i++) {
-                    if (data[i].adopt == 0) {
-                        $("#qlist").append("<li class='row'><div class='col-md-7 col-sm-9 col-xs-12'><div class='avatar pull-left'><span>" + data[i].uname + "</span></div><h2><a href='to_reply?qid=" + data[i].qid + "'>" + data[i].qtitle + "</a><br /><small class='hidden-xs'><span>" + data[i].time + "</span></small><small class='visible-xs-inline'><span>" + data[i].time + "</span></small></h2></div><div class='col-md-2 hidden-sm hidden-xs stats'><span class='human-readable-number'>" + data[i].type + "</span><br /><small>分类</small></div><div class='col-md-3 col-sm-3 teaser hidden-xs'><div class='card' style='padding-top: 15px'><span class='glyphicon glyphicon-question-sign'></span> 待解决<br /></div></div></li>");
-                    } else {
-                        $("#qlist").append("<li class='row'><div class='col-md-7 col-sm-9 col-xs-12'><div class='avatar pull-left'><span>" + data[i].uname + "</span></div><h2><a href='to_reply?qid=" + data[i].qid + "'>" + data[i].qtitle + "</a><br /><small class='hidden-xs'><span>" + data[i].time + "</span></small><small class='visible-xs-inline'><span>" + data[i].time + "</span></small></h2></div><div class='col-md-2 hidden-sm hidden-xs stats'><span class='human-readable-number'>" + data[i].type + "</span><br /><small>分类</small></div><div class='col-md-3 col-sm-3 teaser hidden-xs'><div class='card' style='padding-top: 15px'><span class='glyphicon glyphicon-ok-sign'></span> 已解决<br /></div></div></li>");
-                    }
-                }
-            } else {
-                $("#havemore").empty();
-                $("#qlist").append("<li class='row' style='text-align: center'><h1>暂时还没有此类问题哦!</h1></li>");
-            }
+            getdata(data);
         }
     })
+}
+
+function getdata (data){
+    if (data.length > 0) {
+        $("#havemore").empty();
+        $("#havemore").append("<nav aria-label='Page navigation' style='text-align: center'><ul class='pagination' id='qpage'></ul></nav>");
+        $("#qpage").append("<li class='disabled'><a href='#' aria-label='Previous'><span aria-hidden='true'>&laquo;</span></a></li>");
+        for (var i = 0; i < (data.length / 10); i++) {
+            $("#qpage").append("<li id='qpage" + (i + 1) + "'><a href=javascript:void(0)' onclick='changepage(" + (i + 1) + ")'>" + (i + 1) + "</a></li>");
+        }
+        $("#qpage").append("<li class='disabled'><a href='#' aria-label='Next'><span aria-hidden='true'>&raquo;</span></a></li>");
+
+        for (var i = 0; i < data.length && i < 10; i++) {
+            if (data[i].adopt == 0) {
+                $("#qlist").append("<li class='row'><div class='col-md-7 col-sm-9 col-xs-12'><div class='avatar pull-left'><span>" + data[i].uname + "</span></div><h2><a href='quiz-detal.html?qid=" + data[i].qid + "'>" + data[i].qtitle + "</a><br /><small class='hidden-xs'><span>" + data[i].time + "</span></small><small class='visible-xs-inline'><span>" + data[i].time + "</span></small></h2></div><div class='col-md-2 hidden-sm hidden-xs stats'><span class='human-readable-number'>" + data[i].type + "</span><br /><small>分类</small></div><div class='col-md-3 col-sm-3 teaser hidden-xs'><div class='card' style='padding-top: 15px'><span class='glyphicon glyphicon-question-sign'></span> 待解决<br /></div></div></li>");
+            } else {
+                $("#qlist").append("<li class='row'><div class='col-md-7 col-sm-9 col-xs-12'><div class='avatar pull-left'><span>" + data[i].uname + "</span></div><h2><a href='quiz-detal.html?qid=" + data[i].qid + "'>" + data[i].qtitle + "</a><br /><small class='hidden-xs'><span>" + data[i].time + "</span></small><small class='visible-xs-inline'><span>" + data[i].time + "</span></small></h2></div><div class='col-md-2 hidden-sm hidden-xs stats'><span class='human-readable-number'>" + data[i].type + "</span><br /><small>分类</small></div><div class='col-md-3 col-sm-3 teaser hidden-xs'><div class='card' style='padding-top: 15px'><span class='glyphicon glyphicon-ok-sign'></span> 已解决<br /></div></div></li>");
+            }
+        }
+    } else {
+        $("#havemore").empty();
+        $("#qlist").append("<li class='row' style='text-align: center'><h1>暂时还没有此类问题哦!</h1></li>");
+    }
 }
 
 function changepage(number) {
@@ -331,11 +208,11 @@ function changepage(number) {
             $("#qlist").empty();
             for (var i = (number - 1) * 10; i < data.length && i < 10 * number; i++) {
                 if (data[i].adopt == 0) {
-                    $("#qlist").append("<li class='row'><div class='col-md-7 col-sm-9 col-xs-12'><div class='avatar pull-left'><span>" + data[i].uname + "</span></div><h2><a href='to_reply?qid=" + data[i].qid + "'>" + data[i].qtitle + "</a><br /><small class='hidden-xs'><span>" + data[i].time + "</span></small><small class='visible-xs-inline'><span>" + data[i].time + "</span></small></h2></div><div class='col-md-2 hidden-sm hidden-xs stats'><span class='human-readable-number'>" + data[i].type + "</span><br /><small>分类</small></div><div class='col-md-3 col-sm-3 teaser hidden-xs'><div class='card' style='padding-top: 15px'><span class='glyphicon glyphicon-question-sign'></span> 待解决<br /></div></div></li>");
+                    $("#qlist").append("<li class='row'><div class='col-md-7 col-sm-9 col-xs-12'><div class='avatar pull-left'><span>" + data[i].uname + "</span></div><h2><a href='quiz-detal.html?qid=" + data[i].qid + "'>" + data[i].qtitle + "</a><br /><small class='hidden-xs'><span>" + data[i].time + "</span></small><small class='visible-xs-inline'><span>" + data[i].time + "</span></small></h2></div><div class='col-md-2 hidden-sm hidden-xs stats'><span class='human-readable-number'>" + data[i].type + "</span><br /><small>分类</small></div><div class='col-md-3 col-sm-3 teaser hidden-xs'><div class='card' style='padding-top: 15px'><span class='glyphicon glyphicon-question-sign'></span> 待解决<br /></div></div></li>");
                 } else {
-                    $("#qlist").append("<li class='row'><div class='col-md-7 col-sm-9 col-xs-12'><div class='avatar pull-left'><span>" + data[i].uname + "</span></div><h2><a href='to_reply?qid=" + data[i].qid + "'>" + data[i].qtitle + "</a><br /><small class='hidden-xs'><span>" + data[i].time + "</span></small><small class='visible-xs-inline'><span>" + data[i].time + "</span></small></h2></div><div class='col-md-2 hidden-sm hidden-xs stats'><span class='human-readable-number'>" + data[i].type + "</span><br /><small>分类</small></div><div class='col-md-3 col-sm-3 teaser hidden-xs'><div class='card' style='padding-top: 15px'><span class='glyphicon glyphicon-ok-sign'></span> 已解决<br /></div></div></li>");
+                    $("#qlist").append("<li class='row'><div class='col-md-7 col-sm-9 col-xs-12'><div class='avatar pull-left'><span>" + data[i].uname + "</span></div><h2><a href='quiz-detal.html?qid=" + data[i].qid + "'>" + data[i].qtitle + "</a><br /><small class='hidden-xs'><span>" + data[i].time + "</span></small><small class='visible-xs-inline'><span>" + data[i].time + "</span></small></h2></div><div class='col-md-2 hidden-sm hidden-xs stats'><span class='human-readable-number'>" + data[i].type + "</span><br /><small>分类</small></div><div class='col-md-3 col-sm-3 teaser hidden-xs'><div class='card' style='padding-top: 15px'><span class='glyphicon glyphicon-ok-sign'></span> 已解决<br /></div></div></li>");
                 }
-        }
+    }
         }
     })
 }
