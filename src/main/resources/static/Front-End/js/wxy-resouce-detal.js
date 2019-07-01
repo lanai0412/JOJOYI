@@ -37,6 +37,26 @@ window.onload = function () {
             console.log('请求失败！');
         },
     })
+
+    $("#addShopCar").click(function() {
+        $.ajax({
+            url:"../admin_exita",
+            type: 'post',
+            dataType: 'json',
+            success:function(data) {
+                addShopingCar();
+            },
+            error:function() {
+                alert("请先登录!");
+            }
+        })
+    })
+
+}
+
+
+function addShopingCar() {
+
 }
 
 function getQueryString(name) {
