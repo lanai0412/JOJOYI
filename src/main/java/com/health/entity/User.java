@@ -21,5 +21,4 @@ public class User implements Serializable {
     private String email;
     private String aboutme;
     private String signature;
-    private Integer istop;
 }

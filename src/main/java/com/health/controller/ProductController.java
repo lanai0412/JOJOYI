@@ -17,7 +17,7 @@ public class ProductController {
 
     @Autowired
     private ProductService productService;
-    @RequestMapping("palll")
+    @RequestMapping("pall")
     @ResponseBody
     public List<Product> findAll(){
         return productService.findAll();

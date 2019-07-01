@@ -159,4 +159,11 @@ public class UserController {
     public int countByuid(){
         return  userService.CountByUid();
     }
+    @RequestMapping("find_username")
+    @ResponseBody
+    public List<User> findByUserName(String uname){
+        List<User> list = userService.findByUserName(uname);
+        return list;
+    }
+
 }
