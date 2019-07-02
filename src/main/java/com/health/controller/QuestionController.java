@@ -109,4 +109,16 @@ public class QuestionController {
 
     }
 
+    @RequestMapping("delete")
+    @ResponseBody
+    public int delete(Integer id){
+        boolean isok = questionService.delete(id);
+        if (isok){
+            return 200;
+        }else{
+            return 400;
+        }
+
+    }
+
 }

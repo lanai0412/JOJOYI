@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -22,26 +23,63 @@ public class ProductController {
 
     @RequestMapping("pall")
     @ResponseBody
-    public List<Product> findAll(){
+    public List<Product> findAll() {
         return productService.findAll();
     }
 
     @RequestMapping("findProductById")
     @ResponseBody
-    public Product findById(@RequestParam("id") Integer pid){
+    public Product findById(@RequestParam("id") Integer pid) {
         return productService.findById(pid);
     }
 
     @RequestMapping("findByPname")
     @ResponseBody
-    public List<Product> findByPname(@RequestParam("pname") String pname){
+    public List<Product> findByPname(@RequestParam("pname") String pname) {
         return productService.findByPname(pname);
     }
 
     @RequestMapping("count_product")
     @ResponseBody
-    private int count(){
+    private int count() {
         return productService.count();
     }
+
+    @RequestMapping("p_delete")
+    @ResponseBody
+    public int p_delete(Integer pid) {
+        boolean isok = productService.delete(pid);
+        if (isok) {
+            return 200;
+        } else {
+            return 400;
+        }
+    }
+
+    @RequestMapping("p_save")
+    @ResponseBody
+    public String  save(String pname, String introduction, Double price, String sort, Integer volume, String purl) {
+
+        Product product = new Product();
+//        Date date = new Date();
+//        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+//        String format = dateFormat.format(date);
+        product.setPid(0);
+        product.setPname(pname);
+        product.setIntroduction(introduction);
+        product.setRtime(new Date());
+        product.setPrice(price);
+        product.setSort(sort);
+        product.setVolume(volume);
+        product.setPurl(purl);
+       boolean isok = productService.save(product);
+        if (isok) {
+            return "上传成功";
+      } else {
+            return "上传失败";
+       }
+    }
+
+
 
 }

@@ -18,5 +18,4 @@ public class Reply  implements Serializable {
     private String content;
     private Integer qid;
     private String uname;
-
 }
