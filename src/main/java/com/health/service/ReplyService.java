@@ -18,4 +18,7 @@ public interface ReplyService {
     public boolean delete(Integer rid);
 
     int count();
+
+    Reply findByRid(Integer rid);
+    List<Reply> findByQid(Integer qid);
 }

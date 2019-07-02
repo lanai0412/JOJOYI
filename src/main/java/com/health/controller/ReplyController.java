@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import javax.servlet.http.HttpSession;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 @Controller
 public class ReplyController {
@@ -39,4 +40,19 @@ public class ReplyController {
         return 400;
     }
 
+    @RequestMapping("find_replys")
+    @ResponseBody
+    public List<Reply> findAll(Integer qid) {
+
+        return replyService.findByQid(qid);
+
+    }
+
+    @RequestMapping("detail_reply")
+    @ResponseBody
+    public Reply findQuestionByQid(Integer rid) {
+
+        return replyService.findByRid(rid);
+
+    }
 }
