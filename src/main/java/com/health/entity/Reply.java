@@ -18,5 +18,6 @@ public class Reply  implements Serializable {
     private String content;
     private Integer qid;
     private String uname;
-
+    private String psrc;
+    private String rtime;
 }

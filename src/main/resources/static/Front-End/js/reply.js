@@ -49,3 +49,32 @@ window.onload = function () {
     })
 }
 
+function reportreply(){
+    alert("举报成功，请耐心等待客服处理！");
+    $('#report').modal('hide');
+}
+
+$("#reply-add").click(function () {
+    if ($("#qcontent").val() == null || $("#qcontent").val() == "") {
+        alert("内容不能为空！");
+        return false;
+    } else {
+        $.ajax({
+            data: {
+                content: $("#qcontent").val(),
+                qid: $.getUrlParam('qid'),
+            },
+            url: "../add_reply",
+            type: "POST",
+            dataType: "json",
+            success: function (data) {
+                if (data != 400) {
+                    alert("回复成功！");
+                    location.reload();
+                } else {
+                    alert("回复失败！");
+                }
+            }
+        })
+    }
+})
