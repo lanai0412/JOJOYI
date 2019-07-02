@@ -20,4 +20,7 @@ public class ShoppingCar implements Serializable {
     private Integer userId;
     private Integer productNum;
     private Integer productState;
+    private String  productUrl;
+    private String productName;
+    private Double productPrice;
 }
