@@ -18,6 +18,8 @@ public class ProductController {
 
     @Autowired
     private ProductService productService;
+
+
     @RequestMapping("pall")
     @ResponseBody
     public List<Product> findAll(){
@@ -42,4 +44,6 @@ public class ProductController {
     public List<Product> findByPname(@RequestParam("pname") String pname){
         return productService.findByPname(pname);
     }
+
+
 }

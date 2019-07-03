@@ -18,6 +18,7 @@ public class ShoppingCarController {
     @Autowired
     private ShoppingCarService shoppingCarService;
 
+
     @RequestMapping("findShoppingByUser")
     @ResponseBody
     public List<ShoppingCar> findByUser(@RequestParam("userId") Integer userId) {
@@ -46,4 +47,14 @@ public class ShoppingCarController {
             return 400;
         }
     }
+
+
+    @RequestMapping("deleteById")
+    @ResponseBody
+    public int deleteById(@RequestParam("productId") Integer productId) {
+        System.out.println(productId);
+        boolean i = shoppingCarService.delete(productId);
+        return i == true ? 200 : 400;
+    }
+
 }

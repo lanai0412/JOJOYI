@@ -45,7 +45,7 @@
                     </li>
                     <li>
                         <a href="resource-index.html">
-                            资料中心
+                            产品中心
                         </a>
                     </li>
                     <li>
@@ -68,7 +68,7 @@
                             关于我们
                         </a>
                     </li>
-                    <li class="dropdown"  id="success_login">
+                    <li class="dropdown" id="success_login">
                         <a href="#" data-toggle="modal" data-target="#login">
                             登录
                         </a>
@@ -80,13 +80,14 @@
                     </li>
 
                     <!--登录成功后显示的个人信息下拉菜单-->
-                    <li class="dropdown" id="login_success_show" >
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" >
-                        <span  id="login_success_name">
+                    <li class="dropdown" id="login_success_show">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                            aria-expanded="false">
+                            <span id="login_success_name">
 
-                        </span>
+                            </span>
 
-                        <span class="caret">
+                            <span class="caret">
                             </span>
                         </a>
                         <ul class="dropdown-menu">
@@ -128,15 +129,15 @@
 
     <!--banner-->
     <div class="cover">
-        <p class="quiz-title">
+        <p class="quiz-title" style="color: black">
             创造始于问题，有了问题才会思考，有了思考，才有解决问题的方法，才有找到独立思路的可能。 —— 陶行知
         </p>
         <div class="container">
             <form role="search">
                 <div class="form-group">
-                    <input type="text" class="form-control search" placeholder="问题搜索" />
+                    <input type="text" class="form-control search" name="sqtitle" id="sqtitle" placeholder="问题搜索" />
                     <!--搜索按钮-->
-                    <a href="#" class="btn-search">
+                    <a href="javascript:void(0)" onclick="findtitle()" class="btn-search">
                         <span class="glyphicon glyphicon-search">
                         </span>
                     </a>
@@ -153,42 +154,14 @@
                 我要提问
             </button>
 
-            <button class="btn btn-primary new-quiz" id="notLoginBtn">
+            <button class="btn btn-primary new-quiz" id="notLoginBtn" data-toggle="modal" data-target="#login">
                 未登录，无法提问
             </button>
 
             <div class="btn-group pull-right">
-                <button class="btn btn-default dropdown-toggle quiz-sort" data-toggle="dropdown" type="button"
-                    aria-expanded="false">
-                    <span class="visible-sm-inline visible-md-inline visible-lg-inline">
-                        排序
-                    </span>
-                    <!--在手机模式下显示图标-->
-                    <span class="visible-xs-inline">
-                        <span class="glyphicon glyphicon-sort">
-                        </span>
-                    </span>
-                    <span class="caret">
-                    </span>
+                <button class="btn btn-default quiz-screen" data-toggle="dropdown" type="button" aria-expanded="false">
+                    <a href="javascript:void(0)" onclick="findall()">取消筛选</a>
                 </button>
-                <!--排序下拉列表-->
-                <ul class="dropdown-menu pull-right">
-                    <li>
-                        <a href="#">
-                            从新到旧
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                            从旧到新
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                            最多回复
-                        </a>
-                    </li>
-                </ul>
             </div>
             <!--问题筛选按钮-->
             <button class="btn btn-warning pull-right quiz-screen" type="button" data-toggle="collapse"
@@ -198,19 +171,21 @@
             <!--筛选内容框-->
             <div class="collapse" id="collapseScreen">
                 <div class="well clearfix">
+                    <br />
+                    <br />
                     <div class="col-sm-1 col-xs-12 all">
                         是否解决:
                     </div>
                     <div class="col-sm-11 col-xs-12">
                         <ul>
                             <li>
-                                <a href="#">
-                                    是
+                                <a href="javascript:void(0)" onclick="findsolve()">
+                                    已解决
                                 </a>
                             </li>
                             <li>
-                                <a href="#">
-                                    否
+                                <a href="javascript:void(0)" onclick="findnosolve()">
+                                    待解决
                                 </a>
                             </li>
                         </ul>
@@ -220,18 +195,18 @@
                     </div>
                     <div class="col-sm-11 col-xs-12">
                         <ul>
-                            <li class="active">
-                                <a href="#">
+                            <li>
+                                <a href="javascript:void(0)" onclick="findbody()">
                                     身体问题
                                 </a>
                             </li>
                             <li>
-                                <a href="#">
+                                <a href="javascript:void(0)" onclick="findpsychic()">
                                     心理问题
                                 </a>
                             </li>
                             <li>
-                                <a href="#">
+                                <a href="javascript:void(0)" onclick="findspirit()">
                                     精神问题
                                 </a>
                             </li>
@@ -245,19 +220,19 @@
         <!--分割线-->
         <hr />
         <!--标题-->
-        <p>
+        <p id="qtag">
             全部
         </p>
         <!--在线问答列表-->
-        <ul class="quiz-list">
+        <ul class="quiz-list" id="qlist">
             <!--wrap-->
             <li class="row">
                 <!--问题标题信息-->
                 <div class="col-md-7 col-sm-9 col-xs-12">
                     <div class="avatar pull-left">
-                        <span>
-                            你好
-                        </span>
+                        <a href="#" class="pull-left" data-toggle="tooltip" title="王炜">
+                            <img src="http://oqlse9rck.bkt.clouddn.com/avatar.jpg" class="user-img" />
+                        </a>
                     </div>
                     <h2>
                         <a href="quiz-detal.html">
@@ -277,7 +252,7 @@
                     </h2>
                 </div>
                 <!--分类-->
-                <div class="col-md-1 hidden-sm hidden-xs stats">
+                <div class="col-md-2 hidden-sm hidden-xs stats">
                     <span class="human-readable-number">
                         9
                     </span>
@@ -286,34 +261,15 @@
                         分类
                     </small>
                 </div>
-                <!--回答-->
-                <div class="col-md-1 hidden-sm hidden-xs stats">
-                    <span class="human-readable-number">
-                        99
-                    </span>
-                    <br />
-                    <small>
-                        回答
-                    </small>
-                </div>
                 <!--问题是否被解决-->
                 <div class="col-md-3 col-sm-3 teaser hidden-xs">
-                    <div class="card">
+                    <div class="card" style="padding-top: 15px">
                         <span class="glyphicon glyphicon-question-sign"></span> 待解决
-                        <br />
-                        <a href="#">
-                            <i class="icon-hand-up">
-                            </i>
-                            置顶
-                        </a>
                     </div>
                 </div>
             </li>
         </ul>
-        <!--加载更多按钮-->
-        <button class="btn btn-default btn-block btn-load-more" type="submit">
-            加载更多
-        </button>
+        <div id="havemore"></div>
     </div>
 
     <div class="footer">
@@ -322,55 +278,52 @@
 
     <!--弹框——我要提问-->
     <div class="modal" id="new-quiz" tabindex="-1" role="dialog">
-        <form action="qadd.do" method="POST" onsubmit="return authquestion()">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-body new-quiz-body">
-                        <div class="input-wrapper">
-                            <input type="text" placeholder="在此输入您问题的标题..." id="qtitle" name="qtitle"
-                                onblur="authtitle()" />
-                            <!--Error message-->
-                            <span class="animated fadeInRight" style="display: none" id="tip1">
-                                标题不能为空
-                            </span>
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-body new-quiz-body">
+                    <div class="input-wrapper">
+                        <input type="text" placeholder="在此输入您问题的标题..." id="qtitle" name="qtitle" onblur="authtitle()" />
+                        <!--Error message-->
+                        <span class="animated fadeInRight" style="display: none" id="tip1">
+                            标题不能为空
+                        </span>
+                    </div>
+                    <!--编辑器-->
+                    <div id="text-editor" style="height: 250px;"></div>
+                    <input type="hidden" name="qcontent" id="qcontent" value="" />
+                    <div class="radio-wrapper clearfix">
+                        <!--按钮分类-->
+                        <div class="btn-group dropup">
+                            <span class="btn btn-default btn-sm">问题分类：</span>
+                            <select name="type" id="type" class="btn btn-default btn-sm">
+                                <option value="身体问题">身体问题</option>
+                                <option value="心理问题">心理问题</option>
+                                <option value="精神问题">精神问题</option>
+                            </select>
                         </div>
-                        <!--编辑器-->
-                        <div id="text-editor" style="height: 250px;"></div>
-                        <input type="hidden" name="qcontent" id="qcontent" value="" />
-                        <div class="radio-wrapper clearfix">
-                            <!--按钮分类-->
-                            <div class="btn-group dropup">
-                                <span class="btn btn-default btn-sm">问题分类：</span>
-                                <select name="type" id="type" class="btn btn-default btn-sm">
-                                    <option value="身体问题">身体问题</option>
-                                    <option value="心理问题">心理问题</option>
-                                    <option value="精神问题">精神问题</option>
-                                </select>
-                            </div>
-                        </div>
+                    </div>
 
-                    </div>
-                    <div class="modal-footer clearfix">
-                        <!--全屏按钮-->
-                        <a href="#" class="full-screen-btn">
-                            <div class="full-screen pull-left">
-                                <span class="glyphicon glyphicon-chevron-up" id="icon-btn"></span>
-                            </div>
-                        </a>
-                        <button type="button" class="btn btn-default" id="quiz-close">
-                            取消
-                        </button>
-                        <button type="submit" class="btn btn-primary">
-                            提问
-                        </button>
-                    </div>
+                </div>
+                <div class="modal-footer clearfix">
+                    <!--全屏按钮-->
+                    <a href="#" class="full-screen-btn">
+                        <div class="full-screen pull-left">
+                            <span class="glyphicon glyphicon-chevron-up" id="icon-btn"></span>
+                        </div>
+                    </a>
+                    <button type="button" class="btn btn-default" id="quiz-close">
+                        取消
+                    </button>
+                    <button type="button" class="btn btn-primary" id="quiz-add">
+                        提问
+                    </button>
                 </div>
             </div>
-                </form>
-
-
-            </div>
         </div>
+
+
+    </div>
+    </div>
     </div>
 
     <!-- register -->
@@ -394,7 +347,7 @@
 
                     <!--User name-->
                     <div class="input-wrapper">
-                        <input type="text" placeholder="用户名" id="reg_name"/>
+                        <input type="text" placeholder="用户名" id="reg_name" />
                         <!--Error message-->
                         <span class="animated fadeInRight register-username-wrong" id="reg_name_Top">
 
@@ -402,7 +355,7 @@
                     </div>
                     <!--Password-->
                     <div class="input-wrapper">
-                        <input type="password" class="register-password" id="reg_password" placeholder="密码"/>
+                        <input type="password" class="register-password" id="reg_password" placeholder="密码" />
                         <!--显示与隐藏密码-->
                         <a href="javascript:;" class="btn-eye-register">
                             <i class="icon-eye-open" id="icon-eye-register">
@@ -416,7 +369,7 @@
 
                     <!--Phone-->
                     <div class="input-wrapper">
-                        <input type="text" placeholder="电话号码" id="phone"/>
+                        <input type="text" placeholder="电话号码" id="phone" />
                         <!--Error message-->
                         <span class="animated fadeInRight register-email-wrong" id="phone_Top">
 
@@ -424,7 +377,7 @@
                     </div>
                     <!--Email-->
                     <div class="input-wrapper">
-                        <input type="text" placeholder="邮箱" id="email"/>
+                        <input type="text" placeholder="邮箱" id="email" />
                         <!--Error message-->
                         <span class="animated fadeInRight register-email-wrong" id="email_Top">
 
@@ -432,7 +385,7 @@
                     </div>
                     <!--验证码-->
                     <div class="input-wrapper">
-                        <input type="text" placeholder="验证码" id="captcha"/>
+                        <input type="text" placeholder="验证码" id="captcha" />
                         <!--验证码图片-->
                         <button id="get_phone_num" class="btn">获取验证码</button>
                         <!--Error message-->
@@ -517,7 +470,7 @@
                 <div class="modal-body">
                     <!--User name-->
                     <div class="input-wrapper">
-                        <input type="text" placeholder="用户名" id="login_name"/>
+                        <input type="text" placeholder="用户名" id="login_name" />
                         <!--Error message-->
                         <span class="animated fadeInRight login-username-wrong" id="login_name_Top">
 
@@ -525,7 +478,7 @@
                     </div>
                     <div class="input-wrapper">
                         <!--Password-->
-                        <input type="password" placeholder="密码" id="login_password"/>
+                        <input type="password" placeholder="密码" id="login_password" />
                         <!--Error message-->
                         <span class="animated fadeInRight login-password-wrong" id="login_password_Top">
 
@@ -565,7 +518,7 @@
                 <div class="modal-body">
                     <div class="input-wrapper">
                         <!--Email-->
-                        <input type="text" placeholder="电话号码"/>
+                        <input type="text" placeholder="电话号码" />
                         <!--Error message-->
                         <span class="animated fadeInRight find-password-email-wrong" id="phone_Top_z">
 
@@ -573,10 +526,10 @@
                     </div>
                     <div class="input-wrapper">
                         <!--验证码-->
-                        <input type="text" placeholder="验证码" id="captch"/>
+                        <input type="text" placeholder="验证码" id="captch" />
 
                         <!--Error message-->
-                        <span class="animated fadeInRight code-error find-password-code-wrong" id="login_captch" >
+                        <span class="animated fadeInRight code-error find-password-code-wrong" id="login_captch">
 
                         </span>
                     </div>
@@ -605,7 +558,7 @@
                 <div class="modal-body">
                     <div class="input-wrapper">
                         <!--Email-->
-                        <input type="text" placeholder="邮箱"/>
+                        <input type="text" placeholder="邮箱" />
                         <!--Error message-->
                         <span class="animated fadeInRight">
                             请输入正确验证码
@@ -613,7 +566,7 @@
                     </div>
                     <div class="input-wrapper">
                         <!--Password-->
-                        <input type="password" id="set-type-login" placeholder="密码"/>
+                        <input type="password" id="set-type-login" placeholder="密码" />
                         <!--显示与隐藏密码-->
                         <a href="javascript:;" class="btn-eye-login">
                             <i class="icon-eye-open" id="icon-eye-login">
@@ -625,7 +578,7 @@
                         </span>
                     </div>
                     <div class="input-wrapper">
-                        <input type="text" placeholder="请输入6位验证码"/>
+                        <input type="text" placeholder="请输入6位验证码" />
                         <!--发现验证码按钮-->
                         <button class="btn" id="code-btn" type="button">
                             重发验证码

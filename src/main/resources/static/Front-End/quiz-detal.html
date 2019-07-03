@@ -11,6 +11,7 @@
     <link rel="shortcut icon" href="http://oqlse9rck.bkt.clouddn.com/favicon.ico">
     <link href="css/TothingWay.css" rel="stylesheet" />
     <link href="css/exchange.css" rel="stylesheet" />
+    <script src="js/vue.js"></script>
 </head>
 
 <body>
@@ -20,10 +21,10 @@
             <!--导航左半部分-->
             <div class="navbar-header">
                 <!--手机模式导航按钮-->
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false"
-                    aria-controls="navbar">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+                    aria-expanded="false" aria-controls="navbar">
                     <span class="sr-only">
-                       JOJOYI
+                        JOJOYI
                     </span>
                     <span class="icon-bar">
                     </span>
@@ -45,7 +46,7 @@
                     </li>
                     <li>
                         <a href="resource-index.html">
-                            资料中心
+                            产品中心
                         </a>
                     </li>
                     <li>
@@ -68,7 +69,7 @@
                             关于我们
                         </a>
                     </li>
-                    <li class="dropdown"  id="success_login">
+                    <li class="dropdown" id="success_login">
                         <a href="#" data-toggle="modal" data-target="#login">
                             登录
                         </a>
@@ -80,13 +81,14 @@
                     </li>
 
                     <!--登录成功后显示的个人信息下拉菜单-->
-                    <li class="dropdown" id="login_success_show" >
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" >
-                        <span  id="login_success_name">
+                    <li class="dropdown" id="login_success_show">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                            aria-expanded="false">
+                            <span id="login_success_name">
 
-                        </span>
+                            </span>
 
-                        <span class="caret">
+                            <span class="caret">
                             </span>
                         </a>
                         <ul class="dropdown-menu">
@@ -127,13 +129,15 @@
     </nav>
 
     <!--在线问答内容详情-->
-    <div class="container quiz-detal">
+    <div class="container quiz-detal" id="vuetest">
         <!--标题-->
         <h1>
-            如何能够解决，css定位布局中，父容器不能自适应定义absolute的子元素的高度。
+            {{ qtitle }}
             <!--提示问题是否被解决-->
             <span class="tip">
-                <span class="glyphicon glyphicon-question-sign"></span> 待解决
+                <span class="glyphicon"
+                    v-bind:class="{ 'glyphicon-question-sign': nosolved, 'glyphicon-ok-sign': solved }"></span>
+                {{ issolve }}
             </span>
         </h1>
         <!--清楚浮动-->
@@ -141,343 +145,66 @@
             <!--用户头像-->
             <div class="icon pull-left">
                 <a href="#">
-                    <img src="http://oqlse9rck.bkt.clouddn.com/avatar.jpg"/>
+                    <img v-bind:src="psrc" />
                 </a>
             </div>
             <!--用户姓名以及发布时间-->
             <small class="pull-left">
                 <strong>
                     <a href="#">
-                        王炜
+                        {{ uname }}
                     </a>
                 </strong>
-                <div class="visible-xs-inline-block visible-sm-inline-block visible-md-inline-block visible-lg-inline-block">
+                <div
+                    class="visible-xs-inline-block visible-sm-inline-block visible-md-inline-block visible-lg-inline-block">
                     <a class="permalink" href="#">
                         <span class="timeago">
-                            4月之前
+                            {{ time }}
                         </span>
                     </a>
                 </div>
             </small>
         </div>
-        <br/>
+        <br />
         <!--主要内容部分-->
         <div class="content">
-            这里是内容，这里是内容，这里是内容，这里是内容，这里是内容，这里是内容，这里是内容，这里是内容，这里是内容，这里是内容，这里是内容，这里是内容，这里是内容，这里是内容，这里是内容，这里是内容，这里是内容，这里是内容，这里是内容，这里是内容，这里是内容，这里是内容，这里是内容，这里是内容，这里是内容，这里是内容，这里是内容，这里是内容，这里是内容，这里是内容，这里是内容，这里是内容，这里是内容，这里是内容，这里是内容，这里是内容，这里是内容，这里是内容，这里是内容，这里是内容，这里是内容，这里是内容，这里是内容，这里是内容，这里是内容，这里是内容，这里是内容，这里是内容，这里是内容，这里是内容，这里是内容，这里是内容，这里是内容，这里是内容，这里是内容，这里是内容，这里是内容，这里是内容，这里是内容，这里是内容，这里是内容，这里是内容，这里是内容，这里是内容，这里是内容，这里是内容，这里是内容，这里是内容，这里是内容，这里是内容，这里是内容，这里是内容，这里是内容，这里是内容，这里是内容，这里是内容，这里是内容，这里是内容，这里是内容
+            {{ qcontent }}
         </div>
-        <hr/>
+        <hr />
         <!--清清除浮动-->
         <div class="clearfix">
             <div class="buttons pull-right">
                 <!--在线问答信息统计-->
                 <div class="stats hidden-xs">
                     <span>
-                        13
+                        {{ type }}
                     </span>
-                    <br/>
+                    <br />
                     <small>
-                        悬赏
-                    </small>
-                </div>
-                <div class="stats hidden-xs">
-                    <span>
-                        13
-                    </span>
-                    <br/>
-                    <small>
-                        回答
+                        分类
                     </small>
                 </div>
                 <!--在线问答操作按钮-->
-                <button class="btn btn-primary main-btn btn-quiz">
-                    <span class="visible-sm-inline visible-md-inline visible-lg-inline">
-                        回复
-                    </span>
-                    <i class="icon-reply">
-                    </i>
+                <button class="btn btn-primary main-btn" id="reply-btn">
+                    <div id="isLoginBtn">
+                        <span class="visible-sm-inline visible-md-inline visible-lg-inline">
+                            回复
+                        </span>
+                        <i class="icon-reply">
+                        </i>
+                    </div>
+
+                    <div id="notLoginBtn">
+                        <span class="visible-sm-inline visible-md-inline visible-lg-inline">
+                            未登录，无法回复
+                        </span>
+                    </div>
                 </button>
-                <button class="btn btn-primary main-btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <span class="visible-sm-inline visible-md-inline visible-lg-inline">
-                        推荐
-                    </span>
-                    <i class="icon-share-alt">
-                    </i>
-                </button>
-                <!--推荐按钮的下拉菜单-->
-                <ul role="menu" class="dropdown-menu dropdown-sub">
-                    <!--一级菜单-->
-                    <li class="dropdown-submenu">
-                        <a class="firstpart-for-resources" tabindex="-1" href="javascript:;">
-                            开发技术
-                        </a>
-                        <!--二级菜单-->
-                        <ul class="dropdown-menu dropdown-position">
-                            <li>
-                                <a class="secondpart-for-resources" tabindex="-1" href="javascript:;">
-                                    C语言
-                                </a>
-                            </li>
-                            <li>
-                                <a class="secondpart-for-resources" href="javascript:;">
-                                    C#
-                                </a>
-                            </li>
-                            <li>
-                                <a class="secondpart-for-resources" href="javascript:;">
-                                    C++
-                                </a>
-                            </li>
-                            <li>
-                                <a class="secondpart-for-resources" href="javascript:;">
-                                    Java
-                                </a>
-                            </li>
-                            <li>
-                                <a class="secondpart-for-resources" href="javascript:;">
-                                    Python
-                                </a>
-                            </li>
-                            <li>
-                                <a class="secondpart-for-resources" href="javascript:;">
-                                    VB
-                                </a>
-                            </li>
-                            <li>
-                                <a class="secondpart-for-resources" href="javascript:;">
-                                    Delphi
-                                </a>
-                            </li>
-                            <li>
-                                <a class="secondpart-for-resources" href="javascript:;">
-                                    Perl
-                                </a>
-                            </li>
-                            <li>
-                                <a class="secondpart-for-resources" href="javascript:;">
-                                    其他
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                    <!--一级菜单-->
-                    <li class="dropdown-submenu">
-                        <a class="firstpart-for-resources" tabindex="-1" href="javascript:;">
-                            移动开发
-                        </a>
-                        <!--二级菜单-->
-                        <ul class="dropdown-menu dropdown-position">
-                            <li>
-                                <a class="secondpart-for-resources" tabindex="-1" href="javascript:;">
-                                    Android
-                                </a>
-                            </li>
-                            <li>
-                                <a class="secondpart-for-resources" href="javascript:;">
-                                    IOS
-                                </a>
-                            </li>
-                            <li>
-                                <a class="secondpart-for-resources" href="javascript:;">
-                                    JavaMe
-                                </a>
-                            </li>
-                            <li>
-                                <a class="secondpart-for-resources" href="javascript:;">
-                                    WinPhone
-                                </a>
-                            </li>
-                            <li>
-                                <a class="secondpart-for-resources" href="javascript:;">
-                                    Node.js
-                                </a>
-                            </li>
-                            <li>
-                                <a class="secondpart-for-resources" href="javascript:;">
-                                    其他
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                    <!--一级菜单-->
-                    <li class="dropdown-submenu">
-                        <a class="firstpart-for-resources" tabindex="-1" href="javascript:;">
-                            网站建设
-                        </a>
-                        <!--二级菜单-->
-                        <ul class="dropdown-menu dropdown-position">
-                            <li>
-                                <a class="secondpart-for-resources" href="javascript:;">
-                                    HTML+CSS
-                                </a>
-                            </li>
-                            <li>
-                                <a class="secondpart-for-resources" href="javascript:;">
-                                    JavaScript
-                                </a>
-                            </li>
-                            <li>
-                                <a class="secondpart-for-resources" href="javascript:;">
-                                    jQuery
-                                </a>
-                            </li>
-                            <li>
-                                <a class="secondpart-for-resources" href="javascript:;">
-                                    PHP
-                                </a>
-                            </li>
-                            <li>
-                                <a class="secondpart-for-resources" href="javascript:;">
-                                    .Net
-                                </a>
-                            </li>
-                            <li>
-                                <a class="secondpart-for-resources" href="javascript:;">
-                                    J2EE
-                                </a>
-                            </li>
-                            <li>
-                                <a class="secondpart-for-resources" href="javascript:;">
-                                    JSP
-                                </a>
-                            </li>
-                            <li>
-                                <a class="secondpart-for-resources" href="javascript:;">
-                                    AJAX
-                                </a>
-                            </li>
-                            <li>
-                                <a class="secondpart-for-resources" href="javascript:;">
-                                    其他
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                    <!--一级菜单-->
-                    <li class="dropdown-submenu">
-                        <a class="firstpart-for-resources" tabindex="-1" href="javascript:;">
-                            操作系统
-                        </a>
-                        <!--二级菜单-->
-                        <ul class="dropdown-menu dropdown-position">
-                            <li>
-                                <a class="secondpart-for-resources" href="javascript:;">
-                                    Windows
-                                </a>
-                            </li>
-                            <li>
-                                <a class="secondpart-for-resources" href="javascript:;">
-                                    Linux
-                                </a>
-                            </li>
-                            <li>
-                                <a class="secondpart-for-resources" href="javascript:;">
-                                    OS
-                                </a>
-                            </li>
-                            <li>
-                                <a class="secondpart-for-resources" href="javascript:;">
-                                    Unix
-                                </a>
-                            </li>
-                            <li>
-                                <a class="secondpart-for-resources" href="javascript:;">
-                                    桌面系统
-                                </a>
-                            </li>
-                            <li>
-                                <a class="secondpart-for-resources" href="javascript:;">
-                                    其他
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                    <!--一级菜单-->
-                    <li class="dropdown-submenu">
-                        <a class="firstpart-for-resources" tabindex="-1" href="javascript:;">
-                            数据库
-                        </a>
-                        <!--二级菜单-->
-                        <ul class="dropdown-menu dropdown-position">
-                            <li>
-                                <a class="secondpart-for-resources" href="javascript:;">
-                                    Mysql
-                                </a>
-                            </li>
-                            <li>
-                                <a class="secondpart-for-resources" href="javascript:;">
-                                    MongoDB
-                                </a>
-                            </li>
-                            <li>
-                                <a class="secondpart-for-resources" href="javascript:;">
-                                    Oracle
-                                </a>
-                            </li>
-                            <li>
-                                <a class="secondpart-for-resources" href="javascript:;">
-                                    Access
-                                </a>
-                            </li>
-                            <li>
-                                <a class="secondpart-for-resources" href="javascript:;">
-                                    SQLServer
-                                </a>
-                            </li>
-                            <li>
-                                <a class="secondpart-for-resources" href="javascript:;">
-                                    SQLite
-                                </a>
-                            </li>
-                            <li>
-                                <a class="secondpart-for-resources" href="javascript:;">
-                                    其他
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                    <!--一级菜单-->
-                    <li class="dropdown-submenu">
-                        <a class="firstpart-for-resources" tabindex="-1" href="javascript:;">
-                            考试认证
-                        </a>
-                        <!--二级菜单-->
-                        <ul class="dropdown-menu dropdown-position">
-                            <li>
-                                <a class="secondpart-for-resources" href="javascript:;">
-                                    微软认证
-                                </a>
-                            </li>
-                            <li>
-                                <a class="secondpart-for-resources" href="javascript:;">
-                                    思科认证
-                                </a>
-                            </li>
-                            <li>
-                                <a class="secondpart-for-resources" href="javascript:;">
-                                    Oracle认证
-                                </a>
-                            </li>
-                            <li>
-                                <a class="secondpart-for-resources" href="javascript:;">
-                                    华为认证
-                                </a>
-                            </li>
-                            <li>
-                                <a class="secondpart-for-resources" href="javascript:;">
-                                    软考认证
-                                </a>
-                            </li>
-                            <li>
-                                <a class="secondpart-for-resources" href="javascript:;">
-                                    其他
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                </ul>
+
                 <div class="btn-group">
                     <!--更多选项按钮-->
-                    <button class="btn btn-primary main-btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <button class="btn btn-primary main-btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
+                        aria-expanded="false">
                         <span class="glyphicon glyphicon-option-vertical">
                         </span>
                     </button>
@@ -515,13 +242,13 @@
             </div>
             <!--/.buttons-->
         </div>
-        <hr/>
+        <hr />
         <!--清楚浮动-->
         <div class="clearfix">
             <!--用户头像-->
             <div class="icon pull-left">
                 <a href="#">
-                    <img src="http://oqlse9rck.bkt.clouddn.com/avatar.jpg"/>
+                    <img src="http://oqlse9rck.bkt.clouddn.com/avatar.jpg" />
                 </a>
             </div>
             <!--用户姓名及发布时间-->
@@ -531,7 +258,8 @@
                         王炜
                     </a>
                 </strong>
-                <div class="visible-xs-inline-block visible-sm-inline-block visible-md-inline-block visible-lg-inline-block">
+                <div
+                    class="visible-xs-inline-block visible-sm-inline-block visible-md-inline-block visible-lg-inline-block">
                     <a class="permalink" href="#">
                         <span class="timeago">
                             4月之前
@@ -540,7 +268,7 @@
                 </div>
             </small>
         </div>
-        <br/>
+        <br />
         <div class="content">
             这里是回复的内容1这里是回复的内容1这里是回复的内容1这里是回复的内容1这里是回复的内容1这里是回复的内容1这里是回复的内容1这里是回复的内容1这里是回复的内容1这里是回复的内容1这里是回复的内容1这里是回复的内容1这里是回复的内容1这里是回复的内容1这里是回复的内容1这里是回复的内容1这里是回复的内容1这里是回复的内容1这里是回复的内容1这里是回复的内容1这里是回复的内容1这里是回复的内容1这里是回复的内容1这里是回复的内容1这里是回复的内容1
         </div>
@@ -577,7 +305,7 @@
                 <!--二级回复用户头像-->
                 <div class="icon pull-left">
                     <a href="#">
-                        <img src="http://oqlse9rck.bkt.clouddn.com/avatar.jpg"/>
+                        <img src="http://oqlse9rck.bkt.clouddn.com/avatar.jpg" />
                     </a>
                 </div>
                 <!--二级回复用户信息及时间-->
@@ -587,7 +315,8 @@
                             王炜
                         </a>
                     </strong>
-                    <div class="visible-xs-inline-block visible-sm-inline-block visible-md-inline-block visible-lg-inline-block">
+                    <div
+                        class="visible-xs-inline-block visible-sm-inline-block visible-md-inline-block visible-lg-inline-block">
                         <a class="permalink" href="#">
                             <span class="timeago">
                                 4月之前
@@ -596,7 +325,7 @@
                     </div>
                 </small>
             </div>
-            <br/>
+            <br />
             <div class="content">
                 这里是二级回复的内容
             </div>
@@ -629,7 +358,7 @@
                 <!--二级回复用户头像-->
                 <div class="icon pull-left">
                     <a href="#">
-                        <img src="http://oqlse9rck.bkt.clouddn.com/avatar.jpg"/>
+                        <img src="http://oqlse9rck.bkt.clouddn.com/avatar.jpg" />
                     </a>
                 </div>
                 <!--二级回复用户信息及时间-->
@@ -639,7 +368,8 @@
                             王炜
                         </a>
                     </strong>
-                    <div class="visible-xs-inline-block visible-sm-inline-block visible-md-inline-block visible-lg-inline-block">
+                    <div
+                        class="visible-xs-inline-block visible-sm-inline-block visible-md-inline-block visible-lg-inline-block">
                         <a class="permalink" href="#">
                             <span class="timeago">
                                 4月之前
@@ -648,7 +378,7 @@
                     </div>
                 </small>
             </div>
-            <br/>
+            <br />
             <div class="content">
                 这里是二级回复的内容
             </div>
@@ -681,12 +411,12 @@
                 查看全部...
             </a>
         </div>
-        <hr/>
+        <hr />
         <!--用户回复部分。。-->
         <div class="clearfix">
             <div class="icon pull-left">
                 <a href="#">
-                    <img src="http://oqlse9rck.bkt.clouddn.com/avatar.jpg"/>
+                    <img src="http://oqlse9rck.bkt.clouddn.com/avatar.jpg" />
                 </a>
             </div>
             <small class="pull-left">
@@ -695,7 +425,8 @@
                         王炜
                     </a>
                 </strong>
-                <div class="visible-xs-inline-block visible-sm-inline-block visible-md-inline-block visible-lg-inline-block">
+                <div
+                    class="visible-xs-inline-block visible-sm-inline-block visible-md-inline-block visible-lg-inline-block">
                     <a class="permalink" href="#">
                         <span class="timeago">
                             4月之前
@@ -704,11 +435,11 @@
                 </div>
             </small>
         </div>
-        <br/>
+        <br />
         <div class="content">
             这里是回复的内容
         </div>
-         <!--用户回复部分。。-->
+        <!--用户回复部分。。-->
         <div class="clearfix">
             <small class="pull-right post-tools">
                 <a href="#" class="btn-quiz">
@@ -735,12 +466,12 @@
                 </a>
             </small>
         </div>
-        <hr/>
-         <!--用户回复部分。。-->
+        <hr />
+        <!--用户回复部分。。-->
         <div class="clearfix">
             <div class="icon pull-left">
                 <a href="#">
-                    <img src="http://oqlse9rck.bkt.clouddn.com/avatar.jpg"/>
+                    <img src="http://oqlse9rck.bkt.clouddn.com/avatar.jpg" />
                 </a>
             </div>
             <small class="pull-left">
@@ -749,7 +480,8 @@
                         王炜
                     </a>
                 </strong>
-                <div class="visible-xs-inline-block visible-sm-inline-block visible-md-inline-block visible-lg-inline-block">
+                <div
+                    class="visible-xs-inline-block visible-sm-inline-block visible-md-inline-block visible-lg-inline-block">
                     <a class="permalink" href="#">
                         <span class="timeago">
                             4月之前
@@ -758,11 +490,11 @@
                 </div>
             </small>
         </div>
-        <br/>
+        <br />
         <div class="content">
             这里是回复的内容
         </div>
-         <!--用户回复部分。。-->
+        <!--用户回复部分。。-->
         <div class="clearfix">
             <small class="pull-right post-tools">
                 <a href="#" class="btn-quiz">
@@ -789,7 +521,7 @@
                 </a>
             </small>
         </div>
-        <hr/>
+        <hr />
         <!--按钮群组-->
         <div class="clearfix">
             <div class="buttons pull-right">
@@ -797,7 +529,7 @@
                     <span>
                         13
                     </span>
-                    <br/>
+                    <br />
                     <small>
                         悬赏
                     </small>
@@ -806,7 +538,7 @@
                     <span>
                         13
                     </span>
-                    <br/>
+                    <br />
                     <small>
                         回答
                     </small>
@@ -819,7 +551,8 @@
                     </i>
                 </button>
                 <div class="btn-group">
-                    <button class="btn btn-primary main-btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <button class="btn btn-primary main-btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
+                        aria-expanded="false">
                         <span class="glyphicon glyphicon-option-vertical">
                         </span>
                     </button>
@@ -855,7 +588,7 @@
                 </div>
             </div>
         </div>
-        <hr/>
+        <hr />
         <!--分页器-->
         <div class="clearfix">
             <ul class="pagination-sm pagination pull-right" id="pagination">
@@ -921,7 +654,7 @@
     <div class="footer">
         Copyright © 2019.JOJOYI All rights reserved.
     </div>
-    
+
     <!--弹框——回复-->
     <div class="modal" id="new-quiz" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
         <div class="modal-dialog" role="document">
@@ -1015,7 +748,7 @@
 
                     <!--User name-->
                     <div class="input-wrapper">
-                        <input type="text" placeholder="用户名" id="reg_name"/>
+                        <input type="text" placeholder="用户名" id="reg_name" />
                         <!--Error message-->
                         <span class="animated fadeInRight register-username-wrong" id="reg_name_Top">
 
@@ -1023,7 +756,7 @@
                     </div>
                     <!--Password-->
                     <div class="input-wrapper">
-                        <input type="password" class="register-password" id="reg_password" placeholder="密码"/>
+                        <input type="password" class="register-password" id="reg_password" placeholder="密码" />
                         <!--显示与隐藏密码-->
                         <a href="javascript:;" class="btn-eye-register">
                             <i class="icon-eye-open" id="icon-eye-register">
@@ -1037,7 +770,7 @@
 
                     <!--Phone-->
                     <div class="input-wrapper">
-                        <input type="text" placeholder="电话号码" id="phone"/>
+                        <input type="text" placeholder="电话号码" id="phone" />
                         <!--Error message-->
                         <span class="animated fadeInRight register-email-wrong" id="phone_Top">
 
@@ -1045,7 +778,7 @@
                     </div>
                     <!--Email-->
                     <div class="input-wrapper">
-                        <input type="text" placeholder="邮箱" id="email"/>
+                        <input type="text" placeholder="邮箱" id="email" />
                         <!--Error message-->
                         <span class="animated fadeInRight register-email-wrong" id="email_Top">
 
@@ -1053,7 +786,7 @@
                     </div>
                     <!--验证码-->
                     <div class="input-wrapper">
-                        <input type="text" placeholder="验证码" id="captcha"/>
+                        <input type="text" placeholder="验证码" id="captcha" />
                         <!--验证码图片-->
                         <button id="get_phone_num" class="btn">获取验证码</button>
                         <!--Error message-->
@@ -1138,7 +871,7 @@
                 <div class="modal-body">
                     <!--User name-->
                     <div class="input-wrapper">
-                        <input type="text" placeholder="用户名" id="login_name"/>
+                        <input type="text" placeholder="用户名" id="login_name" />
                         <!--Error message-->
                         <span class="animated fadeInRight login-username-wrong" id="login_name_Top">
 
@@ -1146,7 +879,7 @@
                     </div>
                     <div class="input-wrapper">
                         <!--Password-->
-                        <input type="password" placeholder="密码" id="login_password"/>
+                        <input type="password" placeholder="密码" id="login_password" />
                         <!--Error message-->
                         <span class="animated fadeInRight login-password-wrong" id="login_password_Top">
 
@@ -1186,7 +919,7 @@
                 <div class="modal-body">
                     <div class="input-wrapper">
                         <!--Email-->
-                        <input type="text" placeholder="电话号码"/>
+                        <input type="text" placeholder="电话号码" />
                         <!--Error message-->
                         <span class="animated fadeInRight find-password-email-wrong" id="phone_Top_z">
 
@@ -1194,10 +927,10 @@
                     </div>
                     <div class="input-wrapper">
                         <!--验证码-->
-                        <input type="text" placeholder="验证码" id="captch"/>
+                        <input type="text" placeholder="验证码" id="captch" />
 
                         <!--Error message-->
-                        <span class="animated fadeInRight code-error find-password-code-wrong" id="login_captch" >
+                        <span class="animated fadeInRight code-error find-password-code-wrong" id="login_captch">
 
                         </span>
                     </div>
@@ -1226,7 +959,7 @@
                 <div class="modal-body">
                     <div class="input-wrapper">
                         <!--Email-->
-                        <input type="text" placeholder="邮箱"/>
+                        <input type="text" placeholder="邮箱" />
                         <!--Error message-->
                         <span class="animated fadeInRight">
                             请输入正确验证码
@@ -1234,7 +967,7 @@
                     </div>
                     <div class="input-wrapper">
                         <!--Password-->
-                        <input type="password" id="set-type-login" placeholder="密码"/>
+                        <input type="password" id="set-type-login" placeholder="密码" />
                         <!--显示与隐藏密码-->
                         <a href="javascript:;" class="btn-eye-login">
                             <i class="icon-eye-open" id="icon-eye-login">
@@ -1246,7 +979,7 @@
                         </span>
                     </div>
                     <div class="input-wrapper">
-                        <input type="text" placeholder="请输入6位验证码"/>
+                        <input type="text" placeholder="请输入6位验证码" />
                         <!--发现验证码按钮-->
                         <button class="btn" id="code-btn" type="button">
                             重发验证码
@@ -1272,6 +1005,7 @@
     <script src="js/vue.js"></script>
     <script src="js/register.js"></script>
     <script src="js/login.js"></script>
+    <script src="js/reply.js"></script>
 </body>
 
 </html>
