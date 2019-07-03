@@ -98,6 +98,26 @@ function state(id) {
     })
 }
 
-function saveComment() {
-    
+function saveComment(productId) {
+    $("#btn-comment").click(function() {
+        $.ajax({
+
+            url: "../saveComment",
+            type: "POST",
+            dataType: "json",
+            data:{
+                content:$("#textComment").val(),
+                pid:productId
+            },
+            success:function(data) {
+                if(data==200){
+                    alert("评论成功");
+                    location.reload();
+                }
+            },
+            error:function() {
+                console.log("加载出错");
+            }
+        })
+    })
 }
