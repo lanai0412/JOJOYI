@@ -35,7 +35,7 @@ public class AlipayProperties {
         PathMatchingResourcePatternResolver resolver = new PathMatchingResourcePatternResolver();
         try {
             // 加载resource文件(也可以加载resources)
-            Resource resources = resolver.getResource("classpath:others.properties");
+            Resource resources = resolver.getResource("classpath:alipay.properties");
             PropertiesFactoryBean config = new PropertiesFactoryBean();
             config.setLocation(resources);
             config.afterPropertiesSet();

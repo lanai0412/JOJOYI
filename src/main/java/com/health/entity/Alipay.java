@@ -10,6 +10,13 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class Alipay {
+
+    /**
+     * 支付接口
+     * @param alipayBean
+     * @return
+     * @throws AlipayApiException
+     */
     public String pay(AlipayBean alipayBean) throws AlipayApiException {
         // 1、获得初始化的AlipayClient
         String serverUrl = AlipayProperties.getGatewayUrl();
