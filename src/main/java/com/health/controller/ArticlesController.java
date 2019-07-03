@@ -28,6 +28,9 @@ public class ArticlesController {
 
     @GetMapping("atitle/{title}")
     public List<Articles> atitle(@PathVariable("title")String title){
+        if (title.equals("null")||title == null){
+            return articlesService.findAll();
+        }
         return articlesService.findByTitle(title);
     }
 

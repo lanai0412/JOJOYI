@@ -28,6 +28,13 @@ public class ProductController {
         return productService.findAll();
     }
 
+    @RequestMapping("count_product")
+    @ResponseBody
+    private int count(){
+        return productService.count();
+    }
+
+
     @RequestMapping("findProductById")
     @ResponseBody
     public Product findById(@RequestParam("id") Integer pid) {
@@ -40,11 +47,7 @@ public class ProductController {
         return productService.findByPname(pname);
     }
 
-    @RequestMapping("count_product")
-    @ResponseBody
-    private int count() {
-        return productService.count();
-    }
+
 
     @RequestMapping("p_delete")
     @ResponseBody

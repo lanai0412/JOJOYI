@@ -1,8 +1,10 @@
 package com.health;
 
 import com.health.entity.Product;
+import com.health.entity.ShoppingCar;
 import com.health.entity.User;
 import com.health.service.ProductService;
+import com.health.service.ShoppingCarService;
 import com.health.service.QuestionService;
 import com.health.service.UserService;
 import org.junit.Test;
@@ -23,6 +25,9 @@ public class JojoyiApplicationTests {
 
 @Autowired
 private UserService userService;
+    @Autowired
+    private ShoppingCarService shoppingCarService;
+
     @Test
     public void contextLoads() {
         List<User> list = userService.findByUserName("z");
@@ -43,5 +48,23 @@ private UserService userService;
         System.out.println(i);
     }
 
+
+    @Test
+    public void findByUser(){
+        List<ShoppingCar> user = shoppingCarService.findByUser(1);
+        user.forEach(System.out::println);
+    }
+
+    @Test
+    public void ShoppingFindAll(){
+        List<ShoppingCar> list = shoppingCarService.findAll();
+        list.forEach(System.out::println);
+    }
+
+    @Test
+    public void DeleteByProductId(){
+        boolean b = shoppingCarService.delete(13);
+        System.out.println(b);
+    }
 
 }
