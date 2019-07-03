@@ -46,7 +46,7 @@ $(function () {
             $("#icon-btn").addClass("glyphicon-chevron-up");
         }
     });
-    $('.btn-quiz').click(function () {
+    $(document).on('click', '.btn-quiz', function(ev) {
         $('#new-quiz').css('display', 'block');
     });
     $('#quiz-close').click(function () {

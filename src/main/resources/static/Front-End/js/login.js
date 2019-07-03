@@ -181,6 +181,8 @@ $.ajax({
 
             $("#isLoginBtn").css("display", "block");
             $("#notLoginBtn").css("display", "none");
+
+            $("#reply-btn").removeClass().addClass("btn btn-primary main-btn btn-quiz");
         } else {
             $("#login_success_show").css("display", "none");
             $("#success_login").css("display", "block");
@@ -188,6 +190,8 @@ $.ajax({
 
             $("#isLoginBtn").css("display", "none");
             $("#notLoginBtn").css("display", "block");
+
+            $("#reply-btn").removeClass().addClass("btn btn-primary main-btn");
         }
     }
 })

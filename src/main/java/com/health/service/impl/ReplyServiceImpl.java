@@ -1,5 +1,6 @@
 package com.health.service.impl;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.health.dao.ReplyDAO;
 import com.health.entity.Reply;
 import com.health.service.ReplyService;
@@ -43,5 +44,17 @@ public class ReplyServiceImpl implements ReplyService {
     @Override
     public int count() {
         return replyDAO.selectCount(null);
+    }
+
+    @Override
+    public Reply findByRid(Integer rid) {
+        return replyDAO.selectById(rid);
+    }
+
+    @Override
+    public List<Reply> findByQid(Integer qid) {
+        QueryWrapper<Reply> queryWrapper = new QueryWrapper<>();
+        queryWrapper.eq("qid", qid);
+        return replyDAO.selectList(queryWrapper);
     }
 }
