@@ -26,13 +26,7 @@ public class ShoppingCarServiceImpl implements ShoppingCarService {
 
     @Override
     public List<ShoppingCar> findByUser(Integer userid) {
-        QueryWrapper<ShoppingCar> queryWrapper = new QueryWrapper<>();
-        HashMap<String,Object> param = new HashMap<>();
-        param.put("user_id",userid);
-        param.put("product_state","0");
-        queryWrapper.allEq(param);
-        List<ShoppingCar> list = shoppingCarDAO.selectList(queryWrapper);
-        return list;
+        return getShoppingCars(userid, "0");
     }
 
     @Override
@@ -46,4 +40,31 @@ public class ShoppingCarServiceImpl implements ShoppingCarService {
         int i = shoppingCarDAO.deleteById(id);
         return i == 1 ? true : false;
     }
+
+    @Override
+    public List<ShoppingCar> findShoppingByUserId(Integer userid) {
+        QueryWrapper<ShoppingCar> queryWrapper=new QueryWrapper<>();
+        queryWrapper.eq("user_id",userid);
+
+        return shoppingCarDAO.selectList(queryWrapper);
+    }
+
+    @Override
+    public boolean update(ShoppingCar shoppingCar) {
+        int i = shoppingCarDAO.updateById(shoppingCar);
+        return i == 1 ? true : false;
+    }
+
+
+    private List<ShoppingCar> getShoppingCars(Integer userid, String s) {
+        QueryWrapper<ShoppingCar> queryWrapper = new QueryWrapper<>();
+        HashMap<String,Object> param = new HashMap<>();
+        param.put("user_id",userid);
+        param.put("product_state", s);
+        queryWrapper.allEq(param);
+        List<ShoppingCar> list = shoppingCarDAO.selectList(queryWrapper);
+        return list;
+    }
+
+
 }

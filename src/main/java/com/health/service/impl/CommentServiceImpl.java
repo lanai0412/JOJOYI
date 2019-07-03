@@ -1,5 +1,6 @@
 package com.health.service.impl;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.health.dao.CommentDAO;
 import com.health.entity.Comment;
 import com.health.service.CommentService;
@@ -38,5 +39,12 @@ public class CommentServiceImpl implements CommentService {
     public boolean delete(Integer cid) {
         int i = commentDAO.deleteById(cid);
         return i == 1 ? true : false;
+    }
+
+    @Override
+    public List<Comment> findByPid(Integer pid) {
+        QueryWrapper<Comment> queryWrapper=new QueryWrapper<>();
+        queryWrapper.eq("pid",pid);
+        return commentDAO.selectList(queryWrapper);
     }
 }

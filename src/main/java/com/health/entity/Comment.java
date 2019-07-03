@@ -6,7 +6,6 @@ import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 
 import java.io.Serializable;
-import java.util.Date;
 
 /**
  * Created by yaohandong on  2019/6/24 14:29
@@ -17,8 +16,8 @@ public class Comment implements Serializable {
     @TableId(value = "cid",type = IdType.AUTO)
     private Integer cid;
     private String uname;
-    private Date time;
+    private String time;
     private String content;
-    private Integer uid;
+    private String  uurl;
     private Integer pid;
 }

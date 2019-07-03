@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -106,6 +107,55 @@ public class QuestionController {
 
         List<Question> list = (List<Question>) session.getAttribute("qlist");
         return list;
+
+    }
+
+    @RequestMapping("isasker")
+    @ResponseBody
+    public int isasker(HttpServletRequest request, Integer qid) {
+
+        HttpSession session = request.getSession();
+        User user = (User) session.getAttribute("user");
+        if (user != null) {
+            Question question = questionService.findByQid(qid);
+
+            System.out.println("=======================================1");
+            System.out.println(question);
+            System.out.println(question.getAdopt());
+            System.out.println("=======================================2");
+
+            if (question.getAdopt() == 0 && question.getUname().equals(user.getUname())) {
+                return 200;
+            } else {
+                return 400;
+            }
+        }
+
+        return 400;
+    }
+
+    @RequestMapping("adopt_reply")
+    @ResponseBody
+    public int adoptReply(HttpServletRequest request, Integer qid, Integer rid) {
+
+        Question question = questionService.findByQid(qid);
+        question.setAdopt(rid);
+        boolean b = questionService.update(question);
+        if (b) {
+            return 200;
+        }
+
+        return 400;
+    }
+    @RequestMapping("delete")
+    @ResponseBody
+    public int delete(Integer id){
+        boolean isok = questionService.delete(id);
+        if (isok){
+            return 200;
+        }else{
+            return 400;
+        }
 
     }
 

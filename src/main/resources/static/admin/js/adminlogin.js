@@ -169,50 +169,171 @@ $("#btn_uname").click(function () {
 })
 
 $("#submit_password").click(function () {
- var password = $("#pw").val();
- var password_new =$("#pw-new").val();
- var password_confirm=$("#pw-confirm").val();
- if(password_new!=password_confirm){
-     alert("两次密码不一致！");
- }else{
-     $.ajax({
-       data: {
-           password: password,
-           password_new:password_new
-       },
-         url:"../update",
-         type:"POST",
-         dataType:"json",
-         success:function (data) {
-           console.log(data)
-        if(data==200){
-            alert("密码修改成功")
-        }else if(data==500){
-            alert("原密码不正确")
-        }else{
-           alert("密码修改失败")
-        }
-         }
+    var password = $("#pw").val();
+    var password_new = $("#pw-new").val();
+    var password_confirm = $("#pw-confirm").val();
+    if (password_new != password_confirm) {
+        alert("两次密码不一致！");
+    } else {
+        $.ajax({
+            data: {
+                password: password,
+                password_new: password_new
+            },
+            url: "../update",
+            type: "POST",
+            dataType: "json",
+            success: function (data) {
+                console.log(data)
+                if (data == 200) {
+                    alert("密码修改成功")
+                } else if (data == 500) {
+                    alert("原密码不正确")
+                } else {
+                    alert("密码修改失败")
+                }
+            }
 
-     })
- }
+        })
+    }
 });
 
 $.ajax({
-    url:"../pall",
-    type:"GET",
-    dataType:"json",
-    success:function (data) {
-        console.log(data);
+    url: "../pall",
+    type: "GET",
+    dataType: "json",
+    success: function (data) {
         $("#product_all").empty();
-        if(data.length>0){
-            for(var i=0;i<data.length;i++){
-                $("#product_all").append("<tr> <td>" +data[i].pname+" </td> <td>" +data[i].introduction+" </td> <td>"
-                    +data[i].rtime+"</td> <td>" +data[i].price+"</td> <td>" +data[i].sort+"</td> <td>" +data[i].volume+" </td> </tr>" );
+        $("#update_product").empty();
+        if (data.length > 0) {
+            for (var i = 0; i < data.length; i++) {
+                $("#product_all").append("<tr> <td>" + data[i].pname + " </td> <td>" + data[i].introduction + " </td> <td>" + data[i].rtime + "</td> <td>" + data[i].price + "</td> <td>"
+                    + data[i].sort + "</td> <td>" + data[i].volume + " </td><td><button class='btn-danger' onclick='p_delete(" + data[i].pid + ")'>删除</button>  </td> </tr>");
+                $("#update_product").prepend(" <tr><td>" + data[i].pname + "</td><td>" + data[i].rtime + " </td><td>" + data[i].introduction + " </td><td>" + data[i].price + "</td><td>" + data[i].sort + " </td><td>" + data[i].volume + "</td> </tr>");
+
+            }
+        }
+
+    }
+})
+$.ajax({
+    url: "../find_questions",
+    type: "GET",
+    dataType: "json",
+    success: function (data) {
+        $("#question_all").empty();
+        if (data.length > 0) {
+            for (var i = 0; i < data.length; i++) {
+                $("#question_all").append("<tr><td>" + data[i].uname + "</td><td>" + data[i].time + " </td> <td>" + data[i].type + "</td> <td>" +
+                    data[i].qcontent + "</td><td>" + data[i].qtitle + " </td> <td>" + data[i].adopt + "</td> <td><button class='btn-danger' onclick='deletes(" + data[i].qid + ")'>删除</button></td></tr>");
+            }
+        }
+
+    }
+})
+$.ajax({
+    url: "../reply_all",
+    type: "GET",
+    dataType: "json",
+    success: function (data) {
+        $("#reply_all").empty();
+        if (data.length > 0) {
+            for (var i = 0; i < data.length; i++) {
+                $("#reply_all").append(" <tr><td>" + data[i].uname + "</td><td>" + data[i].rtime + "</td><td>" + data[i].content + ""
+                    + "</td><td><button class='btn-danger' onclick='reply_delete(" + data[i].rid + ")'>删除</button></td> </tr>");
             }
         }
 
     }
 })
 
+function deletes(a) {
+    $.ajax({
+        data: {
+            id: a
+        },
+        url: "../delete",
+        type: "POST",
+        dataType: "json",
+        success: function (data) {
+            if (data == 200) {
+                alert("操作成功")
+            } else {
+                alert("操作失败")
+            }
 
+        }
+    })
+
+}
+
+function p_delete(a) {
+    $.ajax({
+        data: {
+            pid: a
+        },
+        url: "../p_delete",
+        type: "POST",
+        dataType: "json",
+        success: function (data) {
+            if (data == 200) {
+                alert("操作成功")
+            } else {
+                alert("操作失败")
+            }
+
+        }
+    })
+}
+
+$("#p_btn").click(function () {
+    var pname = $("#p_name").val();
+    var introduction = $("#introduction").val();
+    var rtime = $("#r_time").val();
+    var price = $("#price").val();
+    var sort = $("#sort").val();
+    var volume = $("#volume").val();
+    var purl = $("#purl").val();
+    console.log(rtime)
+    $.ajax({
+        data: {
+            pname: pname,
+            introduction: introduction,
+            price: price,
+            sort: sort,
+            volume: volume,
+            purl: purl
+        },
+        url: "../p_save",
+        type: "POST",
+        dataType: "text",
+        success: function (data) {
+            location.reload();
+
+            alert(data)
+        }
+
+    })
+})
+
+$("#product_btn").click(function () {
+    $.ajax({
+        data: {
+            pname: $("#product").val()
+        },
+        url: "../findByPname",
+        type: "POST",
+        dataType: "json",
+        success: function (data) {
+            $("#product_all").empty();
+            if (data.length > 0) {
+                for (var i = 0; i < data.length; i++) {
+                    $("#product_all").append("<tr> <td>" + data[i].pname + " </td> <td>" + data[i].introduction + " </td> <td>"
+                        + data[i].rtime + "</td> <td>" + data[i].price + "</td> <td>" + data[i].sort + "</td> <td>" + data[i].volume + " </td><td><button class='btn-danger' onclick='p_delete(" + data[i].pid + ")'>删除</button>  </td> </tr>");
+                }
+            }
+        }
+
+    })
+
+})

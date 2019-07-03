@@ -172,7 +172,6 @@ $.ajax({
         if (data.signature != null) {
             vm.signature = data.signature;
         }
-        console.log(data)
         if (data != 400) {
             $("#login_success_name").text(data.uname);
 

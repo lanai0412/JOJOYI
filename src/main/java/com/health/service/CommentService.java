@@ -16,4 +16,6 @@ public interface CommentService {
     public boolean update(Comment comment);
 
     public boolean delete(Integer cid);
+
+    List<Comment> findByPid(Integer pid);
 }
