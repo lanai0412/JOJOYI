@@ -6,7 +6,7 @@ window.onload = function () {
         success: function (data) { //请求成功后返回的数据会封装在回调函数的第一个参数中
             for (var i = 0; i < data.length; i++) {
                 $("#product_total").append(
-                    "<div class='col-xs-6 col-sm-4 col-md-3 col-ss-6'>" +
+                    "<div class='col-xs-6 col-sm-4 col-md-3 ' style='height: 450px'>" +
                     "<a class='thumbnail' href='resource-detal.html?id=" + data[i].pid + "'>" +
                     "<img src='" + data[i].purl + "'/>" +
                     "<div class='caption'>" +
@@ -49,7 +49,7 @@ window.onload = function () {
                     $("#product_total").empty();
                     for (var i = 0; i < data.length; i++) {
                         $("#product_total").append(
-                            "<div class='col-xs-6 col-sm-4 col-md-3 col-ss-6'>" +
+                            "<div class='col-xs-6 col-sm-4 col-md-3' style='height: 450px'>" +
                             "<a class='thumbnail' href='resource-detal.html?id=" + data[i].pid + "'>" +
                             "<img src='" + data[i].purl + "'/>" +
                             "<div class='caption'>" +
