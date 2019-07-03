@@ -63,4 +63,12 @@ public class ShoppingCarController {
         return i == true ? 200 : 400;
     }
 
+    @RequestMapping("findByUserid")
+    @ResponseBody
+    public List<ShoppingCar> findByUserId(Integer uid){
+        List<ShoppingCar> list = shoppingCarService.findShoppingByUserId(uid);
+        list.forEach(System.out::println);
+        return list;
+    }
+
 }
