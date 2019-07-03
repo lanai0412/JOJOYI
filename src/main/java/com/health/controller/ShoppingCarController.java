@@ -18,27 +18,43 @@ public class ShoppingCarController {
     @Autowired
     private ShoppingCarService shoppingCarService;
 
+
     @RequestMapping("findShoppingByUser")
     @ResponseBody
-    public List<ShoppingCar> findByUser(@RequestParam("userId") Integer userId){
+    public List<ShoppingCar> findByUser(@RequestParam("userId") Integer userId) {
         return shoppingCarService.findByUser(userId);
     }
 
     @RequestMapping("saveShoppingCar")
     @ResponseBody
-    public int saveShoppingCar(@RequestParam("productId") Integer productId,@RequestParam("userId") Integer userId,
-                               @RequestParam("productNum") Integer productNum){
-//        System.out.println("productId"+productId+"userId"+userId+"productNum"+productNum);
+    public int saveShoppingCar(@RequestParam("productId") Integer productId, @RequestParam("userId") Integer userId,
+                               @RequestParam("productNum") Integer productNum,
+                               @RequestParam("producturl") String productUrl,
+                               @RequestParam("productname") String productName,
+                               @RequestParam("productprice") Double productprice) {
         ShoppingCar shoppingCar = new ShoppingCar();
         shoppingCar.setProductId(productId);
         shoppingCar.setUserId(userId);
         shoppingCar.setProductNum(productNum);
         shoppingCar.setProductState(0);
+        shoppingCar.setProductUrl(productUrl);
+        shoppingCar.setProductName(productName);
+        shoppingCar.setProductPrice(productprice);
         boolean b = shoppingCarService.save(shoppingCar);
-        if(b){
+        if (b) {
             return 200;
-        }else {
+        } else {
             return 400;
         }
     }
+
+
+    @RequestMapping("deleteById")
+    @ResponseBody
+    public int deleteById(@RequestParam("productId") Integer productId) {
+        System.out.println(productId);
+        boolean i = shoppingCarService.delete(productId);
+        return i == true ? 200 : 400;
+    }
+
 }

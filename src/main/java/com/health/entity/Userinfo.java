@@ -4,12 +4,12 @@ import com.baomidou.mybatisplus.annotation.TableId;
 import lombok.Data;
 
 @Data
-public class userinfo {
+public class Userinfo {
     @TableId("hid")
     private int hid;
-    private int uname;
-    private int address;
-    private int phone;
+    private String uname;
+    private String address;
+    private String phone;
     private int pid;
     private int number;
 

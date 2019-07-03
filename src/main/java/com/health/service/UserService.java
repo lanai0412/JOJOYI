@@ -25,4 +25,6 @@ public interface UserService {
     public User findById(Integer uid);
 
     public int CountByUid();
+
+    public List<User> findByUserName(String uname);
 }

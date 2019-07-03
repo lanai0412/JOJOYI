@@ -19,12 +19,12 @@ public interface QuestionService {
 
     Question findByQid(Integer qid);
 
-    int count();
-
-
     List<Question> findByAdopt(Integer solve);
 
     List<Question> findByType(String type);
 
     List<Question> findByQtitle(String title);
+
+    int count();
+
 }

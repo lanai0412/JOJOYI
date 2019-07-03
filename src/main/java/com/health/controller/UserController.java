@@ -3,6 +3,7 @@ package com.health.controller;
 import com.google.gson.Gson;
 import com.health.entity.User;
 import com.health.service.UserService;
+import com.health.verification.Verification;
 import com.qiniu.common.QiniuException;
 import com.qiniu.common.Zone;
 import com.qiniu.http.Response;
@@ -10,11 +11,8 @@ import com.qiniu.storage.Configuration;
 import com.qiniu.storage.UploadManager;
 import com.qiniu.storage.model.DefaultPutRet;
 import com.qiniu.util.Auth;
-import com.health.verification.Verification;
-import com.sun.swing.internal.plaf.synth.resources.synth_sv;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
@@ -47,6 +45,8 @@ public class UserController {
     @RequestMapping("user_reg")
     @ResponseBody
     public int save(User user) {
+        user.setPsrc("http://ptolozduu.bkt.clouddn.com/images/arts/lazy.jpg");
+        System.out.println(user);
         boolean isok = userService.save(user);
 
         int msg = 0;
@@ -254,4 +254,11 @@ public class UserController {
     public int countByuid(){
         return  userService.CountByUid();
     }
+    @RequestMapping("find_username")
+    @ResponseBody
+    public List<User> findByUserName(String uname){
+        List<User> list = userService.findByUserName(uname);
+        return list;
+    }
+
 }

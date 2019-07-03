@@ -1,14 +1,14 @@
 package com.health.service;
 
-import com.health.entity.userinfo;
+import com.health.entity.Userinfo;
 
 import java.util.List;
 
 public interface UserinfoService {
 
-    int save(userinfo userinfo);
+    int save(Userinfo userinfo);
 
-    List<userinfo> findByPid(Integer pid);
+    List<Userinfo> findByPid(Integer pid);
 
-    List<userinfo> findAll();
+    List<Userinfo> findAll();
 }

@@ -5,12 +5,11 @@ import com.health.entity.User;
 import com.health.service.QuestionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpSession;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -38,10 +37,15 @@ public class QuestionController {
         User user = (User) session.getAttribute("user");
 
         question.setQid(1);
-        question.setTime(new Date());
+
+        SimpleDateFormat sf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        question.setTime(sf.format(new Date()));
         question.setUname(user.getUname());
         //0表示未采纳，1表示采纳
         question.setAdopt(0);
+
+        question.setPsrc(user.getPsrc());
+
         boolean b = questionService.save(question);
         if (b) {
             return 200;

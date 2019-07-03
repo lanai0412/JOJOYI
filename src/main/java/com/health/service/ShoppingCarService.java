@@ -11,4 +11,5 @@ public interface ShoppingCarService {
     public List<ShoppingCar> findAll();
     public List<ShoppingCar> findByUser(Integer userid);
     public boolean save(ShoppingCar shoppingCar);
+    public boolean delete(Integer id);
 }

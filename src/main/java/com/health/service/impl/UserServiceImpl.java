@@ -5,6 +5,7 @@ import com.health.dao.UserDAO;
 import com.health.entity.User;
 import com.health.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -19,27 +20,36 @@ public class UserServiceImpl implements UserService {
     @Autowired
     private UserDAO userDAO;
 
+    @Autowired
+    private RedisTemplate<Object, Object> redisTemplate;
+
     @Override
     public List<User> findAll() {
-        return userDAO.selectList(null);
+        List<User> user = (List<User>) redisTemplate.opsForValue().get("user");
+        if (user == null) {
+            user = userDAO.selectList(null);
+            redisTemplate.opsForValue().set("user", user);
+        }
+        return user;
     }
 
     @Override
     public boolean save(User user) {
-
+        redisTemplate.opsForValue().set("user", null);
         int i = userDAO.insert(user);
         return i == 1 ? true : false;
     }
 
     @Override
     public boolean update(User user) {
+        redisTemplate.opsForValue().set("user", null);
         int i = userDAO.updateById(user);
         return i == 1 ? true : false;
     }
 
     @Override
     public boolean delete(Integer uid) {
-
+        redisTemplate.opsForValue().set("user", null);
         int i = userDAO.deleteById(uid);
         return i == 1 ? true : false;
     }
@@ -75,5 +85,12 @@ public class UserServiceImpl implements UserService {
     @Override
     public int CountByUid() {
         return userDAO.selectCount(null);
+    }
+
+    @Override
+    public List<User> findByUserName(String uname) {
+        QueryWrapper<User> queryWrapper = new QueryWrapper<>();
+        queryWrapper.like("uname", "%"+uname+"%");
+        return userDAO.selectList(queryWrapper);
     }
 }

@@ -17,4 +17,6 @@ public interface AdminService {
     public boolean delete(Integer aid);
 
     public Admin findByaname(String aname);
+
+    public Admin findByPassword(String password);
 }

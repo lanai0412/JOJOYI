@@ -40,4 +40,10 @@ public class ShoppingCarServiceImpl implements ShoppingCarService {
         int i = shoppingCarDAO.insert(shoppingCar);
         return i == 1 ? true : false;
     }
+
+    @Override
+    public boolean delete(Integer id) {
+        int i = shoppingCarDAO.deleteById(id);
+        return i == 1 ? true : false;
+    }
 }

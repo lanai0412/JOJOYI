@@ -18,7 +18,7 @@ public class Product  implements Serializable {
     private Integer pid;
     private String pname;
     private String introduction;
-    private Date rtime;
+    private String rtime;
     private Double price;
     private String sort;
     private Integer volume;

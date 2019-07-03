@@ -19,7 +19,8 @@ public class Question  implements Serializable {
     private String qtitle;
     private String qcontent;
     private String type;
-    private Date time;
+    private String time;
     private String uname;
     private  Integer adopt;
+    private String psrc;
 }
