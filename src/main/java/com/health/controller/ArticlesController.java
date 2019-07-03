@@ -28,11 +28,19 @@ public class ArticlesController {
 
     @GetMapping("atitle/{title}")
     public List<Articles> atitle(@PathVariable("title")String title){
+        if (title.equals("null")||title == null){
+            return articlesService.findAll();
+        }
         return articlesService.findByTitle(title);
     }
 
     @GetMapping("Type/{type}")
     public List<Articles> ByType(@PathVariable("type")String type){
         return articlesService.findByType(type);
+    }
+
+    @GetMapping("count_aid")
+    public int count(){
+      return  articlesService.Count();
     }
 }

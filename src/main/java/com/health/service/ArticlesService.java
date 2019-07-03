@@ -23,4 +23,6 @@ public interface ArticlesService {
     List<Articles> findByTitle(String title);
 
     List<Articles> findByType(String type);
+
+    int Count();
 }

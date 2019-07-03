@@ -72,4 +72,10 @@ public class QuestionServiceImpl implements QuestionService {
         }
         return questionDAO.selectList(queryWrapper);
     }
+
+    @Override
+    public int count() {
+        questionDAO.selectCount(null);
+        return 0;
+    }
 }

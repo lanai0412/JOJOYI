@@ -248,4 +248,10 @@ public class UserController {
         }
         return psrc;
     }
+
+    @RequestMapping("count_uid")
+    @ResponseBody
+    public int countByuid(){
+        return  userService.CountByUid();
+    }
 }

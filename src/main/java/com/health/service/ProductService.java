@@ -20,4 +20,6 @@ public interface ProductService {
     public Product findById(Integer pid);
 
     public List<Product> findByPname(String name);
+
+    int count();
 }

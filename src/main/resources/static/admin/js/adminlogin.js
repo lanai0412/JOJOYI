@@ -60,7 +60,7 @@ $.ajax({
     type: "GET",
     dataType: "json",
     success: function (data) {
-        console.log(data)
+
         var phone = data.phone;
         if (data != 400) {
             $("#aname").text(data.aname);
@@ -69,5 +69,62 @@ $.ajax({
         } else {
 
         }
+    }
+})
+$.ajax({
+    url:"../count_uid",
+    type:"GET",
+    dataType:"json",
+    success:function (data) {
+
+        $("#total_users").text(data);
+        $("#total_users").css("display","block");
+    }
+
+})
+$.ajax({
+    url:"../count_aid",
+    type:"GET",
+    dataType:"json",
+    success:function (data) {
+
+        $("#total_articles").text(data);
+        $("#total_articles").css("display","block");
+    }
+
+})
+$.ajax({
+    url:"../question_reply",
+    type:"GET",
+    dataType:"json",
+    success:function (data) {
+
+        $("#total_qr").text(data);
+        $("#total_qr").css("display","block");
+    }
+})
+$.ajax({
+    url:"../count_product",
+    type:"GET",
+    dataType:"json",
+    success:function (data) {
+
+        $("#total_product").text(data);
+        $("#total_product").css("display","block");
+    }
+})
+$.ajax({
+    url:"../time",
+    type:"GET",
+    dataType:"text",
+    success:function (data) {
+        $("#new_time1").text(data);
+        $("#new_time1").css("display","block");
+        $("#new_time2").text(data);
+        $("#new_time2").css("display","block");
+        $("#new_time3").text(data);
+        $("#new_time3").css("display","block");
+        $("#new_time4").text(data);
+        $("#new_time4").css("display","block");
     }
 })

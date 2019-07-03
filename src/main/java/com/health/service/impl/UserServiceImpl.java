@@ -71,4 +71,9 @@ public class UserServiceImpl implements UserService {
     public User findById(Integer uid) {
         return userDAO.selectById(uid);
     }
+
+    @Override
+    public int CountByUid() {
+        return userDAO.selectCount(null);
+    }
 }
