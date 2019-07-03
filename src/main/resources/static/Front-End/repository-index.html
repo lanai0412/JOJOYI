@@ -145,7 +145,7 @@
     <!--知识库-->
     <div class="container repository-container">
         <div class="row" id="app">
-            <div class="col-xs-12 col-sm-4" v-for='item in text'>
+            <div class="col-xs-12 col-sm-4  animated fadeInDown" v-for='item in text'>
                 <!--知识库分类-->
                 <figure class="effect-ruby">
                     <img src="http://oqlse9rck.bkt.clouddn.com/repository-list.jpg">
@@ -466,17 +466,17 @@
 
         function searchs(obj) {
             var search = $("#search").val();
+            if (search == '') {
+                search =null;
+            }
+            vm.text = [];
             $.ajax({
                 type: 'get',
                 url: 'http://localhost:8080/atitle/' + search,
                 dataType: 'json',
                 success: function(data) {
-                    console.log(data);
-                    // vm.text = [];
                     vm.text = data;
                     console.log(vm.text);
-                    console.log(vm.text[1].title);
-
                 }
             })
         }
