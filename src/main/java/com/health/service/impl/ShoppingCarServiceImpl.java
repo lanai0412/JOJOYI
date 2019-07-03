@@ -46,4 +46,6 @@ public class ShoppingCarServiceImpl implements ShoppingCarService {
         int i = shoppingCarDAO.deleteById(id);
         return i == 1 ? true : false;
     }
+
+
 }
