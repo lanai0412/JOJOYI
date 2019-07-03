@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class userinfoServiceImpl implements UserinfoService {
+public class UserinfoServiceImpl implements UserinfoService {
 
     @Autowired
     private UserinfoDAO userinfoDAO;

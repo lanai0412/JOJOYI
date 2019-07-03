@@ -3,8 +3,10 @@ package com.health.entity;
 import com.baomidou.mybatisplus.annotation.TableId;
 import lombok.Data;
 
+import java.io.Serializable;
+
 @Data
-public class Userinfo {
+public class Userinfo  implements Serializable {
     @TableId("hid")
     private int hid;
     private String uname;
