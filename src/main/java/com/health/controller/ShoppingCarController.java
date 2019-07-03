@@ -25,6 +25,12 @@ public class ShoppingCarController {
         return shoppingCarService.findByUser(userId);
     }
 
+    @RequestMapping("findShoppingByUserId")
+    @ResponseBody
+    public List<ShoppingCar> findShoppingByUserId(@RequestParam("userId") Integer userId) {
+        return shoppingCarService.findShoppingByUserId(userId);
+    }
+
     @RequestMapping("saveShoppingCar")
     @ResponseBody
     public int saveShoppingCar(@RequestParam("productId") Integer productId, @RequestParam("userId") Integer userId,
