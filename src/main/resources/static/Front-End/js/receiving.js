@@ -34,5 +34,10 @@ function getAllProduct(id) {
             console.log("请求出错")
         }
     })
+}
 
+function ifStata(stata) {
+    if(stata!=0){
+
+    }
 }
