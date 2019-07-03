@@ -43,7 +43,7 @@ function getAllProduct(uid){
                         "</td>"+
                         "<td>" +
                         "<button type='button' class='btn btn-info' onclick='state("+req[i].id+")'>确认收货</button>" +
-                        "<button data-toggle='modal' data-target='#comment' type='button' class='btn btn-warning'>" +
+                        "<button data-toggle='modal' onclick='saveComment("+req[i].productId +")'  data-target='#comment' type='button' class='btn btn-warning'>" +
                         "立即评价" +
                         " </button> </td> </tr>"
                     )
@@ -63,7 +63,7 @@ function getAllProduct(uid){
                         "</td>"+
                         "<td>" +
                         "<button type='button' class='btn btn-info'disabled='disabled' >已完成</button>" +
-                        "<button data-toggle='modal' data-target='#comment' type='button' class='btn btn-warning'>" +
+                        "<button data-toggle='modal' onclick='saveComment("+req[i].productId +")'  data-target='#comment' type='button' class='btn btn-warning'>" +
                         "立即评价" +
                         " </button> </td> </tr>"
                 )
@@ -79,6 +79,45 @@ function getAllProduct(uid){
 
 }
 
-function state(a) {
+function state(id) {
+    $.ajax({
+        url: "../updateId",
+        type: "POST",
+        dataType: "json",
+        data:{
+            id:id
+        },
+        success:function(data) {
+            if(data==200){
+                location.reload();
+            }
+        },
+        error:function() {
+            console.log("加载出错");
+        }
+    })
+}
 
+function saveComment(productId) {
+    $("#btn-comment").click(function() {
+        $.ajax({
+
+            url: "../saveComment",
+            type: "POST",
+            dataType: "json",
+            data:{
+                content:$("#textComment").val(),
+                pid:productId
+            },
+            success:function(data) {
+                if(data==200){
+                    alert("评论成功");
+                    location.reload();
+                }
+            },
+            error:function() {
+                console.log("加载出错");
+            }
+        })
+    })
 }

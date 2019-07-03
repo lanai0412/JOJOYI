@@ -20,23 +20,37 @@ window.onload = function demo() {
     //增加
     $(document).on('click', '.addCss', function (ev) {
         var flag = $(this).prev().val();
+        var rmb = $(this).parent().prev().text();
         $(this).prev().val(parseInt(flag) + 1);
         $(this).parent(".count").next().text($(this).parent(".count").prev().text() * $(this).prev().val());
-        getAll($(this).parent().prev().prev().prev().find(".checkCss"));
+        // getAll($(this).parent().prev().prev().prev().find(".checkCss"));
+        if ($($(this).parent().prev().prev().prev().find(".checkCss")).is(':checked')){
+            price += parseInt(rmb);
+            number +=1;
+            $("#priceTotal").text(price);
+            $("#countTotal").text(number);
+        }
     });
 
     //减少
     $(document).on('click', '.reduceCss', function (ev) {
         var flag = $(this).next().val();
+        var rmb = $(this).parent().prev().text();
         if (flag <= 1) {
-            $(this).next().val(0);
+            $(this).next().val(1);
             $(this).parent(".count").next().text($(this).parent(".count").prev().text() * $(this).next().val())
-
+            return;
         } else {
             $(this).next().val(parseInt(flag) - 1);
             $(this).parent(".count").next().text($(this).parent(".count").prev().text() * $(this).next().val())
         }
-        getAll($(this).parent().prev().prev().prev().find(".checkCss"));
+        // getAll($(this).parent().prev().prev().prev().find(".checkCss"));
+        if ($($(this).parent().prev().prev().prev().find(".checkCss")).is(':checked')){
+            price -= parseInt(rmb);
+            number -=1;
+            $("#priceTotal").text(price);
+            $("#countTotal").text(number);
+        }
     });
 
 
@@ -58,8 +72,8 @@ window.onload = function demo() {
 
 var price = 0;
 var number = 0;
-
-
+var num = [];
+var id = [];
 function getAll(getClass) {
 
     if ($(getClass).is(":checked")) {
@@ -71,31 +85,55 @@ function getAll(getClass) {
         number += parseInt($(getClass).parent().parent().find(".inputCountCss").val());
         $("#priceTotal").text(price);
         $("#countTotal").text(number);
+
+
         console.log($(getClass).parent().parent().find(".getId").val())
 
         // isChecked(($(getClass).parent().parent().find(".inputCountCss").val()),getClass);
     } else {
         //取消选中
-        price = 0;
-        number = 0;
+        price -= parseInt($(getClass).parent().parent().find(".showTotalPrice").text());
+        number -= parseInt($(getClass).parent().parent().find(".inputCountCss").val());
+        $("#priceTotal").text(price);
+        $("#countTotal").text(number);
     }
 }
 
-function isChecked(text,val) {
+
+
+
 
     $("#btn-userinfo").click(function() {
+        var checked = $("input[name='productCheck']:checked");
+        for (var i = 0;i<checked.length;i++){
+            id.push(parseInt($(checked[i]).parent().prev().children().val()));
+            num.push(parseInt($(checked[i]).parent().next().next().next().find("input[class='inputCountCss']").val()));
+        }
         $.ajax({
-            url:"../saveUserinfo",
+            type:'post',
+            url:"../saveuserinfo",
+            dataType:'json',
             data:{
-                uname: $("#userinfo_name").val(),
+                uname:$("#userinfo_name").val(),
                 address:$("#userinfo_address").val(),
-                phone: $("#userinfo_phone").val(),
-                pid: productId,
-                number: numbers
+                phone:$("#userinfo_phone").val(),
+                "id": JSON.stringify(id),
+                "num": JSON.stringify(num),
+            },
+            success:function (data) {
+                console.log("购买成功");
+                var checked = $("input[name='productCheck']:checked");
+                for (var i = 0;i<checked.length;i++){
+                    checked.parent().parent().remove();
+                    price = 0;
+                    number = 0;
+                    $("#priceTotal").text(0);
+                    $("#countTotal").text(0);
+                }
             }
         })
     })
-}
+
 
 
 function deleteById(productId){
