@@ -1,4 +1,4 @@
-package com.health.others;
+package com.health.entity;
 
 public class AlipayBean {
 

@@ -1,10 +1,11 @@
-package com.health.others;
+package com.health.entity;
 
 import com.alibaba.fastjson.JSON;
 import com.alipay.api.AlipayApiException;
 import com.alipay.api.AlipayClient;
 import com.alipay.api.DefaultAlipayClient;
 import com.alipay.api.request.AlipayTradePagePayRequest;
+import com.health.others.AlipayProperties;
 import org.springframework.stereotype.Component;
 
 @Component

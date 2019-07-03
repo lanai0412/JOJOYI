@@ -1,7 +1,7 @@
 package com.health.service;
 
 import com.alipay.api.AlipayApiException;
-import com.health.others.AlipayBean;
+import com.health.entity.AlipayBean;
 
 public interface PayService {
 

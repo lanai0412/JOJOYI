@@ -1,7 +1,7 @@
 package com.health.controller;
 
 import com.alipay.api.AlipayApiException;
-import com.health.others.AlipayBean;
+import com.health.entity.AlipayBean;
 import com.health.service.PayService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;

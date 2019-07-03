@@ -1,8 +1,8 @@
 package com.health.service.impl;
 
 import com.alipay.api.AlipayApiException;
-import com.health.others.Alipay;
-import com.health.others.AlipayBean;
+import com.health.entity.Alipay;
+import com.health.entity.AlipayBean;
 import com.health.service.PayService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
