@@ -1,5 +1,7 @@
 package com.health.controller;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.health.dao.ShoppingCarDAO;
 import com.health.entity.ShoppingCar;
 import com.health.service.ShoppingCarService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +19,9 @@ import java.util.List;
 public class ShoppingCarController {
     @Autowired
     private ShoppingCarService shoppingCarService;
+
+    @Autowired
+    ShoppingCarDAO shoppingCarDAO;
 
 
     @RequestMapping("findShoppingByUser")
@@ -58,9 +63,27 @@ public class ShoppingCarController {
     @RequestMapping("deleteById")
     @ResponseBody
     public int deleteById(@RequestParam("productId") Integer productId) {
-        System.out.println(productId);
         boolean i = shoppingCarService.delete(productId);
         return i == true ? 200 : 400;
+    }
+
+    @RequestMapping("findByUserid")
+    @ResponseBody
+    public List<ShoppingCar> findByUserId(Integer uid) {
+        List<ShoppingCar> list = shoppingCarService.findShoppingByUserId(uid);
+        list.forEach(System.out::println);
+        return list;
+    }
+
+    @RequestMapping("updateId")
+    @ResponseBody
+    public int updateId(@RequestParam("id") Integer id) {
+        QueryWrapper<ShoppingCar> queryWrapper = new QueryWrapper<>();
+        queryWrapper.eq("id", id);
+        ShoppingCar shoppingCar = shoppingCarDAO.selectById(id);
+        shoppingCar.setProductState(2);
+        boolean s = shoppingCarService.update(shoppingCar);
+        return s == true ? 200 : 400;
     }
 
 }

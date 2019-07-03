@@ -44,9 +44,15 @@ public class ShoppingCarServiceImpl implements ShoppingCarService {
     @Override
     public List<ShoppingCar> findShoppingByUserId(Integer userid) {
         QueryWrapper<ShoppingCar> queryWrapper=new QueryWrapper<>();
-        queryWrapper.eq("userid",userid);
+        queryWrapper.eq("user_id",userid);
 
         return shoppingCarDAO.selectList(queryWrapper);
+    }
+
+    @Override
+    public boolean update(ShoppingCar shoppingCar) {
+        int i = shoppingCarDAO.updateById(shoppingCar);
+        return i == 1 ? true : false;
     }
 
 
