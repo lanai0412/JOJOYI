@@ -2,6 +2,7 @@ package com.health.controller;
 
 import com.health.entity.Reply;
 import com.health.entity.User;
+import com.health.others.ReplyComparator;
 import com.health.service.ReplyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -10,6 +11,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpSession;
 import java.text.SimpleDateFormat;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
 
@@ -44,7 +47,12 @@ public class ReplyController {
     @ResponseBody
     public List<Reply> findAll(Integer qid) {
 
-        return replyService.findByQid(qid);
+        List<Reply> list = replyService.findByQid(qid);
+
+        Comparator comparator = new ReplyComparator();
+        Collections.sort(list, comparator);
+
+        return list;
 
     }
 
