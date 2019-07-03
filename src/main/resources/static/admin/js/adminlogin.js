@@ -203,12 +203,14 @@ $.ajax({
     type: "GET",
     dataType: "json",
     success: function (data) {
-
         $("#product_all").empty();
+        $("#update_product").empty();
         if (data.length > 0) {
             for (var i = 0; i < data.length; i++) {
-                $("#product_all").append("<tr> <td>" + data[i].pname + " </td> <td>" + data[i].introduction + " </td> <td>"
-                    + data[i].rtime + "</td> <td>" + data[i].price + "</td> <td>" + data[i].sort + "</td> <td>" + data[i].volume + " </td><td><button class='btn-danger' onclick='p_delete(" + data[i].pid + ")'>删除</button>  </td> </tr>");
+                $("#product_all").append("<tr> <td>" + data[i].pname + " </td> <td>" + data[i].introduction + " </td> <td>" + data[i].rtime + "</td> <td>" + data[i].price + "</td> <td>"
+                    + data[i].sort + "</td> <td>" + data[i].volume + " </td><td><button class='btn-danger' onclick='p_delete(" + data[i].pid + ")'>删除</button>  </td> </tr>");
+                $("#update_product").prepend(" <tr><td>" + data[i].pname + "</td><td>" + data[i].rtime + " </td><td>" + data[i].introduction + " </td><td>" + data[i].price + "</td><td>" + data[i].sort + " </td><td>" + data[i].volume + "</td> </tr>");
+
             }
         }
 
@@ -234,7 +236,6 @@ $.ajax({
     type: "GET",
     dataType: "json",
     success: function (data) {
-        console.log(data)
         $("#reply_all").empty();
         if (data.length > 0) {
             for (var i = 0; i < data.length; i++) {
@@ -305,10 +306,11 @@ $("#p_btn").click(function () {
         },
         url: "../p_save",
         type: "POST",
-        dataType: "json",
+        dataType: "text",
         success: function (data) {
-            $("#p_Top").text(data);
-            $("#p_Top").css("display", "block")
+            location.reload();
+
+            alert(data)
         }
 
     })
@@ -322,7 +324,7 @@ $("#product_btn").click(function () {
         url: "../findByPname",
         type: "POST",
         dataType: "json",
-        success:function (data) {
+        success: function (data) {
             $("#product_all").empty();
             if (data.length > 0) {
                 for (var i = 0; i < data.length; i++) {

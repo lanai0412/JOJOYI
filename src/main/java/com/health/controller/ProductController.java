@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
@@ -61,13 +62,13 @@ public class ProductController {
     public String  save(String pname, String introduction, Double price, String sort, Integer volume, String purl) {
 
         Product product = new Product();
-//        Date date = new Date();
-//        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-//        String format = dateFormat.format(date);
+        Date date = new Date();
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd ");
+        String format = dateFormat.format(date);
         product.setPid(0);
         product.setPname(pname);
         product.setIntroduction(introduction);
-        product.setRtime(new Date());
+        product.setRtime(format);
         product.setPrice(price);
         product.setSort(sort);
         product.setVolume(volume);
