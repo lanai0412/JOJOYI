@@ -8,8 +8,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import java.util.List;
-
 import javax.servlet.http.HttpSession;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -60,6 +58,18 @@ public class ReplyController {
     public Reply findQuestionByQid(Integer rid) {
 
         return replyService.findByRid(rid);
+
+    }
+
+    @RequestMapping("reply_delete")
+    @ResponseBody
+    public String delete(Integer rid){
+        System.out.println(rid);
+        boolean isok = replyService.delete(rid);
+        if(isok){
+           return "操作成功";
+        }
+        return "操作失败";
 
     }
 }

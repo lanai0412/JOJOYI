@@ -34,7 +34,6 @@ public class ProductController {
         return productService.count();
     }
 
-
     @RequestMapping("findProductById")
     @ResponseBody
     public Product findById(@RequestParam("id") Integer pid) {

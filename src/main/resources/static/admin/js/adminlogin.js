@@ -182,10 +182,11 @@ $("#submit_password").click(function () {
             },
             url: "../update",
             type: "POST",
-            dataType: "json",
+            dataType: "text",
             success: function (data) {
                 console.log(data)
                 if (data == 200) {
+                    document.location.href="login.html";
                     alert("密码修改成功")
                 } else if (data == 500) {
                     alert("原密码不正确")
@@ -337,3 +338,20 @@ $("#product_btn").click(function () {
     })
 
 })
+
+function reply_delete(a) {
+    $.ajax({
+        data: {
+            rid: a
+        },
+        url: "../reply_delete",
+        type: "POST",
+        dataType: "text",
+        success: function (data) {
+            location.reload();
+            console.log(data)
+            alert(data)
+        }
+    })
+
+}

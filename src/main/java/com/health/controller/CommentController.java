@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -23,10 +24,11 @@ public class CommentController {
     private CommentService commentService;
     @RequestMapping("save")
     @ResponseBody
-    public String save(String content, Integer pid, HttpSession session){
+    public String save(String content, Integer pid, HttpSession session, HttpServletRequest request){
         Date date=new Date();
         SimpleDateFormat times=new SimpleDateFormat();
         String time = times.format(date);
+        session = request.getSession();
         User user = (User) session.getAttribute("user");
         Comment comment =new Comment();
             comment.setCid(0);
