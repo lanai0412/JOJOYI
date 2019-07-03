@@ -22,32 +22,33 @@ public class CommentController {
 
     @Autowired
     private CommentService commentService;
-    @RequestMapping("save")
+
+    @RequestMapping("saveComment")
     @ResponseBody
-    public String save(String content, Integer pid, HttpSession session, HttpServletRequest request){
-        Date date=new Date();
-        SimpleDateFormat times=new SimpleDateFormat();
+    public int save(String content, Integer pid, HttpSession session, HttpServletRequest request) {
+        Date date = new Date();
+        SimpleDateFormat times = new SimpleDateFormat();
         String time = times.format(date);
         session = request.getSession();
         User user = (User) session.getAttribute("user");
-        Comment comment =new Comment();
-            comment.setCid(0);
-            comment.setContent(content);
-            comment.setTime(time);
-            comment.setUname(user.getUname());
-            comment.setUurl(user.getPsrc());
-            comment.setPid(pid);
-        boolean isok = commentService.save(comment);
-        if(isok){
-            return "评论成功";
-        }
-        return "评论失败";
+        Comment comment = new Comment();
+        comment.setCid(0);
+        comment.setContent(content);
+        comment.setTime(time);
+        comment.setUname(user.getUname());
+        comment.setUurl(user.getPsrc());
+        comment.setPid(pid);
+        boolean i = commentService.save(comment);
+        return i == true ? 200 : 400;
     }
 
 
     @RequestMapping("findByPid")
     @ResponseBody
-    public List<Comment> findByPid(Integer pid){
-        return commentService.findByPid(pid);
+    public List<Comment> findByPid(Integer pid) {
+        System.out.println(pid);
+        List<Comment> list = commentService.findByPid(pid);
+        System.out.println(list);
+        return list;
     }
 }

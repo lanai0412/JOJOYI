@@ -1,5 +1,28 @@
 var getId = getQueryString("id");
 window.onload = function () {
+
+
+    $.ajax({
+        url: "../findByPid",
+        type: 'post',
+        dataType: 'json',
+        data: {
+            pid: getId
+        },
+        success: function (data) {
+            for(var i=0;i<data.length;i++){
+                $("#list-content").append("<div class='media'>" +
+                    "<div class='media-body'>" +
+                    "<h4 class='media-heading'>" +
+                    data[i].uname +
+                    "</h4>" +
+                    data[i].content  +
+                    "</div>" +
+                    "</div>")
+            }
+        },
+    })
+
     $("#subBtn").click(function () {
         if (($("#num_show").val() - 1) <= 1) {
             $("#num_show").val(1);
@@ -44,9 +67,9 @@ window.onload = function () {
             type: 'post',
             dataType: 'json',
             success: function (data) {
-                if (data.uid!=undefined) {
+                if (data.uid != undefined) {
                     addShopingCar(data.uid);
-                }else {
+                } else {
                     alert("请先登录!");
                 }
             },
@@ -77,9 +100,9 @@ function addShopingCar(id) {
             productprice: parseFloat($("#price").text())
         },
         success: function (data) {
-            if(data==200){
+            if (data == 200) {
                 alert("添加成功")
-            }else {
+            } else {
                 alert("添加失败");
             }
         },
@@ -87,6 +110,7 @@ function addShopingCar(id) {
             console.log('添加失败！');
         },
     })
+
 
 
 }
