@@ -43,8 +43,12 @@ public class ShoppingCarServiceImpl implements ShoppingCarService {
 
     @Override
     public List<ShoppingCar> findShoppingByUserId(Integer userid) {
-        return getShoppingCars(userid, "1");
+        QueryWrapper<ShoppingCar> queryWrapper=new QueryWrapper<>();
+        queryWrapper.eq("userid",userid);
+
+        return shoppingCarDAO.selectList(queryWrapper);
     }
+
 
     private List<ShoppingCar> getShoppingCars(Integer userid, String s) {
         QueryWrapper<ShoppingCar> queryWrapper = new QueryWrapper<>();
