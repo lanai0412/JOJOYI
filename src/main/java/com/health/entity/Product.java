@@ -6,7 +6,6 @@ import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 
 import java.io.Serializable;
-import java.util.Date;
 
 /**
  * Created by yaohandong on  2019/6/24 14:26
@@ -18,7 +17,7 @@ public class Product  implements Serializable {
     private Integer pid;
     private String pname;
     private String introduction;
-    private Date rtime;
+    private String rtime;
     private Double price;
     private String sort;
     private Integer volume;

@@ -1,238 +1,467 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 
-	<head>
-		<meta charset="utf-8" />
-		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<title>
-			资源共享平台
-		</title>
-		<link rel="shortcut icon" href="http://oqlse9rck.bkt.clouddn.com/favicon.ico">
-		<link href="css/TothingWay.css" rel="stylesheet" />
-		<link href="css/resource.css" rel="stylesheet" />
-		<link href="css/tch.css" rel="stylesheet" />
-		
-	</head>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>
+        嘉加益保健
+    </title>
+    <link rel="shortcut icon" href="http://oqlse9rck.bkt.clouddn.com/favicon.ico">
+    <link href="css/TothingWay.css" rel="stylesheet" />
+    <link href="css/tch.css" rel="stylesheet" />
+    <link rel="stylesheet" href="css/wxy.css">
+    <link href="css/tch-resource.css" rel="stylesheet" />
+</head>
 
-	<body>
-		<!--导航-->
-		<nav class="navbar navbar-default nav-scroll navbar-fixed-top">
-			<div class="container">
-				<!--导航左半部分-->
-				<div class="navbar-header">
-					<!--logo-->
-					<a class="navbar-brand" href="index.html"></a>
-				</div>
-				<!--导航右半部分-->
-				<div id="navbar" class="navbar-collapse collapse">
-					<ul class="nav navbar-nav navbar-right">
-						<li>
-							<a href="index.html">
-								首页
-							</a>
-						</li>
-						<li class="active">
-							<a href="resource-index.html">
-								产品中心
-							</a>
-						</li>
-						<li>
-							<a href="forum-index.html">
-								交流分享
-							</a>
-						</li>
-						<li>
-							<a href="repository-index.html">
-								知识百科
-							</a>
-						</li>
-						<li>
-							<a href="quiz-index.html">
-								在线问答
-							</a>
-						</li>
-						<li>
-							<a href="about.html" target="_blank">
-								关于我们
-							</a>
-						</li>
-						<!--登录成功后显示的个人信息下拉菜单-->
-						<li class="dropdown">
-							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-								张三
-								<span class="caret">
+<body>
+
+<!--导航-->
+<nav class="navbar navbar-default nav-scroll navbar-fixed-top">
+    <div class="container">
+        <!--导航左半部分-->
+        <div class="navbar-header">
+            <!--手机模式导航按钮-->
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+                    aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">
+                       养生堂
+                    </span>
+                <span class="icon-bar">
+                    </span>
+                <span class="icon-bar">
+                    </span>
+                <span class="icon-bar">
+                    </span>
+            </button>
+            <!--logo-->
+            <a class="navbar-brand" href="index.html"></a>
+        </div>
+        <!--导航右半部分-->
+        <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a href="index.html">
+                        首页
+                    </a>
+                </li>
+                <li class="active">
+                    <a href="resource-index.html">
+                        产品中心
+                    </a>
+                </li>
+                <li>
+                    <a href="repository-index.html">
+                        知识百科
+                    </a>
+                </li>
+                <li>
+                    <a href="quiz-index.html">
+                        在线问答
+                    </a>
+                </li>
+                <li class="dropdown" id="success_login">
+                    <a href="#" data-toggle="modal" data-target="#login">
+                        登录
+                    </a>
+                </li>
+                <li class="register" id="success_register">
+                    <a href="#" data-toggle="modal" data-target="#register">
+                        注册
+                    </a>
+                </li>
+
+                <!--登录成功后显示的个人信息下拉菜单-->
+                <li class="dropdown" id="login_success_show">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                       aria-expanded="false">
+                            <span id="login_success_name">
                             </span>
-							</a>
-							<ul class="dropdown-menu">
-								<li class="dropdown-header">
-									未读消息
-									<span class="badge">
-                                    61
-                                </span>
-								</li>
-								<li>
-									<a href="#">
-										未读消息1
-										<span class="badge">
-                                        2
-                                    </span>
-									</a>
-								</li>
-								<li>
-									<a href="#">
-										未读消息2
-										<span class="badge">
-                                        42
-                                    </span>
-									</a>
-								</li>
-								<li role="separator" class="divider">
-								</li>
-								<li>
-									<a href="#">
-										注销
-									</a>
-								</li>
-							</ul>
-						</li>
-					</ul>
-				</div>
-				<!-- /.nav-collapse -->
-			</div>
-		</nav>
+                        <span class="caret">
+                            </span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <a href="shopcat.html">
+                                购物车
+                            </a>
+                        </li>
+                        <li>
+                            <a href="receiving.html">
+                                订单
+                            </a>
+                        </li>
+                        <li>
+                            <a href="my-data.html">
+                                个人中心
+                            </a>
+                        </li>
+                        <li>
+                            <a href="javascript:exit();">
+                                注销
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        <!-- /.nav-collapse -->
+    </div>
+</nav>
 
-        <!--购物车-->
-		<div class="content content-nav-base shopcart-content">
-			<div class="banner-bg w1200">
-			</div>
-			<div class="cart w1200">
-				<div class="cart-table-th">
-					<div class="th th-chk">
-						<div class="select-all">
-							<div class="cart-checkbox">
-								<input class="check-all check" id="allCheckked" type="checkbox" value="true">
-							</div>
-							<label>&nbsp;&nbsp;全选</label>
-						</div>
-					</div>
-					<div class="th th-item">
-						<div class="th-inner">商品</div>
-					</div>
-					<div class="th th-price">
-						<div class="th-inner">单价</div>
-					</div>
-					<div class="th th-amount">
-						<div class="th-inner">数量</div>
-					</div>
-					<div class="th th-sum">
-						<div class="th-inner">小计</div>
-					</div>
-					<div class="th th-op">
-						<div class="th-inner">操作</div>
-					</div>
-				</div>
-				<div class="OrderList">
-					<div class="order-content" id="list-cont">
-						
-						<ul class="item-content layui-clear" >
-							<li class="th th-chk">
-								<div class="select-all">
-									<div class="cart-checkbox">
-										<input class="CheckBoxShop check" id="" type="checkbox" num="all" name="select-all" value="true">
-									</div>
-								</div>
-							</li>
-							<li class="th th-item">
-								<div class="item-cont">
-									<a href="javascript:;"><img src="../images/产品2.jpg" alt=""></a>
-									<div class="text">
-										<div class="title">商品名字</div>
-									</div>
-								</div>
-							</li>
-							<li class="th th-price">
-								<span class="th-su" id="danjia">5.00</span>
-							</li>
-							<li class="th th-amount">
-								<div class="box-btn layui-clear">
-									<div class="layui-btn" id="subBtn">-</div>
-									<input class="Quantity-input" type="" name="" value="1" disabled="disabled" id="num_show">
-									<div class="layui-btn" id="addBtn">+</div>
-								</div>
-							</li>
-							<li class="th th-sum">
-								<span class="sum" id="zongjia">5.00</span>
-							</li>
-							<li class="th th-op">
-								<span class="dele-btn">删除</span>
-							</li>
-						</ul>
-						
-						<ul class="item-content layui-clear">
-							<li class="th th-chk">
-								<div class="select-all">
-									<div class="cart-checkbox">
-										<input class="CheckBoxShop check" id="" type="checkbox" num="all" name="select-all" value="true">
-									</div>
-								</div>
-							</li>
-							<li class="th th-item">
-								<div class="item-cont">
-									<a href="javascript:;"><img src="../images/产品2.jpg" alt=""></a>
-									<div class="text">
-										<div class="title">商品名字</div>
-									</div>
-								</div>
-							</li>
-							<li class="th th-price">
-								<span class="th-su">189.00</span>
-							</li>
-							<li class="th th-amount">
-								<div class="box-btn layui-clear">
-									<div class="less layui-btn">-</div>
-									<input class="Quantity-input" type="" name="" value="1" disabled="disabled">
-									<div class="add layui-btn">+</div>
-								</div>
-							</li>
-							<li class="th th-sum">
-								<span class="sum">189.00</span>
-							</li>
-							<li class="th th-op">
-								<span class="dele-btn">删除</span>
-							</li>
-						</ul>
-					</div>
-				</div>
+    <!--购物车-->
+    <div class="content content-nav-base shopcart-content">
+        <div class="banner-bg w1200">
+        </div>
+        <div id="page">
+            <div id="listdiv">
+                <h4>购物车</h4>
+                <table class="table table-bordered table-hover" id="gwcTable">
+                    <tr>
+                        <td>选择</td>
+                        <td>商品</td>
+                        <td>单价</td>
+                        <td>数量</td>
+                        <td>小计</td>
+                        <td>操作</td>
+                    </tr>
+                    <tbody id="tbody">
+                    </tbody>
+                </table>
+            </div>
+            <div id="jiesuan" class="pull-right">
+                <div class="t jisuanbtn">
+                    <input type="submit" class="btn btn-warning" data-toggle="modal" data-target="#userinfo"
+                        name="btnOrder" id="btnOrder" value="立即结算" />
+                </div>
+                <div class="t TotalMoney">合计：￥<span id="priceTotal">0.00</span></div>
+                <div class="t">已选商品 <span id="countTotal">0</span> 件</div>
+            </div>
+        </div>
+    </div>
 
-				<div class="FloatBarHolder layui-clear">
-					<div class="th th-chk">
-						<div class="select-all">
-							<div class="cart-checkbox">
-								<input class="check-all check" id="" name="select-all" type="checkbox" value="true">
-							</div>
-							<label>&nbsp;&nbsp;已选<span class="Selected-pieces">0</span>件</label>
-						</div>
-					</div>
-					<div class="th batch-deletion">
-						<span class="batch-dele-btn">批量删除</span>
-					</div>
-					<div class="th Settlement">
-						<button class="layui-btn">结算</button>
-					</div>
-					<div class="th total">
-						<p>应付：<span class="pieces-total">0</span></p>
-					</div>
-				</div>
-			</div>
-		</div>
 
-		<script src="js/TothingWay.js">
-		</script>
-		<script src="js/resource.js">
-		</script>
-		<script src="js/tch.js"></script>
+    <!--用户信息输入-->
+    <div class="modal fade" id="userinfo" role="dialog">
+        <div class="modal-dialog modal-sm" role="document">
+            <!--弹框——注册表单-->
+            <div class="modal-content" id="userinfo-main" style="display:block;">
+                <!--标题-->
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">
+                        <span aria-hidden="true">
+                            &times;
+                        </span>
+                    </button>
+                    <h5 class="modal-title">
+                        JOJOYI
+                    </h5>
+                </div>
+                <!--注册表单-->
+                <div class="modal-body">
+                    <!--User name-->
+                    <div class="input-wrapper">
+                        <input type="text" placeholder="姓名" id="userinfo_name" />
+                    </div>
+                    <div class="input-wrapper">
+                        <input type="text" placeholder="家庭住址" id="userinfo_address" />
+                    </div>
+                    <div class="input-wrapper">
+                        <input type="text" placeholder="联系方式" id="userinfo_phone" />
+                    </div>
+                </div>
+                <!--/.modal-body-->
 
-	</body>
+                <!--注册按钮-->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary btn-block " id="btn-userinfo">
+                        确定
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- register -->
+    <div class="modal fade" id="register" role="dialog">
+        <div class="modal-dialog modal-sm" role="document">
+            <!--弹框——注册表单-->
+            <div class="modal-content" id="register-main" style="display:block;">
+                <!--标题-->
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">
+                        <span aria-hidden="true">
+                            &times;
+                        </span>
+                    </button>
+                    <h5 class="modal-title">
+                        JOJOYI
+                    </h5>
+                </div>
+                <!--注册表单-->
+                <div class="modal-body">
+
+                    <!--User name-->
+                    <div class="input-wrapper">
+                        <input type="text" placeholder="用户名" id="reg_name" />
+                        <!--Error message-->
+                        <span class="animated fadeInRight register-username-wrong" id="reg_name_Top">
+
+                        </span>
+                    </div>
+                    <!--Password-->
+                    <div class="input-wrapper">
+                        <input type="password" class="register-password" id="reg_password" placeholder="密码" />
+                        <!--显示与隐藏密码-->
+                        <a href="javascript:;" class="btn-eye-register">
+                            <i class="icon-eye-open" id="icon-eye-register">
+                            </i>
+                        </a>
+                        <!--Error message-->
+                        <span class="animated fadeInRight pw-error register-password-wrong" id="reg_password_Top">
+
+                        </span>
+                    </div>
+
+                    <!--Phone-->
+                    <div class="input-wrapper">
+                        <input type="text" placeholder="电话号码" id="phone" />
+                        <!--Error message-->
+                        <span class="animated fadeInRight register-email-wrong" id="phone_Top">
+
+                        </span>
+                    </div>
+                    <!--Email-->
+                    <div class="input-wrapper">
+                        <input type="text" placeholder="邮箱" id="email" />
+                        <!--Error message-->
+                        <span class="animated fadeInRight register-email-wrong" id="email_Top">
+
+                        </span>
+                    </div>
+                    <!--验证码-->
+                    <div class="input-wrapper">
+                        <input type="text" placeholder="验证码" id="captcha" />
+                        <!--验证码图片-->
+                        <button id="get_phone_num" class="btn">获取验证码</button>
+                        <!--Error message-->
+                        <span class="animated fadeInRight code-error register-code-wrong" id="captcha_Top">
+
+                        </span>
+                    </div>
+                </div>
+                <!--/.modal-body-->
+
+                <!--注册按钮-->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary btn-block " id="btn-register">
+                        注册
+                    </button>
+                </div>
+            </div>
+
+            <!--弹框——邮箱验证-->
+            <!--<div class="modal-content" id="register-success" style="display: none;">
+                <div class="modal-header">
+                    &lt;!&ndash;关闭按钮&ndash;&gt;
+                    <button type="button" class="close" data-dismiss="modal">
+                            <span aria-hidden="true">
+                                &times;
+                            </span>
+                    </button>
+                    &lt;!&ndash;返回按钮&ndash;&gt;
+                    <button type="button" class="close back">
+                            <span aria-hidden="true">
+                                <i class="icon-angle-left">
+                                </i>
+                            </span>
+                    </button>
+                    &lt;!&ndash;标题&ndash;&gt;
+                    <h5 class="modal-title">
+                        邮箱验证
+                    </h5>
+                </div>-->
+            <!--content-->
+            <!-- <div class="modal-body">
+                 <div class="input-wrapper">
+                     <input type="text" placeholder="请输入6位验证码"/>
+                     &lt;!&ndash;重发验证码按钮&ndash;&gt;
+                     <button class="btn" id="code-btn2" type="button">
+                         重发验证码
+                     </button>
+                     &lt;!&ndash;Error message&ndash;&gt;
+                     <span class="animated fadeInRight email-code-error">
+                             验证码错误
+                         </span>
+                 </div>
+             </div>
+             &lt;!&ndash;注册成功后进入平台&ndash;&gt;
+             <div class="modal-footer">
+                 <button type="button" class="btn btn-primary btn-block">
+                     进入平台
+                 </button>
+             </div>-->
+        </div>
+    </div>
+
+    <!-- login -->
+    <div class="modal fade" id="login" role="dialog">
+        <div class="modal-dialog modal-sm" role="document">
+            <!--弹框——登录-->
+            <div class="modal-content" id="first">
+                <div class="modal-header">
+                    <!--关闭按钮-->
+                    <button type="button" class="close" data-dismiss="modal">
+                        <span aria-hidden="true">
+                            &times;
+                        </span>
+                    </button>
+                    <!--标题-->
+                    <h5 class="modal-title">
+                        JOJOYI
+                    </h5>
+                </div>
+                <div class="modal-body">
+                    <!--User name-->
+                    <div class="input-wrapper">
+                        <input type="text" placeholder="用户名" id="login_name" />
+                        <!--Error message-->
+                        <span class="animated fadeInRight login-username-wrong" id="login_name_Top">
+
+                        </span>
+                    </div>
+                    <div class="input-wrapper">
+                        <!--Password-->
+                        <input type="password" placeholder="密码" id="login_password" />
+                        <!--Error message-->
+                        <span class="animated fadeInRight login-password-wrong" id="login_password_Top">
+
+                        </span>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <div class="clearfix login-help">
+                        <!--无法登录-->
+                        <div class="col-xs-6">
+                            <a href="#" class="unable-login">
+                                无法登录？
+                            </a>
+                        </div>
+                    </div>
+                    <!--登录按钮-->
+                    <button type="button" class="btn btn-primary btn-block" id="login-btn">
+                        登录
+                    </button>
+                </div>
+            </div>
+
+            <!-- 弹框——无法登录 -->
+            <div class="modal-content" id="second" style="display: none;">
+                <div class="modal-header unable-login-header">
+                    <!--关闭按钮-->
+                    <button type="button" class="close" data-dismiss="modal">
+                        <span aria-hidden="true">
+                            &times;
+                        </span>
+                    </button>
+                    <!--标题-->
+                    <h5 class="modal-title">
+                        找回密码
+                    </h5>
+                </div>
+                <div class="modal-body">
+                    <div class="input-wrapper">
+                        <!--Email-->
+                        <input type="text" placeholder="电话号码" />
+                        <!--Error message-->
+                        <span class="animated fadeInRight find-password-email-wrong" id="phone_Top_z">
+
+                        </span>
+                    </div>
+                    <div class="input-wrapper">
+                        <!--验证码-->
+                        <input type="text" placeholder="验证码" id="captch" />
+
+                        <!--Error message-->
+                        <span class="animated fadeInRight code-error find-password-code-wrong" id="login_captch">
+
+                        </span>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary btn-block get-code" id="captch_btn">
+                        获取验证码
+                    </button>
+                </div>
+            </div>
+
+            <!-- 弹框——获取验证码 -->
+            <div class="modal-content" id="last" style="display: none;">
+                <div class="modal-header unable-login-header">
+                    <!--关闭按钮-->
+                    <button type="button" class="close" data-dismiss="modal">
+                        <span aria-hidden="true">
+                            &times;
+                        </span>
+                    </button>
+                    <!--标题-->
+                    <h5 class="modal-title">
+                        重置密码
+                    </h5>
+                </div>
+                <div class="modal-body">
+                    <div class="input-wrapper">
+                        <!--Email-->
+                        <input type="text" placeholder="邮箱" />
+                        <!--Error message-->
+                        <span class="animated fadeInRight">
+                            请输入正确验证码
+                        </span>
+                    </div>
+                    <div class="input-wrapper">
+                        <!--Password-->
+                        <input type="password" id="set-type-login" placeholder="密码" />
+                        <!--显示与隐藏密码-->
+                        <a href="javascript:;" class="btn-eye-login">
+                            <i class="icon-eye-open" id="icon-eye-login">
+                            </i>
+                        </a>
+                        <!--Error message-->
+                        <span class="animated fadeInRight pw-error">
+                            用户名或密码错误
+                        </span>
+                    </div>
+                    <div class="input-wrapper">
+                        <input type="text" placeholder="请输入6位验证码" />
+                        <!--发现验证码按钮-->
+                        <button class="btn" id="code-btn" type="button">
+                            重发验证码
+                        </button>
+                        <!--Error message-->
+                        <span class="animated fadeInRight email-code-error">
+                            验证码错误
+                        </span>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary btn-block get-code">
+                        重置密码
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="js/TothingWay.js">
+    </script>
+    <script src="js/resource.js">
+    </script>
+    <script src="js/vue.js"></script>
+    <script src="js/register.js"></script>
+    <script src="js/login.js"></script>
+    <!-- <script src="js/tch.js"></script> -->
+    <script src="js/wxyShopcar.js"></script>
+</body>
 
 </html>

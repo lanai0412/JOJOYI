@@ -10,16 +10,14 @@
     </title>
     <link rel="shortcut icon" href="http://oqlse9rck.bkt.clouddn.com/favicon.ico">
     <link href="css/TothingWay.css" rel="stylesheet" />
-    <link href="css/repository.css" rel="stylesheet" />
+    <link href="css/tch.css" rel="stylesheet" />
+    <link rel="stylesheet" href="css/wxy.css">
+    <link href="css/tch-resource.css" rel="stylesheet" />
+    <link href="css/wxy.css" rel="stylesheet" />
+
 </head>
-<style>
-    .column-content li:hover {
-        font-weight: bold;
-    }
-</style>
 
 <body>
-
 <!--导航-->
 <nav class="navbar navbar-default nav-scroll navbar-fixed-top">
     <div class="container">
@@ -49,12 +47,12 @@
                         首页
                     </a>
                 </li>
-                <li>
+                <li class="active">
                     <a href="resource-index.html">
                         产品中心
                     </a>
                 </li>
-                <li class="active">
+                <li>
                     <a href="repository-index.html">
                         知识百科
                     </a>
@@ -112,47 +110,93 @@
         <!-- /.nav-collapse -->
     </div>
 </nav>
- <!--banner-->
-    <div class="banner">
-        <div class="banner-img">
-
+    <!--购物车-->
+    <div class="content content-nav-base shopcart-content">
+        <div class="banner-bg w1200">
+        </div>
+        <div id="page">
+            <div id="listdiv">
+                <h4>订单</h4>
+                <table class="table table-bordered table-hover" id="receiving">
+                    <tr>
+                        <td>商品</td>
+                        <td>单价</td>
+                        <td>数量</td>
+                        <td>小计</td>
+                        <td>操作</td>
+                    </tr>
+                    <tbody id="tbody">
+                        <tr>
+                            <td>
+                                <p class="receivingImg">
+                                    <img src="http://static1.yst.com.cn/2018/03/27/10/00/32/032lJ3nqsy1X2dj.jpg">
+                                </p>
+                                <p>
+                                    商品名称
+                                </p>
+                            </td>
+                            <td>
+                                单价
+                            </td>
+                            <td>
+                                单价
+                            </td>
+                            <td>
+                                单价
+                            </td>
+                            <td>
+                                <button type="button" class="btn btn-info">确认收货</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
 
-    <!--资源详情-->
-    <div class="container detal-container">
 
-
-        <!--知识目录-->
-        <div class="row detal-main" id="app">
-            <div class="col-xs-12 col-sm-3">
-                <div class="recommendation">
-                    <h3><span class="glyphicon glyphicon-bookmark"></span> 知识目录</h3>
-                    <div class="column-content" id='apps1'>
-                        <ul>
-                            <li v-for='item in other'>
-                                <a href="javascript:;" onclick="hf(this)"> • {{item.title}}</a>
-                                <span hidden='hidden' v-text='item.tid'></span>
-                            </li>
-
-                        </ul>
+    <!--用户信息输入-->
+    <div class="modal fade" id="userinfo" role="dialog">
+        <div class="modal-dialog modal-sm" role="document">
+            <!--弹框——注册表单-->
+            <div class="modal-content" id="userinfo-main" style="display:block;">
+                <!--标题-->
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">
+                        <span aria-hidden="true">
+                            &times;
+                        </span>
+                    </button>
+                    <h5 class="modal-title">
+                        JOJOYI
+                    </h5>
+                </div>
+                <!--注册表单-->
+                <div class="modal-body">
+                    <!--User name-->
+                    <div class="input-wrapper">
+                        <input type="text" placeholder="姓名" id="userinfo_name" />
+                    </div>
+                    <div class="input-wrapper">
+                        <input type="text" placeholder="家庭住址" id="userinfo_address" />
+                    </div>
+                    <div class="input-wrapper">
+                        <input type="text" placeholder="联系方式" id="userinfo_phone" />
                     </div>
                 </div>
-            </div>
-            <!--右边知识详情-->
-            <div class="col-xs-12 col-sm-9">
-                <div class="recommendation padding" id="app">
-                    <h4 v-text="title">养生知识</h4>
-                    <p class="gray" v-html="content">养生之道...</p>
+                <!--/.modal-body-->
+
+                <!--注册按钮-->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary btn-block " id="btn-userinfo">
+                        确定
+                    </button>
                 </div>
-                <!--/.recommendation-->
             </div>
         </div>
     </div>
 
-    <div class="footer">
-        养生之道——养生知识
-    </div>
+
     <!-- register -->
     <div class="modal fade" id="register" role="dialog">
         <div class="modal-dialog modal-sm" role="document">
@@ -174,7 +218,7 @@
 
                     <!--User name-->
                     <div class="input-wrapper">
-                        <input type="text" placeholder="用户名" id="reg_name"/>
+                        <input type="text" placeholder="用户名" id="reg_name" />
                         <!--Error message-->
                         <span class="animated fadeInRight register-username-wrong" id="reg_name_Top">
 
@@ -182,7 +226,7 @@
                     </div>
                     <!--Password-->
                     <div class="input-wrapper">
-                        <input type="password" class="register-password" id="reg_password" placeholder="密码"/>
+                        <input type="password" class="register-password" id="reg_password" placeholder="密码" />
                         <!--显示与隐藏密码-->
                         <a href="javascript:;" class="btn-eye-register">
                             <i class="icon-eye-open" id="icon-eye-register">
@@ -196,7 +240,7 @@
 
                     <!--Phone-->
                     <div class="input-wrapper">
-                        <input type="text" placeholder="电话号码" id="phone"/>
+                        <input type="text" placeholder="电话号码" id="phone" />
                         <!--Error message-->
                         <span class="animated fadeInRight register-email-wrong" id="phone_Top">
 
@@ -204,7 +248,7 @@
                     </div>
                     <!--Email-->
                     <div class="input-wrapper">
-                        <input type="text" placeholder="邮箱" id="email"/>
+                        <input type="text" placeholder="邮箱" id="email" />
                         <!--Error message-->
                         <span class="animated fadeInRight register-email-wrong" id="email_Top">
 
@@ -212,7 +256,7 @@
                     </div>
                     <!--验证码-->
                     <div class="input-wrapper">
-                        <input type="text" placeholder="验证码" id="captcha"/>
+                        <input type="text" placeholder="验证码" id="captcha" />
                         <!--验证码图片-->
                         <button id="get_phone_num" class="btn">获取验证码</button>
                         <!--Error message-->
@@ -230,51 +274,7 @@
                     </button>
                 </div>
             </div>
-
-            <!--弹框——邮箱验证-->
-            <!--<div class="modal-content" id="register-success" style="display: none;">
-                <div class="modal-header">
-                    &lt;!&ndash;关闭按钮&ndash;&gt;
-                    <button type="button" class="close" data-dismiss="modal">
-                            <span aria-hidden="true">
-                                &times;
-                            </span>
-                    </button>
-                    &lt;!&ndash;返回按钮&ndash;&gt;
-                    <button type="button" class="close back">
-                            <span aria-hidden="true">
-                                <i class="icon-angle-left">
-                                </i>
-                            </span>
-                    </button>
-                    &lt;!&ndash;标题&ndash;&gt;
-                    <h5 class="modal-title">
-                        邮箱验证
-                    </h5>
-                </div>-->
-            <!--content-->
-            <!-- <div class="modal-body">
-                 <div class="input-wrapper">
-                     <input type="text" placeholder="请输入6位验证码"/>
-                     &lt;!&ndash;重发验证码按钮&ndash;&gt;
-                     <button class="btn" id="code-btn2" type="button">
-                         重发验证码
-                     </button>
-                     &lt;!&ndash;Error message&ndash;&gt;
-                     <span class="animated fadeInRight email-code-error">
-                             验证码错误
-                         </span>
-                 </div>
-             </div>
-             &lt;!&ndash;注册成功后进入平台&ndash;&gt;
-             <div class="modal-footer">
-                 <button type="button" class="btn btn-primary btn-block">
-                     进入平台
-                 </button>
-             </div>-->
         </div>
-    </div>
-    <!--/.modal-dialog-->
     </div>
 
     <!-- login -->
@@ -297,7 +297,7 @@
                 <div class="modal-body">
                     <!--User name-->
                     <div class="input-wrapper">
-                        <input type="text" placeholder="用户名" id="login_name"/>
+                        <input type="text" placeholder="用户名" id="login_name" />
                         <!--Error message-->
                         <span class="animated fadeInRight login-username-wrong" id="login_name_Top">
 
@@ -305,7 +305,7 @@
                     </div>
                     <div class="input-wrapper">
                         <!--Password-->
-                        <input type="password" placeholder="密码" id="login_password"/>
+                        <input type="password" placeholder="密码" id="login_password" />
                         <!--Error message-->
                         <span class="animated fadeInRight login-password-wrong" id="login_password_Top">
 
@@ -345,7 +345,7 @@
                 <div class="modal-body">
                     <div class="input-wrapper">
                         <!--Email-->
-                        <input type="text" placeholder="电话号码"/>
+                        <input type="text" placeholder="电话号码" />
                         <!--Error message-->
                         <span class="animated fadeInRight find-password-email-wrong" id="phone_Top_z">
 
@@ -353,10 +353,10 @@
                     </div>
                     <div class="input-wrapper">
                         <!--验证码-->
-                        <input type="text" placeholder="验证码" id="captch"/>
+                        <input type="text" placeholder="验证码" id="captch" />
 
                         <!--Error message-->
-                        <span class="animated fadeInRight code-error find-password-code-wrong" id="login_captch" >
+                        <span class="animated fadeInRight code-error find-password-code-wrong" id="login_captch">
 
                         </span>
                     </div>
@@ -385,7 +385,7 @@
                 <div class="modal-body">
                     <div class="input-wrapper">
                         <!--Email-->
-                        <input type="text" placeholder="邮箱"/>
+                        <input type="text" placeholder="邮箱" />
                         <!--Error message-->
                         <span class="animated fadeInRight">
                             请输入正确验证码
@@ -393,7 +393,7 @@
                     </div>
                     <div class="input-wrapper">
                         <!--Password-->
-                        <input type="password" id="set-type-login" placeholder="密码"/>
+                        <input type="password" id="set-type-login" placeholder="密码" />
                         <!--显示与隐藏密码-->
                         <a href="javascript:;" class="btn-eye-login">
                             <i class="icon-eye-open" id="icon-eye-login">
@@ -405,7 +405,7 @@
                         </span>
                     </div>
                     <div class="input-wrapper">
-                        <input type="text" placeholder="请输入6位验证码"/>
+                        <input type="text" placeholder="请输入6位验证码" />
                         <!--发现验证码按钮-->
                         <button class="btn" id="code-btn" type="button">
                             重发验证码
@@ -426,69 +426,12 @@
     </div>
     <script src="js/TothingWay.js">
     </script>
-    <script src="js/repository.js">
+    <script src="js/resource.js">
     </script>
-    <script src="js/jquery-3.4.1.min.js"></script>
     <script src="js/vue.js"></script>
     <script src="js/register.js"></script>
     <script src="js/login.js"></script>
-    <script>
-        var vm = new Vue({
-            el: '#app',
-            data: {
-                title: '',
-                content: '',
-                other: [],
-            },
-            methods: {
-
-            }
-        })
-
-
-        var query = window.location.search.substring(1);
-        console.log(query);
-        var pair = query.split("=");
-
-        $(function() {
-            $.ajax({
-                type: 'get',
-                url: 'http://localhost:8080/arts/' + pair[1],
-                dataType: 'json',
-                success: function(data) {
-                    $.ajax({
-                        url: data.txtsrc,
-                        dataType: "text",
-                        type: "post",
-                        success: function(data) {
-                            data = data.replace(/\n/g, "<br>");
-                            vm.title = data.substring(0, data.indexOf("<br>"));
-                            vm.content = data.substring(data.indexOf("<br>"));
-                        }
-                    });
-
-                }
-            })
-
-
-            $.ajax({
-                type: 'get',
-                url: 'http://localhost:8080/allarts',
-                dataType: 'json',
-                success: function(data) {
-                    vm.other = data;
-
-                }
-            })
-
-
-        })
-
-        function hf(obj) {
-            var obj = obj.nextElementSibling;
-            window.location.href = ("repository-detal.html?id=" + obj.innerText);
-        }
-    </script>
+    <script src="js/receiving.js"></script>
 </body>
 
 </html>

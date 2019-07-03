@@ -6,3 +6,16 @@
 .wxy_logo{
      background: url("../../images/logo1.png") no-repeat;
  }
+#page{
+    width: 1200px;
+    margin: 0 auto;
+}
+#gwcTable img{
+    max-width: 100px;
+}
+.thumbnail img{
+    min-height: 260px;
+}
+.receivingImg img{
+    width: 100px;
+}

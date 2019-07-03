@@ -13,3 +13,6 @@ $("#addBtn").click(function() {
 	$("#zongjia").text(parseFloat($("#zongjia").text())+parseFloat($("#danjia").text()));
 })
 
+function btnClickOpertion(id) {
+
+}

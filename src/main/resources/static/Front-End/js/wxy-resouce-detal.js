@@ -1,3 +1,4 @@
+var getId = getQueryString("id");
 window.onload = function () {
     $("#subBtn").click(function () {
         if (($("#num_show").val() - 1) <= 1) {
@@ -10,7 +11,6 @@ window.onload = function () {
         $("#num_show").val(parseInt($("#num_show").val()) + 1);
     })
 
-    var getId = getQueryString("id");
     console.log(getId);
     $.ajax({
         url: "../findProductById",
@@ -21,22 +21,74 @@ window.onload = function () {
         },
         success: function (data) {
             // console.log(data);
-            $("#product_img").append(" <img src='" + data.purl + "' width='90%'/>");
-            $("#product_title").append(" <h3>" +
+            $("#product_img").append(" <img id='purl' src='" + data.purl + "' width='90%'/>");
+            $("#product_title").append(" <h3 id='pname'>" +
                 data.pname +
                 "</h3>" +
                 "<p class = 'title' >" +
                 data.introduction +
                 "</p>"
             );
-            $("#summary").append("<p class='activity'><span>活动价</span><strong class='price'>￥"+data.price+"</strong></p>"+
-            "<p><span>库&nbsp;&nbsp;&nbsp;&nbsp;存</span><strong class='address'>"+data.volume+"</strong></p>");
+            $("#summary").append("<p class='activity'><span>活动价</span><strong class='price' id='price'>" + data.price + "</strong></p>" +
+                "<p><span>库&nbsp;&nbsp;&nbsp;&nbsp;存</span><strong class='address'>" + data.volume + "</strong></p>");
             $("#product_introduction").append(data.introduction);
         },
         error: function () {
             console.log('请求失败！');
         },
     })
+
+    $("#addShopCar").click(function () {
+        $.ajax({
+            url: "../check_login",
+            type: 'post',
+            dataType: 'json',
+            success: function (data) {
+                if (data.uid!=undefined) {
+                    addShopingCar(data.uid);
+                }else {
+                    alert("请先登录!");
+                }
+            },
+            error: function () {
+                alert("请先登录!");
+            }
+        })
+    })
+
+}
+
+
+function addShopingCar(id) {
+    console.log(typeof $("#num_show").val());
+    console.log(typeof $("#pname").text());
+    console.log(typeof $("#purl").src);
+    console.log(typeof $("#price").text());
+    $.ajax({
+        url: "../saveShoppingCar",
+        type: 'post',
+        dataType: 'json',
+        data: {
+            productId: getId,
+            userId: id,
+            productNum: $("#num_show").val(),
+            productname: $("#pname").text(),
+            producturl: $("#purl")[0].src,
+            productprice: parseFloat($("#price").text())
+        },
+        success: function (data) {
+            if(data==200){
+                alert("添加成功")
+            }else {
+                alert("添加失败");
+            }
+        },
+        error: function () {
+            console.log('添加失败！');
+        },
+    })
+
+
 }
 
 function getQueryString(name) {
