@@ -432,7 +432,7 @@
         $(function() {
             $.ajax({
                 type: 'get',
-                url: 'http://localhost:8080/allarts',
+                url: '../allarts',
                 dataType: 'json',
                 success: function(data) {
                     console.log(data);
@@ -453,7 +453,7 @@
             vm.text = [];
             $.ajax({
                 type: 'get',
-                url: 'http://localhost:8080/atitle/' + search,
+                url: '../atitle/' + search,
                 dataType: 'json',
                 success: function(data) {
                     vm.text = data;
