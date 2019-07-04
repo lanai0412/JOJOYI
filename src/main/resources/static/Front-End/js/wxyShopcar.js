@@ -125,19 +125,6 @@ function getAll(getClass) {
                 'amount':$("#priceTotal").text(),
             },
             success:function (data) {
-                alert("购买成功,单击确定后,3s自动跳转");
-                $('#userinfo').modal('hide')
-                var checked = $("input[name='productCheck']:checked");
-                for (var i = 0;i<checked.length;i++){
-                    checked.parent().parent().remove();
-                    price = 0;
-                    number = 0;
-                    $("#priceTotal").text(0);
-                    $("#countTotal").text(0);
-                }
-                setTimeout(function () {
-                    window.location.href = "receiving.html";
-                },3000);
                 $("#content").append(data)
 
             }

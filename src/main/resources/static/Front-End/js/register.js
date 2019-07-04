@@ -51,6 +51,7 @@ function register() {
                             dataType: 'json',
                             success: function (data) {
                                 if (data == 200) {
+                                    location.reload();
                                     alert("注册成功")
                                     setValNull();
                                 } else {
