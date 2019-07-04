@@ -2,6 +2,7 @@ package com.health.controller;
 
 import com.health.entity.Question;
 import com.health.entity.User;
+import com.health.others.QuestionComparator;
 import com.health.service.QuestionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -11,9 +12,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 @Controller
 public class QuestionController {
@@ -26,6 +25,9 @@ public class QuestionController {
     public List<Question> findAll(HttpSession session) {
 
         List<Question> list = questionService.findAll();
+
+        Comparator comparator = new QuestionComparator();
+        Collections.sort(list, comparator);
 
         session.setAttribute("qlist", list);
 
@@ -74,6 +76,9 @@ public class QuestionController {
             list = questionService.findByAdopt(0);
         }
 
+        Comparator comparator = new QuestionComparator();
+        Collections.sort(list, comparator);
+
         session.setAttribute("qlist", list);
 
         return list;
@@ -85,6 +90,9 @@ public class QuestionController {
 
         List<Question> list = questionService.findByType(type);
 
+        Comparator comparator = new QuestionComparator();
+        Collections.sort(list, comparator);
+
         session.setAttribute("qlist", list);
 
         return list;
@@ -95,6 +103,9 @@ public class QuestionController {
     public List<Question> findByTitle(String qtitle, HttpSession session) {
 
         List<Question> list = questionService.findByQtitle(qtitle);
+
+        Comparator comparator = new QuestionComparator();
+        Collections.sort(list, comparator);
 
         session.setAttribute("qlist", list);
 
@@ -118,12 +129,6 @@ public class QuestionController {
         User user = (User) session.getAttribute("user");
         if (user != null) {
             Question question = questionService.findByQid(qid);
-
-            System.out.println("=======================================1");
-            System.out.println(question);
-            System.out.println(question.getAdopt());
-            System.out.println("=======================================2");
-
             if (question.getAdopt() == 0 && question.getUname().equals(user.getUname())) {
                 return 200;
             } else {

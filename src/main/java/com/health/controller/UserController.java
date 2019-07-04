@@ -46,7 +46,7 @@ public class UserController {
     @ResponseBody
     public int save(User user) {
         user.setPsrc("http://ptolozduu.bkt.clouddn.com/images/arts/lazy.jpg");
-        System.out.println(user);
+
         boolean isok = userService.save(user);
 
         int msg = 0;

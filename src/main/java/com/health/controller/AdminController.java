@@ -113,7 +113,6 @@ public class AdminController {
         }else{
            msg=500;
         }
-        System.out.println(msg);
         return msg;
     }
 }
