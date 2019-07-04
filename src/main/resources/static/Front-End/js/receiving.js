@@ -43,7 +43,7 @@ function getAllProduct(uid){
                         "</td>"+
                         "<td>" +
                         "<button type='button' class='btn btn-info' onclick='state("+req[i].id+")'>确认收货</button>" +
-                        "<button data-toggle='modal' onclick='saveComment("+req[i].productId +")'  data-target='#comment' type='button' class='btn btn-warning'>" +
+                        "<button data-toggle='modal'  disabled='disabled'  onclick='saveComment("+req[i].productId +")'  data-target='#comment' type='button' class='btn btn-warning'>" +
                         "立即评价" +
                         " </button> </td> </tr>"
                     )
@@ -62,7 +62,7 @@ function getAllProduct(uid){
                         req[i].productPrice+
                         "</td>"+
                         "<td>" +
-                        "<button type='button' class='btn btn-info'disabled='disabled' >已完成</button>" +
+                        "<button type='button' class='btn btn-info' disabled='disabled' >已完成</button>" +
                         "<button data-toggle='modal' onclick='saveComment("+req[i].productId +")'  data-target='#comment' type='button' class='btn btn-warning'>" +
                         "立即评价" +
                         " </button> </td> </tr>"
