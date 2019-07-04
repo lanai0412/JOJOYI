@@ -1,5 +1,6 @@
 package com.health.controller;
 
+import com.health.entity.ShoppingCar;
 import com.health.entity.Userinfo;
 import com.health.service.ShoppingCarService;
 import com.health.service.UserinfoService;
@@ -28,6 +29,10 @@ public class UserinfoController {
             userinfo.setPid(Integer.parseInt(pid[i]));
             userinfo.setNumber(Integer.parseInt(nums[i]));
             userinfoService.save(userinfo);
+            ShoppingCar shoppingCar = new ShoppingCar();
+            shoppingCar.setId(Integer.parseInt(pid[i]));
+            shoppingCar.setProductState(1);
+            shoppingCarService.update(shoppingCar);
         }
         return "200";
     }
