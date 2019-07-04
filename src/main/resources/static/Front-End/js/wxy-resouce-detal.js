@@ -83,10 +83,6 @@ window.onload = function () {
 
 
 function addShopingCar(id) {
-    console.log(typeof $("#num_show").val());
-    console.log(typeof $("#pname").text());
-    console.log(typeof $("#purl").src);
-    console.log(typeof $("#price").text());
     $.ajax({
         url: "../saveShoppingCar",
         type: 'post',
