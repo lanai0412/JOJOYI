@@ -1,4 +1,7 @@
 $("#login-btn").click(function() {
+    login()
+})
+function login(){
     var uname = $("#login_name").val();
     var password = $("#login_password").val();
     if (!/^[a-zA-Z0-9\u4e00-\u9fa5]{2,6}$/.test(uname)) {
@@ -42,8 +45,12 @@ $("#login-btn").click(function() {
             })
         }
     }
+}
+$("#login_password").click(function () {
+    if(event.keyCode==13){
+        login()
+    }
 })
-
 //退出
 function exit() {
     $.ajax({

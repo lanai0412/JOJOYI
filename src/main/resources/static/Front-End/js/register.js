@@ -1,4 +1,7 @@
 $("#btn-register").click(function () {
+ register();
+})
+function register(){
     var uname = $("#reg_name").val();
     var password = $("#reg_password").val();
     var phone = $("#phone").val();
@@ -61,8 +64,13 @@ $("#btn-register").click(function () {
             }
         }
     }
-})
+}
 
+$("#captcha").click(function () {
+    if (event.keyCode==13){
+        register();
+    }
+})
 $("#reg_name").blur(function () {
     var uname = $("#reg_name").val();
     if (!/^[a-zA-Z0-9\u4e00-\u9fa5]{2,6}$/.test(uname)) {
