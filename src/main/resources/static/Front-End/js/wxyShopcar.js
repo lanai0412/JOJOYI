@@ -74,6 +74,7 @@ var price = 0;
 var number = 0;
 var num = [];
 var id = [];
+var names = '';
 function getAll(getClass) {
 
     if ($(getClass).is(":checked")) {
@@ -108,30 +109,24 @@ function getAll(getClass) {
         for (var i = 0;i<checked.length;i++){
             id.push(parseInt($(checked[i]).parent().prev().children().val()));
             num.push(parseInt($(checked[i]).parent().next().next().next().find("input[class='inputCountCss']").val()));
+            names += $("input[name='productCheck']:checked").parent().next().children()[1].innerText+',';
         }
         $.ajax({
             type:'post',
-            url:"../saveuserinfo",
-            dataType:'json',
+            url:"../order/alipay",
+            dataType:'html',
             data:{
                 uname:$("#userinfo_name").val(),
                 address:$("#userinfo_address").val(),
                 phone:$("#userinfo_phone").val(),
                 "id": JSON.stringify(id),
                 "num": JSON.stringify(num),
+                'name':names,
+                'amount':$("#priceTotal").text(),
             },
             success:function (data) {
-                alert("购买成功");
-                $('#userinfo').modal('hide')
-                var checked = $("input[name='productCheck']:checked");
-                for (var i = 0;i<checked.length;i++){
-                    checked.parent().parent().remove();
-                    price = 0;
-                    number = 0;
-                    $("#priceTotal").text(0);
-                    $("#countTotal").text(0);
-                }
-                    window.location.href = "receiving.html";
+                $("#content").append(data)
+
             }
         })
     })
