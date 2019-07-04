@@ -121,7 +121,8 @@ function getAll(getClass) {
                 "num": JSON.stringify(num),
             },
             success:function (data) {
-                console.log("购买成功");
+                alert("购买成功,单击确定后,3s自动跳转");
+                $('#userinfo').modal('hide')
                 var checked = $("input[name='productCheck']:checked");
                 for (var i = 0;i<checked.length;i++){
                     checked.parent().parent().remove();
@@ -130,6 +131,9 @@ function getAll(getClass) {
                     $("#priceTotal").text(0);
                     $("#countTotal").text(0);
                 }
+                setTimeout(function () {
+                    window.location.href = "receiving.html";
+                },3000);
             }
         })
     })
