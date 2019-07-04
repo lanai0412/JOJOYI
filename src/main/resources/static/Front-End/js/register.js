@@ -1,16 +1,17 @@
 $("#btn-register").click(function () {
- register();
+    register();
 })
-function register(){
+
+function register() {
     var uname = $("#reg_name").val();
     var password = $("#reg_password").val();
     var phone = $("#phone").val();
     var email = $("#email").val();
-    var capts=$("#captcha").val();
-    if(!/^[a-zA-Z0-9\u4e00-\u9fa5]{2,6}$/.test(uname)){
+    var capts = $("#captcha").val();
+    if (!/^[a-zA-Z0-9\u4e00-\u9fa5]{2,6}$/.test(uname)) {
         $("#reg_name_Top").text("用户名不能少于2位");
         $("#reg_name_Top").css("display", "block");
-    }else {
+    } else {
         $("#reg_name_Top").text("");
         $("#reg_name_Top").css("display", "block");
         if (!/^[a-zA-Z0-9]{6,16}$/.test(password)) {
@@ -31,10 +32,10 @@ function register(){
                 } else {
                     $("#email_Top").text("");
                     $("#email_Top").css("display", "block");
-                    if(cap!=capts){
+                    if (cap != capts) {
                         $("#captcha_Top").text("验证号不正确");
                         $("#captcha_Top").css("display", "block");
-                    }else{
+                    } else {
                         $("#captcha_Top").text("");
                         $("#captcha_Top").css("display", "block");
                         $.ajax({
@@ -66,16 +67,16 @@ function register(){
     }
 }
 
-$("#captcha").click(function () {
-    if (event.keyCode==13){
-        register();
+$("#captcha").keypress(function (event) {
+    if (event.keyCode == '13') {
+        register()
     }
 })
 $("#reg_name").blur(function () {
     var uname = $("#reg_name").val();
     if (!/^[a-zA-Z0-9\u4e00-\u9fa5]{2,6}$/.test(uname)) {
-         $("#reg_name_Top").text("用户名为 2-6 位");
-         $("#reg_name_Top").css("display", "block");
+        $("#reg_name_Top").text("用户名为 2-6 位");
+        $("#reg_name_Top").css("display", "block");
     } else {
         $.ajax({
             data: {
@@ -101,8 +102,8 @@ var phoness = "";
 $("#phone").blur(function () {
     var phone = $("#phone").val();
     if (!/^((13[0-9])|(14[5,7])|(15[0-3,5-9])|(17[0,3,5-8])|(18[0-9])|166|198|199|(147))\d{8}$/.test(phone)) {
-       $("#phone_Top").text("电话号码不正确");
-         $("#phone_Top").css("display", "block");
+        $("#phone_Top").text("电话号码不正确");
+        $("#phone_Top").css("display", "block");
     } else {
         $.ajax({
             data: {
@@ -113,11 +114,11 @@ $("#phone").blur(function () {
             dataType: "json",
             success: function (data) {
                 if (data == 200) {
-                    phoness=data;
+                    phoness = data;
                     $("#phone_Top").text("");
                     $("#phone_Top").css("display", "block");
                 } else {
-                    phoness=data;
+                    phoness = data;
                     $("#phone_Top").text("电话号码被占用，请更换!");
                     $("#phone_Top").css("display", "block");
 
@@ -136,6 +137,7 @@ $("#get_phone_num").click(function () {
     }
 });
 var cap = "";
+
 function Captcha() {
     var phone = $("#phone").val();
     $.ajax({

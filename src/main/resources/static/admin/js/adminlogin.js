@@ -1,4 +1,14 @@
 $("#admin_login").click(function () {
+    login()
+})
+$("#password").keypress(function (event) {
+    if (event.keyCode == '13') {
+        login()
+    }
+
+})
+
+function login() {
     var aname = $("#Username").val();
     var password = $("#Password").val();
 
@@ -38,7 +48,7 @@ $("#admin_login").click(function () {
             })
         }
     }
-})
+}
 
 //退出登录
 function exit() {
@@ -186,7 +196,7 @@ $("#submit_password").click(function () {
             success: function (data) {
                 console.log(data)
                 if (data == 200) {
-                    document.location.href="login.html";
+                    document.location.href = "login.html";
                     alert("密码修改成功")
                 } else if (data == 500) {
                     alert("原密码不正确")

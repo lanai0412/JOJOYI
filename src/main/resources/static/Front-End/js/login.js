@@ -1,7 +1,8 @@
-$("#login-btn").click(function() {
+$("#login-btn").click(function () {
     login()
 })
-function login(){
+
+function login() {
     var uname = $("#login_name").val();
     var password = $("#login_password").val();
     if (!/^[a-zA-Z0-9\u4e00-\u9fa5]{2,6}$/.test(uname)) {
@@ -24,7 +25,7 @@ function login(){
                 url: "../user_login",
                 type: "POST",
                 dataType: 'json',
-                success: function(data) {
+                success: function (data) {
                     if (data == 200) {
                         $("#login").modal("hide")
                         $("#success_login").css("display", "none");
@@ -46,11 +47,13 @@ function login(){
         }
     }
 }
-$("#login_password").click(function () {
-    if(event.keyCode==13){
+
+$("#login_password").keypress(function (event) {
+    if (event.keyCode == '13') {
         login()
     }
 })
+
 //退出
 function exit() {
     $.ajax({
@@ -59,7 +62,7 @@ function exit() {
         async: true,
         cache: false,
         dataType: "json",
-        success: function(get) {
+        success: function (get) {
             location.reload();
             $("#success_login").css("display", "block");
             $("#success_register").css("display", "block");
@@ -76,7 +79,7 @@ function exita() {
         async: true,
         cache: false,
         dataType: "json",
-        success: function(get) {
+        success: function (get) {
             window.location.href = "index.html";
 
         }
@@ -114,7 +117,7 @@ var password = new Vue({
         text_check_new: '两次密码不一致',
     },
     methods: {
-        check_old: function(obj) {
+        check_old: function (obj) {
             $.ajax({
                 type: 'post',
                 url: '../checkpassword',
@@ -123,7 +126,7 @@ var password = new Vue({
                     password: password.old_password,
                 },
                 dataType: 'json',
-                success: function(data) {
+                success: function (data) {
                     console.log(data)
                     if (data == 200) {
                         password.text_old = '';
@@ -132,12 +135,12 @@ var password = new Vue({
             })
 
         },
-        check_new: function(obj) {
+        check_new: function (obj) {
             if (password.new_password == password.checknew) {
                 password.text_check_new = '';
             }
         },
-        update_password: function() {
+        update_password: function () {
             if (password.text_old == '' && password.text_check_new == '') {
                 $.ajax({
                     type: 'post',
@@ -146,7 +149,7 @@ var password = new Vue({
                         password: password.new_password,
                     },
                     dataType: 'json',
-                    success: function(data) {
+                    success: function (data) {
                         if (data == 200) {
                             password.old_password = '';
                             password.new_password = '';
@@ -166,7 +169,7 @@ $.ajax({
     url: "../check_login",
     type: "GET",
     dataType: "json",
-    success: function(data) {
+    success: function (data) {
         var phone = data.phone;
         vm.username = data.uname;
         vm.phone = data.phone;
@@ -226,7 +229,7 @@ function updateself(obj) {
             signature: vm.signature,
             psrc: vm.psrc,
         },
-        success: function(data) {
+        success: function (data) {
             if (data == 200) {
                 alert("更新成功")
             } else {
@@ -237,23 +240,23 @@ function updateself(obj) {
 }
 
 var update_p = new Vue({
-    el:'#edit-avatar',
-    data:{
-        otherp:[],
-        progress:0,
-        flag:false,
+    el: '#edit-avatar',
+    data: {
+        otherp: [],
+        progress: 0,
+        flag: false,
     }
 })
 
 
 function uploadhead(obj) {
     var file = document.getElementById('userPhotoInput').files[0];
-    if (file.size>20*1024*1024) {
+    if (file.size > 20 * 1024 * 1024) {
         alert("图片大小不能超过20MB");
         return;
     }
     var form = new FormData();
-    form.append('file',file);
+    form.append('file', file);
     $.ajax({
         url: '../uploadhead',//上传地址
         async: true,//异步
@@ -261,33 +264,33 @@ function uploadhead(obj) {
         data: form,//FormData数据
         processData: false,//不处理数据流 !important
         contentType: false,//不设置http头 !important
-        xhr:function(){//获取上传进度
+        xhr: function () {//获取上传进度
             myXhr = $.ajaxSettings.xhr();
-            if(myXhr.upload){
+            if (myXhr.upload) {
                 console.log("这在获取进度");
-                update_p.flag=true;
+                update_p.flag = true;
                 console.log(update_p.flag);
-                myXhr.upload.addEventListener('progress',function(e){//监听progress事件
+                myXhr.upload.addEventListener('progress', function (e) {//监听progress事件
                     var loaded = e.loaded;//已上传
                     var total = e.total;//总大小
-                    var percent = Math.floor(100*loaded/total);//百分比
+                    var percent = Math.floor(100 * loaded / total);//百分比
                     // processNum.text(percent+"%");//数显进度
                     update_p.progress = percent;
-                    $("#processBar").css("width",percent+"%");
+                    $("#processBar").css("width", percent + "%");
                     // processBar.css("width",percent+"px");//图显进度}, false);
                 })
                 return myXhr;
             }
         },
-        success: function(data){//上传成功回调
-            console.log("文档当前位置是："+data);//获取文件链接
-            if (data == "400"){
+        success: function (data) {//上传成功回调
+            console.log("文档当前位置是：" + data);//获取文件链接
+            if (data == "400") {
                 alert("文件上传失败")
-            }else{
+            } else {
                 vm.psrc = data;
                 headp.psrc = data;
                 update_p.progress = 0;
-                $("#processBar").css("width",0+"px");
+                $("#processBar").css("width", 0 + "px");
                 update_p.flag = false;
             }
         }
